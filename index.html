@@ -1,588 +1,1442 @@
-<!DOCTYPE HTML>
-<!--
-	Future Imperfect by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Kaushil's Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaushil Nagrale — Software Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    :root {
+      --bg: #0a0a0c;
+      --bg-card: #111115;
+      --bg-card-hover: #18181e;
+      --surface: #1a1a22;
+      --border: #2a2a35;
+      --text: #e8e6e3;
+      --text-dim: #8a8a99;
+      --accent: #c8f542;
+      --accent-glow: rgba(200, 245, 66, 0.15);
+      --accent2: #42d4f5;
+      --accent3: #f5a442;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Outfit', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
 
-				<!-- Header -->
-					<header id="header">
-						<h1><a href="index.html">Kaushil's Portfolio</a></h1>
-						<nav class="links"><ul>
-							<h1><a href="assets\resume\Kaushil_Nagrale.pdf">Resume</a></h1>
-						</ul></nav>
-							
+    html { scroll-behavior: smooth; }
 
-						<nav class="links">
-							<!--
-							<ul>
-								<li><a href="#">Lorem</a></li>
-								<li><a href="#">Ipsum</a></li>
-								<li><a href="#">Feugiat</a></li>
-								<li><a href="#">Tempus</a></li>
-								<li><a href="#">Adipiscing</a></li>
-							</ul>
-						-->
-						</nav>
-						<nav class="main">
-							<ul>
-								<li class="menu">
-									<a class="fa-bars" href="#menu">Menu</a>
-								</li>
-							</ul>
-						</nav>
-					</header>
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
 
-				<!-- Menu -->
-					<section id="menu">
+    /* --- Scrollbar --- */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-						<!-- Search
-							<section>
-								<form class="search" method="get" action="#">
-									<input type="text" name="query" placeholder="Search" />
-								</form>
-							</section>  -->
+    /* --- Grain overlay --- */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
 
-						<!-- Links -->
-							<section>
-								<ul class="links">
-									<li>
-										<a href="assets\resume\Kaushil_Nagrale.pdf">
-											<h2 href="assets\resume\Kaushil_Nagrale.pdf">Resume</h2>
-											<!--<p>Feugiat tempus veroeros dolor</p>-->
-										</a>
-									</li>
-								</ul>
-							</section>
+    /* --- Navigation --- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 10, 12, 0.7);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(42, 42, 53, 0.5);
+      transition: all 0.4s ease;
+    }
 
-						<!-- Actions
-							<section>
-								<ul class="actions stacked">
-									<li><a href="#" class="button large fit">Log In</a></li>
-								</ul>
-							</section> -->
+    nav.scrolled {
+      background: rgba(10, 10, 12, 0.92);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
 
-					</section>
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
 
-				<!-- Main -->
-					<div id="main">
-							<article class="post">
-								
-								<footer>
-									
-									<div class="title">
-										<h2><a href="#">Description</a></h2>
-										<p>I’m a backend-leaning software developer with 3 years of hands-on experience designing and shipping cloud apps. My toolkit centers on Node.js, Python, and modern data processing, delivered on AWS and Azure using native SDKs and services. I’ve built RESTful APIs, automated data workflows, and storage layers using PostgreSQL/MySQL and NoSQL stores. I care about pragmatic design—clean interfaces, observable services, efficient queries, and predictable deployments. Whether it’s a greenfield build or hardening an existing system, I focus on reliability, performance, and developer-friendly patterns.</p>
-										<a href="#" class="author" ><span class="name">Kaushil Nagrale</span><img src="images/avatar.png" alt=""  /></a>
-									</div>
-								</footer>
-							</article>
-						<!-- Post -->
-						<article class="post">
-							<header>
-								<div class="title">
-									<h2><a href="#">NLP based Restaurant recommendation using Google API data</a></h2>
-									<p>Python, Tensorflow, MongoDB, Django, Docker</p>
-								</div>
-							</header>
-							<a href="#" class="image featured"><img src="images/food1.jpg" alt="" /></a>
-							<p>Employed Google API data to retrieve restaurant reviews, then utilized an NLP (Natural Language Processing) model to predict review scores. Finally, recommended restaurants to the frontend user based on this analysis. </p>
-						</article>
+    .nav-logo span { color: var(--accent); }
 
-						<!-- Post -->
-							<article class="post">
-								<header>
-									<div class="title">
-										<h2><a href="https://github.com/kaushilnagrale/Asia_Cup_ODI_Cricket_Winner_Predictor">1 vs 1 - ODI Asia Cup Winner Predictor</p></h2>
-											<p>Python, Flask, Tensorflow</p>
-									</div>
-								</header>
-								<a href="https://github.com/kaushilnagrale/Asia_Cup_ODI_Cricket_Winner_Predictor" class="image featured"><img src="images/cricket.png" alt="" /></a>
-								<p>ODI Asia Cup match Winner predictor from given inputs. Powered by a state-of-the-art machine learning model built on top of TensorFlow, Linear Regression algorithm has been trained over ten epochs. </p>
-							</article>
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
 
-						<!-- Post -->
-							<article class="post">
-								<header>
-									<div class="title">
-										<h2><a href="https://github.com/kaushilnagrale/CFD_EmbeddedSystem_Arduino_car_MQ3_sensor">Embedded System Arduino mock simulation</a></h2>
-										<p>Arduino, C++</p>
-									</div>
-								</header>
-								<a href="https://github.com/kaushilnagrale/CFD_EmbeddedSystem_Arduino_car_MQ3_sensor" class="image featured"><img src="images/CFD.png" alt="" /></a>
-								<p>We aimed to simulate the airflow in a vehicle cabin interior using a Computational Fluid Dynamic Analysis in the presence of the HVAC system and identify the regions where the exhaled air from the driver has the highest flow rate of ethanol mass fraction. We modelled the car interior on SolidWorks and imported it to ANSYS Fluent. Based on the results obtained, we determined the best position(s) to place the alcohol detection sensor for improved efficacy. Further Extended the project's scope by introducing an Arduino-embedded system and MATLAB-Thinkspeak cloud service.</p>
-							</article>
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+    }
 
-						<!-- Post -->
-						<!--
-							<article class="post">
-								<header>
-									<div class="title">
-										<h2><a href="#">Elements</a></h2>
-										<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
-									</div>
-									<div class="meta">
-										<time class="published" datetime="2015-10-18">October 18, 2015</time>
-										<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
-									</div>
-								</header>
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
 
-								<section>
-									<h3>Text</h3>
-									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-									<hr />
-									<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-									<hr />
-									<h2>Heading Level 2</h2>
-									<h3>Heading Level 3</h3>
-									<h4>Heading Level 4</h4>
-									<hr />
-									<h4>Blockquote</h4>
-									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-									<h4>Preformatted</h4>
-									<pre><code>i = 0;
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover::after { width: 100%; }
 
-while (!deck.isInOrder()) {
-  print 'Iteration ' + i;
-  deck.shuffle();
-  i++;
-}
+    .nav-resume {
+      padding: 8px 20px;
+      background: transparent;
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
 
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-								</section>
+    .nav-resume:hover {
+      background: var(--accent);
+      color: var(--bg);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
 
-								<section>
-									<h3>Lists</h3>
-									<div class="row">
-										<div class="col-6 col-12-medium">
-											<h4>Unordered</h4>
-											<ul>
-												<li>Dolor pulvinar etiam.</li>
-												<li>Sagittis adipiscing.</li>
-												<li>Felis enim feugiat.</li>
-											</ul>
-											<h4>Alternate</h4>
-											<ul class="alt">
-												<li>Dolor pulvinar etiam.</li>
-												<li>Sagittis adipiscing.</li>
-												<li>Felis enim feugiat.</li>
-											</ul>
-										</div>
-										<div class="col-6 col-12-medium">
-											<h4>Ordered</h4>
-											<ol>
-												<li>Dolor pulvinar etiam.</li>
-												<li>Etiam vel felis viverra.</li>
-												<li>Felis enim feugiat.</li>
-												<li>Dolor pulvinar etiam.</li>
-												<li>Etiam vel felis lorem.</li>
-												<li>Felis enim et feugiat.</li>
-											</ol>
-											<h4>Icons</h4>
-											<ul class="icons">
-												<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-												<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-												<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-												<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-											</ul>
-										</div>
-									</div>
-									<h3>Actions</h3>
-									<div class="row">
-										<div class="col-6 col-12-medium">
-											<ul class="actions">
-												<li><a href="#" class="button">Default</a></li>
-												<li><a href="#" class="button">Default</a></li>
-												<li><a href="#" class="button">Default</a></li>
-											</ul>
-											<ul class="actions small">
-												<li><a href="#" class="button small">Small</a></li>
-												<li><a href="#" class="button small">Small</a></li>
-												<li><a href="#" class="button small">Small</a></li>
-											</ul>
-											<ul class="actions stacked">
-												<li><a href="#" class="button">Default</a></li>
-												<li><a href="#" class="button">Default</a></li>
-												<li><a href="#" class="button">Default</a></li>
-											</ul>
-											<ul class="actions stacked">
-												<li><a href="#" class="button small">Small</a></li>
-												<li><a href="#" class="button small">Small</a></li>
-												<li><a href="#" class="button small">Small</a></li>
-											</ul>
-										</div>
-										<div class="col-6 col-12-medium">
-											<ul class="actions stacked">
-												<li><a href="#" class="button fit">Default</a></li>
-												<li><a href="#" class="button fit">Default</a></li>
-											</ul>
-											<ul class="actions stacked">
-												<li><a href="#" class="button small fit">Small</a></li>
-												<li><a href="#" class="button small fit">Small</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
-								<section>
-									<h3>Table</h3>
-									<h4>Default</h4>
-									<div class="table-wrapper">
-										<table>
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
+    /* --- Hero --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 120px 48px 80px;
+    }
 
-									<h4>Alternate</h4>
-									<div class="table-wrapper">
-										<table class="alt">
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-								</section>
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
 
-								<section>
-									<h3>Buttons</h3>
-									<ul class="actions">
-										<li><a href="#" class="button large">Large</a></li>
-										<li><a href="#" class="button">Default</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-									<ul class="actions fit">
-										<li><a href="#" class="button fit">Fit</a></li>
-										<li><a href="#" class="button fit">Fit</a></li>
-										<li><a href="#" class="button fit">Fit</a></li>
-									</ul>
-									<ul class="actions fit small">
-										<li><a href="#" class="button fit small">Fit + Small</a></li>
-										<li><a href="#" class="button fit small">Fit + Small</a></li>
-										<li><a href="#" class="button fit small">Fit + Small</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-										<li><a href="#" class="button icon solid fa-upload">Icon</a></li>
-										<li><a href="#" class="button icon solid fa-save">Icon</a></li>
-									</ul>
-									<ul class="actions">
-										<li><span class="button disabled">Disabled</span></li>
-										<li><span class="button disabled icon solid fa-download">Disabled</span></li>
-									</ul>
-								</section>
+    .hero-bg .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      animation: orbFloat 20s ease-in-out infinite;
+    }
 
-								<section>
-									<h3>Form</h3>
-									<form method="post" action="#">
-										<div class="row gtr-uniform">
-											<div class="col-6 col-12-xsmall">
-												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-											</div>
-											<div class="col-6 col-12-xsmall">
-												<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-											</div>
-											<div class="col-12">
-												<select name="demo-category" id="demo-category">
-													<option value="">- Category -</option>
-													<option value="1">Manufacturing</option>
-													<option value="1">Shipping</option>
-													<option value="1">Administration</option>
-													<option value="1">Human Resources</option>
-												</select>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-												<label for="demo-priority-low">Low</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="demo-priority-normal" name="demo-priority">
-												<label for="demo-priority-normal">Normal</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="demo-priority-high" name="demo-priority">
-												<label for="demo-priority-high">High</label>
-											</div>
-											<div class="col-6 col-12-small">
-												<input type="checkbox" id="demo-copy" name="demo-copy">
-												<label for="demo-copy">Email me a copy</label>
-											</div>
-											<div class="col-6 col-12-small">
-												<input type="checkbox" id="demo-human" name="demo-human" checked>
-												<label for="demo-human">Not a robot</label>
-											</div>
-											<div class="col-12">
-												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-											</div>
-											<div class="col-12">
-												<ul class="actions">
-													<li><input type="submit" value="Send Message" /></li>
-													<li><input type="reset" value="Reset" /></li>
-												</ul>
-											</div>
-										</div>
-									</form>
-								</section>
+    .orb-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(200, 245, 66, 0.08), transparent 70%);
+      top: -200px; right: -100px;
+    }
 
-								<section>
-									<h3>Image</h3>
-									<h4>Fit</h4>
-									<div class="box alt">
-										<div class="row gtr-uniform">
-											<div class="col-12"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic05.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic06.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic06.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic05.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic05.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic06.jpg" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-										</div>
-									</div>
-									<h4>Left &amp; Right</h4>
-									<p><span class="image left"><img src="images/pic07.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-									<p><span class="image right"><img src="images/pic04.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-								</section>
+    .orb-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(66, 212, 245, 0.06), transparent 70%);
+      bottom: -150px; left: -100px;
+      animation-delay: -7s;
+    }
 
-							</article>
-						-->
+    .orb-3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(245, 164, 66, 0.05), transparent 70%);
+      top: 40%; left: 30%;
+      animation-delay: -13s;
+    }
 
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -40px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
 
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      text-align: center;
+    }
 
-					</div>
+    .hero-label {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      padding: 6px 16px;
+      border: 1px solid rgba(200, 245, 66, 0.25);
+      background: rgba(200, 245, 66, 0.05);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
 
-				<!-- Sidebar -->
-					<section id="sidebar">
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
 
-						<!-- Intro -->
-							<section id="intro">
-								<a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
-								<header>
-									<h2>Tech Stack</h2>
-									<p>Python, C++, Postgresql, Javascript, Tensorflow, OpenCV <a href="http://html5up.net"></a></p>
-									<img src="images/python.png" alt="" />
-									<img src="images/c.png" alt="" />
-									<img src="images/js.png" alt="" />
-									<img src="images/icons8-tensorflow-48.png" alt="" />
-									<img src="images/opencv.png" alt="" />
-									<img src="images/icons8-mongodb-48.png" alt="" />
-									<img src="images/icons8-postgresql-48.png" alt="" />
-									<img src="images/icons8-matlab-48.png" alt="" />
-									<img src="images/icons8-django-48.png" alt="" />
-									<img src="images/icons8-flask-50.png" alt="" />
-									<img src="images/icons8-azure-48.png" alt="" />
-									<img src="images/icons8-amazon-web-services-48.png" alt="" />
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
 
-								</header>
-							</section>
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-dim);
+      max-width: 620px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
 
-						<!-- Mini Posts -->
-							<section>
-								<div class="mini-posts">
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.8s;
+    }
 
-									<!-- Mini Post -->
-										<article class="mini-post">
-											<header>
-												<h3><a href="exp.html">Vacant Parking Counter using Image Processing</a></h3>
-												<time class="published">OpenCV, Tensorflow</time>
-												<a href="#" class="author"><img src="#" alt="" /></a>
-											</header>
-											<a href="exp.html" class="image"><img src="images/Carp1.jpg" alt="" /></a>
-										</article>
+    .btn-primary {
+      padding: 14px 32px;
+      background: var(--accent);
+      color: var(--bg);
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-									<!-- Mini Post -->
-										<article class="mini-post">
-											<header>
-												<h3><a href="https://github.com/kaushilnagrale/Excel_To_Single_Line_JSON_convertor">Excel Payload to Single Line JSON Payload Convertor BOT</a></h3>
-												<time class="published" >Python, Pandas</time>
-												<a href="https://github.com/kaushilnagrale/Excel_To_Single_Line_JSON_convertor" class="author"><img src="#" alt="" /></a>
-											</header>
-											<a href="exp.html" class="image"><img src="images/xl2sj.png" alt="" /></a>
-										</article>
+    .btn-primary:hover {
+      box-shadow: 0 0 30px var(--accent-glow), 0 8px 24px rgba(0,0,0,0.3);
+      transform: translateY(-2px);
+    }
 
+    .btn-secondary {
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-									
-									<!-- Mini Post -->
-									<article class="mini-post">
-										<header>
-											<h3><a href="https://github.com/kaushilnagrale/FaceNeye_detection">Face and Eye Detection</a></h3>
-											<time class="published">OpenCV, Flask</time>
-											<a href="https://github.com/kaushilnagrale/FaceNeye_detection" class="author"><img src="images/avatar.jpg" alt="" /></a>
-										</header>
-										<a href="https://github.com/kaushilnagrale/FaceNeye_detection" class="image"><img src="images/faceeye.png" alt="" /></a>
-									</article>										
+    .btn-secondary:hover {
+      border-color: var(--text-dim);
+      background: rgba(255,255,255,0.03);
+    }
 
-									<!-- Mini Post -->
-										<article class="mini-post">
-											<header>
-												<h3><a href="https://github.com/kaushilnagrale/Data_Entry_Python_Program">Automated Python-Javascript BOT</a></h3>
-												<time class="published" datetime="2015-10-17">Python, JavaScript</time>
-												<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
-											</header>
-											<a href="https://github.com/kaushilnagrale/Data_Entry_Python_Program" class="image"><img src="images/bot.png" alt="" /></a>
-										</article>
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-dim);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1.2s;
+    }
 
-								</div>
-							</section>
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
 
-						<!-- Posts List -->
-							<section>
-								<ul class="posts">
-									<li>
-										<article>
-											<header>
-												<h3><a href="#">Movie Recommendation using ML (Collaborative)</a></h3>
-											</header>
-											<a href="#" class="image"><img src="#" alt="" /></a>
-										</article>
-									</li>
-									<li>
-										<article>
-											<header>
-												<h3><a href="exp.html">Whatsapp Automatic replier</a></h3>
-											</header>
-											<a href="exp.html" class="image"><img src="images/pic09.jpg" alt="" /></a>
-										</article>
-									</li>
-									<li>
-										<article>
-											<header>
-												<h3><a href="exp.html">Google Drive Python Integration</a></h3>
-											</header>
-											<a href="exp.html" class="image"><img src="images/pic10.jpg" alt="" /></a>
-										</article>
-									</li>
-									<li>
-										<article>
-											<header>
-												<h3><a href="exp.html">Web Scrapper for food items</a></h3>
-											</header>
-											<a href="exp.html" class="image"><img src="images/pic11.jpg" alt="" /></a>
-										</article>
-									</li>
-								</ul>
-							</section>
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
 
-						<!-- About --><!---
-							<section class="blurb">
-								<h2>About</h2>
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
-								<ul class="actions">
-									<li><a href="#" class="button">Learn More</a></li>
-								</ul>
-							</section>  
-						-->
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-						<!-- Footer -->
-							<section id="footer">
-								<ul class="icons">
-									<li><a href="https://www.linkedin.com/in/kaushilnagrale/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
-									<li><a href="https://github.com/kaushilnagrale" class="icon brands fa-github"><span class="label">RSS</span></a></li>
-									<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-								</ul>
-								<p class="copyright">&copy; Kaushil Nagrale</p>
-							</section>
+    /* --- Section Styles --- */
+    section {
+      padding: 100px 48px;
+    }
 
-					</section>
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
 
-			</div>
+    .section-tag {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+    }
 
-	</body>
+    .section-line {
+      width: 60px;
+      height: 2px;
+      background: var(--accent);
+      margin: 20px auto 0;
+    }
+
+    /* --- Experience --- */
+    .experience-section {
+      background: linear-gradient(180deg, var(--bg) 0%, #0c0c10 50%, var(--bg) 100%);
+    }
+
+    .exp-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .exp-intro {
+      margin-bottom: 48px;
+      padding: 36px 40px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      position: relative;
+    }
+
+    .exp-intro p {
+      color: var(--text-dim);
+      line-height: 1.85;
+      font-size: 1rem;
+    }
+
+    .exp-intro p + p { margin-top: 16px; }
+    .exp-intro strong { color: var(--text); }
+
+    .exp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .exp-card:hover {
+      border-color: rgba(200, 245, 66, 0.25);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.35);
+      transform: translateY(-3px);
+    }
+
+    .exp-card-accent {
+      height: 3px;
+      width: 100%;
+    }
+
+    .exp-card-content {
+      padding: 36px 40px;
+    }
+
+    .exp-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .exp-card-header h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .exp-company {
+      color: var(--text-dim);
+      font-size: 0.92rem;
+      margin-top: 4px;
+    }
+
+    .exp-badge {
+      padding: 6px 16px;
+      background: rgba(200, 245, 66, 0.08);
+      border: 1px solid rgba(200, 245, 66, 0.2);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .exp-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .exp-highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .exp-highlight-item svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .exp-highlight-item strong { color: var(--text); }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .exp-tags span {
+      font-size: 0.72rem;
+      padding: 4px 12px;
+      background: rgba(200, 245, 66, 0.06);
+      border: 1px solid rgba(200, 245, 66, 0.12);
+      color: var(--accent);
+      font-family: var(--mono);
+      letter-spacing: 0.03em;
+    }
+
+    /* --- Tech Stack --- */
+    .stack-section { background: var(--bg); }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .stack-card {
+      padding: 28px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stack-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .stack-card:hover::before { transform: scaleX(1); }
+
+    .stack-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(200, 245, 66, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .stack-card h4 {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .stack-card p {
+      font-size: 0.92rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* --- Projects --- */
+    .projects-section {
+      background: linear-gradient(180deg, var(--bg) 0%, #0d0d10 100%);
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-dim);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.03em;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(200, 245, 66, 0.06);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+      gap: 28px;
+      max-width: 1260px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: all 0.4s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: rgba(200, 245, 66, 0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .project-visual {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-visual-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.9;
+      transition: transform 0.6s ease;
+    }
+
+    .project-card:hover .project-visual-bg { transform: scale(1.05); }
+
+    .project-visual-icon {
+      position: relative;
+      z-index: 1;
+      font-size: 3rem;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+    }
+
+    .project-body {
+      padding: 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-category {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    .project-body h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .project-body p {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .project-tags span {
+      font-size: 0.72rem;
+      padding: 4px 10px;
+      background: rgba(200, 245, 66, 0.07);
+      border: 1px solid rgba(200, 245, 66, 0.15);
+      color: var(--accent);
+      font-family: var(--mono);
+      letter-spacing: 0.03em;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.3s;
+      margin-top: auto;
+    }
+
+    .project-link:hover { color: var(--accent); }
+
+    .project-link svg {
+      transition: transform 0.3s;
+    }
+
+    .project-link:hover svg { transform: translateX(4px); }
+
+    /* --- About / Experience --- */
+    .about-section {
+      background: var(--bg);
+    }
+
+    .about-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-dim);
+      line-height: 1.85;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    .about-text strong { color: var(--text); }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .stat-box {
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .stat-box .num {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-box .label {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), var(--border), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 36px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -36px;
+      top: 6px;
+      width: 9px;
+      height: 9px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .timeline-item h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item .role {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item .period {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+
+    .timeline-item p {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* --- Contact --- */
+    .contact-section {
+      background: linear-gradient(180deg, #0d0d10 0%, var(--bg) 100%);
+      text-align: center;
+    }
+
+    .contact-section .section-title {
+      margin-bottom: 16px;
+    }
+
+    .contact-desc {
+      color: var(--text-dim);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-card {
+      padding: 24px 36px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .contact-card svg { color: var(--accent); flex-shrink: 0; }
+
+    .contact-card .c-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .contact-card .c-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    /* --- Footer --- */
+    footer.site-footer {
+      padding: 32px 48px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    /* --- Scroll Reveal --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      section { padding: 72px 24px; }
+      .hero { padding: 100px 24px 80px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+      .exp-card-content { padding: 28px 24px; }
+      .exp-intro { padding: 28px 24px; }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .nav-resume { display: none; }
+      .mobile-toggle { display: block; }
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 10, 12, 0.97);
+        z-index: 999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+      }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu a {
+        color: var(--text);
+        text-decoration: none;
+        font-size: 1.3rem;
+        font-family: var(--serif);
+      }
+      .mobile-close {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+      .hero h1 { font-size: 2.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">K<span>.</span>N</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-resume">Resume ↗</a>
+    <button class="mobile-toggle" onclick="document.getElementById('mobileMenu').classList.add('open')">☰</button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu">
+    <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
+    <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+    <a href="#experience" onclick="document.getElementById('mobileMenu').classList.remove('open')">Experience</a>
+    <a href="#stack" onclick="document.getElementById('mobileMenu').classList.remove('open')">Stack</a>
+    <a href="#projects" onclick="document.getElementById('mobileMenu').classList.remove('open')">Projects</a>
+    <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-label">Backend · Cloud · Data</div>
+      <h1>Kaushil <em>Nagrale</em></h1>
+      <p class="hero-desc">
+        Backend-leaning software developer with 3 years of hands-on experience designing and shipping cloud applications. Building reliable systems with Node.js, Python, and modern data processing on AWS &amp; Azure.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View Projects <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        <a href="#contact" class="btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about-section" id="about">
+    <div class="section-header reveal">
+      <div class="section-tag">Background</div>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a software developer passionate about building <strong>reliable, performant systems</strong> that solve real problems. With a strong foundation in backend engineering and cloud infrastructure, I bring ideas to life through clean code and pragmatic architecture.</p>
+        <p>When I'm not shipping features, I'm exploring domains like <strong>machine learning, computer vision, and real-time data systems</strong> — always looking for the next interesting challenge to tackle.</p>
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="num">3+</div>
+            <div class="label">Years Experience</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">12+</div>
+            <div class="label">Projects Built</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">5+</div>
+            <div class="label">Cloud Services</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">∞</div>
+            <div class="label">Curiosity</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <div class="role">Focus Areas</div>
+          <h4>Backend &amp; Cloud Architecture</h4>
+          <div class="period">APIs · Microservices · DevOps</div>
+          <p>Building scalable backend systems, RESTful APIs, and cloud-native applications with production-grade reliability.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="role">Expanding Into</div>
+          <h4>Data Engineering &amp; ML</h4>
+          <div class="period">Pipelines · Analytics · NLP</div>
+          <p>Designing ETL pipelines, real-time data architectures, and applying machine learning to practical problems.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="role">Exploring</div>
+          <h4>Computer Vision &amp; IoT</h4>
+          <div class="period">OpenCV · Embedded · Edge</div>
+          <p>Building image processing systems and embedded solutions that bridge the digital and physical worlds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="experience-section" id="experience">
+    <div class="section-header reveal">
+      <div class="section-tag">Career</div>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="exp-container">
+      <div class="exp-intro reveal">
+        <p>I'm a backend-leaning software developer with <strong>3 years of hands-on experience</strong> designing and shipping cloud apps. My toolkit centers on <strong>Node.js, Python</strong>, and modern data processing, delivered on <strong>AWS and Azure</strong> using native SDKs and services. I've built RESTful APIs, automated data workflows, and storage layers using <strong>PostgreSQL/MySQL</strong> and NoSQL stores.</p>
+        <p>I care about pragmatic design — clean interfaces, observable services, efficient queries, and predictable deployments. Whether it's a greenfield build or hardening an existing system, I focus on <strong>reliability, performance, and developer-friendly patterns</strong>.</p>
+      </div>
+      <div class="exp-timeline">
+        <div class="exp-card reveal">
+          <div class="exp-card-accent" style="background: var(--accent);"></div>
+          <div class="exp-card-content">
+            <div class="exp-card-header">
+              <div>
+                <h3>Software Developer</h3>
+                <p class="exp-company">Professional Experience</p>
+              </div>
+              <span class="exp-badge">3 Years</span>
+            </div>
+            <div class="exp-highlights">
+              <div class="exp-highlight-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Designed and shipped production cloud applications on <strong>AWS &amp; Azure</strong></span>
+              </div>
+              <div class="exp-highlight-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Built RESTful APIs with <strong>Node.js &amp; Python</strong> backends</span>
+              </div>
+              <div class="exp-highlight-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Automated data workflows and ETL pipelines for enterprise clients</span>
+              </div>
+              <div class="exp-highlight-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Engineered storage layers using <strong>PostgreSQL, MySQL</strong> &amp; NoSQL stores</span>
+              </div>
+              <div class="exp-highlight-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Implemented observable services with predictable deployment patterns</span>
+              </div>
+            </div>
+            <div class="exp-tags">
+              <span>Node.js</span><span>Python</span><span>AWS</span><span>Azure</span><span>PostgreSQL</span><span>REST APIs</span><span>Docker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="stack-section" id="stack">
+    <div class="section-header reveal">
+      <div class="section-tag">Technologies</div>
+      <h2 class="section-title">Tech Stack</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-card reveal">
+        <h4>Languages</h4>
+        <p>Python, JavaScript / Node.js, C++, SQL, HTML/CSS</p>
+      </div>
+      <div class="stack-card reveal">
+        <h4>Frameworks</h4>
+        <p>Django, Flask, Express.js, React, TensorFlow, Apache Spark, Airflow</p>
+      </div>
+      <div class="stack-card reveal">
+        <h4>Databases</h4>
+        <p>PostgreSQL, MySQL, MongoDB, Redis, Delta Lake</p>
+      </div>
+      <div class="stack-card reveal">
+        <h4>Cloud & DevOps</h4>
+        <p>AWS, Azure, Docker, Apache Kafka, CI/CD, Kubernetes</p>
+      </div>
+      <div class="stack-card reveal">
+        <h4>Data & ML</h4>
+        <p>TensorFlow, OpenCV, Pandas, NLP, Spark Streaming, Data Pipelines</p>
+      </div>
+      <div class="stack-card reveal">
+        <h4>Tools</h4>
+        <p>Git, MATLAB, Arduino, SolidWorks, ANSYS, Jupyter</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects-section" id="projects">
+    <div class="section-header reveal">
+      <div class="section-tag">Portfolio</div>
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="data">Data Engineering</button>
+      <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+      <button class="filter-btn" data-filter="ml">ML / AI</button>
+      <button class="filter-btn" data-filter="iot">IoT / Other</button>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid">
+
+      <!-- Real-Time Lakehouse Platform -->
+      <div class="project-card reveal" data-cat="data">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a2332, #0f3460, #16213e);"></div>
+          <div class="project-visual-icon">🏗️</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Data Engineering</div>
+          <h3>Real-Time Lakehouse Platform</h3>
+          <p>Production-grade real-time analytics lakehouse using Medallion Architecture with Apache Spark, Delta Lake, and streaming data pipelines for unified batch and real-time processing.</p>
+          <div class="project-tags">
+            <span>Spark</span><span>Delta Lake</span><span>Kafka</span><span>Python</span>
+          </div>
+          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Smart Parking Management -->
+      <div class="project-card reveal" data-cat="ml">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a3322, #0f6034, #163e28);"></div>
+          <div class="project-visual-icon">🅿️</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">ML / Computer Vision</div>
+          <h3>Smart Parking Management &amp; Analytics Platform</h3>
+          <p>Computer vision-powered parking management system with real-time occupancy detection, analytics dashboards, and automated monitoring for smart city infrastructure.</p>
+          <div class="project-tags">
+            <span>OpenCV</span><span>TensorFlow</span><span>Python</span><span>Analytics</span>
+          </div>
+          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Real-Time Chat Notification System -->
+      <div class="project-card reveal" data-cat="fullstack">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #2a1a33, #4a1060, #2e163e);"></div>
+          <div class="project-visual-icon">💬</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Full-Stack</div>
+          <h3>Real-Time Chat &amp; Notification System</h3>
+          <p>Full-stack real-time chat application with WebSocket-based messaging, push notifications, user presence tracking, and scalable backend architecture.</p>
+          <div class="project-tags">
+            <span>Node.js</span><span>WebSockets</span><span>React</span><span>Redis</span>
+          </div>
+          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Airflow Google Reviews ETL -->
+      <div class="project-card reveal" data-cat="data">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #332a1a, #604a10, #3e3216);"></div>
+          <div class="project-visual-icon">🔄</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Data Engineering</div>
+          <h3>Airflow Google Reviews ETL Pipeline</h3>
+          <p>Automated ETL pipeline orchestrated with Apache Airflow to extract, transform, and load Google API restaurant review data for downstream NLP analysis and recommendations.</p>
+          <div class="project-tags">
+            <span>Airflow</span><span>Python</span><span>Google API</span><span>ETL</span>
+          </div>
+          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- SaaS Project Management Platform -->
+      <div class="project-card reveal" data-cat="fullstack">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a2a33, #104a60, #16323e);"></div>
+          <div class="project-visual-icon">📋</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Full-Stack</div>
+          <h3>SaaS Project Management Platform</h3>
+          <p>Full-stack SaaS project management tool with team collaboration, task tracking, role-based access control, and real-time dashboards for agile workflows.</p>
+          <div class="project-tags">
+            <span>React</span><span>Node.js</span><span>PostgreSQL</span><span>Docker</span>
+          </div>
+          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Online Recruitment Exam Portal -->
+      <div class="project-card reveal" data-cat="fullstack">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #331a2a, #601048, #3e162e);"></div>
+          <div class="project-visual-icon">🎓</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Full-Stack</div>
+          <h3>Online Recruitment &amp; Exam Portal</h3>
+          <p>Comprehensive recruitment management system with online exam functionality, candidate tracking, automated scoring, and admin dashboards for streamlined hiring.</p>
+          <div class="project-tags">
+            <span>Django</span><span>PostgreSQL</span><span>JavaScript</span><span>REST API</span>
+          </div>
+          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- NLP Restaurant Recommendation -->
+      <div class="project-card reveal" data-cat="ml">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #33291a, #604510, #3e3016);"></div>
+          <div class="project-visual-icon">🍽️</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">ML / NLP</div>
+          <h3>NLP Restaurant Recommendation Engine</h3>
+          <p>Leveraged Google API data to retrieve restaurant reviews, built an NLP model to predict review scores, and recommended restaurants to users based on sentiment analysis.</p>
+          <div class="project-tags">
+            <span>TensorFlow</span><span>MongoDB</span><span>Django</span><span>Docker</span>
+          </div>
+          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- ODI Asia Cup Predictor -->
+      <div class="project-card reveal" data-cat="ml">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a3333, #106060, #163e3e);"></div>
+          <div class="project-visual-icon">🏏</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Machine Learning</div>
+          <h3>ODI Asia Cup Winner Predictor</h3>
+          <p>Match winner predictor powered by a TensorFlow linear regression model trained over ten epochs. Predicts 1v1 ODI Asia Cup outcomes from given match parameters.</p>
+          <div class="project-tags">
+            <span>Python</span><span>Flask</span><span>TensorFlow</span>
+          </div>
+          <a href="https://github.com/kaushilnagrale/Asia_Cup_ODI_Cricket_Winner_Predictor" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Embedded System Arduino -->
+      <div class="project-card reveal" data-cat="iot">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #2a2a1a, #505010, #3e3e16);"></div>
+          <div class="project-visual-icon">🔌</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">IoT / Embedded</div>
+          <h3>Embedded System Arduino Simulation</h3>
+          <p>Simulated vehicle cabin airflow using Computational Fluid Dynamics in ANSYS Fluent to optimize alcohol sensor placement, extended with Arduino embedded system and MATLAB-ThingSpeak cloud.</p>
+          <div class="project-tags">
+            <span>Arduino</span><span>C++</span><span>MATLAB</span><span>ANSYS</span>
+          </div>
+          <a href="https://github.com/kaushilnagrale/CFD_EmbeddedSystem_Arduino_car_MQ3_sensor" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Vacant Parking Counter -->
+      <div class="project-card reveal" data-cat="ml">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a2533, #103860, #16283e);"></div>
+          <div class="project-visual-icon">📹</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Computer Vision</div>
+          <h3>Vacant Parking Counter</h3>
+          <p>Real-time image processing system using OpenCV and TensorFlow to detect and count vacant parking spaces from video feeds, enabling smart parking solutions.</p>
+          <div class="project-tags">
+            <span>OpenCV</span><span>TensorFlow</span><span>Python</span>
+          </div>
+          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Face and Eye Detection -->
+      <div class="project-card reveal" data-cat="ml">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #331a25, #601040, #3e162e);"></div>
+          <div class="project-visual-icon">👁️</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Computer Vision</div>
+          <h3>Face &amp; Eye Detection</h3>
+          <p>Real-time face and eye detection application built with OpenCV cascading classifiers, served through a Flask web interface for live webcam processing.</p>
+          <div class="project-tags">
+            <span>OpenCV</span><span>Flask</span><span>Python</span>
+          </div>
+          <a href="https://github.com/kaushilnagrale/FaceNeye_detection" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Excel to JSON Bot -->
+      <div class="project-card reveal" data-cat="iot">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a3328, #106045, #163e32);"></div>
+          <div class="project-visual-icon">⚡</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Automation</div>
+          <h3>Excel to JSON Convertor Bot</h3>
+          <p>Automated bot that converts Excel payload data into single-line JSON payloads for API consumption, streamlining data transformation workflows.</p>
+          <div class="project-tags">
+            <span>Python</span><span>Pandas</span>
+          </div>
+          <a href="https://github.com/kaushilnagrale/Excel_To_Single_Line_JSON_convertor" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="contact">
+    <div class="section-header reveal">
+      <div class="section-tag">Connect</div>
+      <h2 class="section-title">Let's Work Together</h2>
+      <div class="section-line"></div>
+    </div>
+    <p class="contact-desc reveal">Interested in collaborating or have an opportunity in mind? I'd love to hear from you.</p>
+    <div class="contact-links reveal">
+      <a href="https://www.linkedin.com/in/kaushilnagrale/" class="contact-card" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <div>
+          <div class="c-label">LinkedIn</div>
+          <div class="c-value">kaushilnagrale</div>
+        </div>
+      </a>
+      <a href="https://github.com/kaushilnagrale" class="contact-card" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        <div>
+          <div class="c-label">GitHub</div>
+          <div class="c-value">kaushilnagrale</div>
+        </div>
+      </a>
+      <a href="mailto:kaushil.nagrale@gmail.com" class="contact-card">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <div>
+          <div class="c-label">Email</div>
+          <div class="c-value">Get in touch</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Kaushil Nagrale. Crafted with purpose.</p>
+  </footer>
+
+  <script>
+    // --- Navbar scroll effect ---
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // --- Scroll reveal ---
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // --- Project filter ---
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        projectCards.forEach((card, i) => {
+          const match = filter === 'all' || card.dataset.cat === filter;
+          card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+          if (match) {
+            card.style.display = 'flex';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, i * 50);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => card.style.display = 'none', 300);
+          }
+        });
+      });
+    });
+
+    // --- Smooth scroll for anchor links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
 </html>
