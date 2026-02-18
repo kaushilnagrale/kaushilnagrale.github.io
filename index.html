@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kaushil Nagrale — Developer</title>
+  <title>Kaushil Nagrale — Software Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -294,9 +294,9 @@
 
     .hero-photo {
       position: relative;
-      width: 130px;
-      height: 130px;
-      margin: 0 auto 28px;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 32px;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 0.1s;
     }
@@ -308,15 +308,18 @@
       border-radius: 50%;
       position: relative;
       z-index: 1;
-      border: 3px solid var(--border);
-      transition: border-color 0.4s ease;
+      border: 4px solid var(--border);
+      transition: all 0.4s ease;
     }
 
-    .hero-photo:hover img { border-color: var(--accent); }
+    .hero-photo:hover img {
+      border-color: var(--accent);
+      transform: scale(1.04);
+    }
 
     .hero-photo-ring {
       position: absolute;
-      inset: -6px;
+      inset: -8px;
       border-radius: 50%;
       background: conic-gradient(var(--accent), var(--accent2), var(--accent3), var(--accent));
       opacity: 0.5;
@@ -329,12 +332,12 @@
       height: 100%;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--surface), var(--bg-card));
-      border: 3px solid var(--border);
+      border: 4px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--serif);
-      font-size: 2.5rem;
+      font-size: 3.5rem;
       color: var(--accent);
       position: relative;
       z-index: 1;
@@ -995,6 +998,517 @@
       transform: translateY(0);
     }
 
+    /* --- Marquee Divider --- */
+    .marquee-divider {
+      overflow: hidden;
+      padding: 18px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(200, 245, 66, 0.02);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 32px;
+      white-space: nowrap;
+      animation: marqueeScroll 30s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-track span {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      letter-spacing: 0.12em;
+      font-weight: 500;
+    }
+
+    .marquee-dot { color: var(--accent); font-size: 0.5rem; }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* --- Coursework --- */
+    .coursework-section {
+      background: linear-gradient(180deg, var(--bg) 0%, #0c0c10 50%, var(--bg) 100%);
+    }
+
+    .cw-container { max-width: 1100px; margin: 0 auto; }
+
+    .cw-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .cw-card {
+      padding: 28px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .cw-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: attr(data-color);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .cw-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      border-color: rgba(200, 245, 66, 0.25);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+
+    .cw-card:hover::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .cw-card:nth-child(1):hover { border-top: 3px solid var(--accent); }
+    .cw-card:nth-child(2):hover { border-top: 3px solid var(--accent2); }
+    .cw-card:nth-child(3):hover { border-top: 3px solid var(--accent3); }
+    .cw-card:nth-child(4):hover { border-top: 3px solid #e879f9; }
+    .cw-card:nth-child(5):hover { border-top: 3px solid #34d399; }
+    .cw-card:nth-child(6):hover { border-top: 3px solid #fb923c; }
+    .cw-card:nth-child(7):hover { border-top: 3px solid #60a5fa; }
+    .cw-card:nth-child(8):hover { border-top: 3px solid #f472b6; }
+
+    .cw-icon {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(200, 245, 66, 0.06);
+      border: 1px solid rgba(200, 245, 66, 0.12);
+      border-radius: 12px;
+      margin-bottom: 18px;
+      transition: all 0.35s ease;
+      color: var(--accent);
+    }
+
+    .cw-card:nth-child(2) .cw-icon { color: var(--accent2); background: rgba(66, 212, 245, 0.06); border-color: rgba(66, 212, 245, 0.12); }
+    .cw-card:nth-child(3) .cw-icon { color: var(--accent3); background: rgba(245, 164, 66, 0.06); border-color: rgba(245, 164, 66, 0.12); }
+    .cw-card:nth-child(4) .cw-icon { color: #e879f9; background: rgba(232, 121, 249, 0.06); border-color: rgba(232, 121, 249, 0.12); }
+    .cw-card:nth-child(5) .cw-icon { color: #34d399; background: rgba(52, 211, 153, 0.06); border-color: rgba(52, 211, 153, 0.12); }
+    .cw-card:nth-child(6) .cw-icon { color: #fb923c; background: rgba(251, 146, 60, 0.06); border-color: rgba(251, 146, 60, 0.12); }
+    .cw-card:nth-child(7) .cw-icon { color: #60a5fa; background: rgba(96, 165, 250, 0.06); border-color: rgba(96, 165, 250, 0.12); }
+    .cw-card:nth-child(8) .cw-icon { color: #f472b6; background: rgba(244, 114, 182, 0.06); border-color: rgba(244, 114, 182, 0.12); }
+
+    .cw-card:hover .cw-icon { transform: scale(1.1); }
+
+    .cw-card h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .cw-card p {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .cw-tags {
+      display: flex;
+      gap: 6px;
+    }
+
+    .cw-tags span {
+      font-size: 0.65rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-family: var(--mono);
+      letter-spacing: 0.05em;
+      background: rgba(200, 245, 66, 0.06);
+      border: 1px solid rgba(200, 245, 66, 0.12);
+      color: var(--accent);
+    }
+
+    .cw-card:nth-child(2) .cw-tags span { color: var(--accent2); background: rgba(66, 212, 245, 0.06); border-color: rgba(66, 212, 245, 0.12); }
+    .cw-card:nth-child(3) .cw-tags span { color: var(--accent3); background: rgba(245, 164, 66, 0.06); border-color: rgba(245, 164, 66, 0.12); }
+    .cw-card:nth-child(4) .cw-tags span { color: #e879f9; background: rgba(232, 121, 249, 0.06); border-color: rgba(232, 121, 249, 0.12); }
+    .cw-card:nth-child(5) .cw-tags span { color: #34d399; background: rgba(52, 211, 153, 0.06); border-color: rgba(52, 211, 153, 0.12); }
+    .cw-card:nth-child(6) .cw-tags span { color: #fb923c; background: rgba(251, 146, 60, 0.06); border-color: rgba(251, 146, 60, 0.12); }
+    .cw-card:nth-child(7) .cw-tags span { color: #60a5fa; background: rgba(96, 165, 250, 0.06); border-color: rgba(96, 165, 250, 0.12); }
+    .cw-card:nth-child(8) .cw-tags span { color: #f472b6; background: rgba(244, 114, 182, 0.06); border-color: rgba(244, 114, 182, 0.12); }
+
+    /* --- Floating Particles --- */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0;
+      animation: particleDrift linear infinite;
+    }
+
+    @keyframes particleDrift {
+      0% { opacity: 0; transform: translateY(100vh) scale(0); }
+      10% { opacity: 0.4; }
+      90% { opacity: 0.4; }
+      100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+    }
+
+    /* --- Back To Top --- */
+    .back-to-top {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      z-index: 1998;
+      width: 42px;
+      height: 42px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .back-to-top:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.1);
+    }
+
+    .back-to-top svg { color: var(--text); width: 18px; height: 18px; }
+    .back-to-top:hover svg { color: var(--bg); }
+
+    /* --- Glow line between sections --- */
+    .glow-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.2;
+    }
+
+    /* --- Cursor glow (desktop only) --- */
+    .cursor-glow {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200, 245, 66, 0.04), transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      transition: left 0.15s ease, top 0.15s ease;
+      display: none;
+    }
+
+    @media (hover: hover) {
+      .cursor-glow { display: block; }
+    }
+
+    /* --- Chatbot --- */
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 2000;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(200, 245, 66, 0.3), 0 2px 8px rgba(0,0,0,0.3);
+      transition: all 0.35s ease;
+    }
+
+    .chatbot-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 32px rgba(200, 245, 66, 0.45), 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .chatbot-toggle svg { width: 26px; height: 26px; color: var(--bg); }
+
+    .chatbot-toggle .close-icon { display: none; }
+    .chatbot-toggle.active .chat-icon { display: none; }
+    .chatbot-toggle.active .close-icon { display: block; }
+
+    .chatbot-badge {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 16px;
+      height: 16px;
+      background: #f54242;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      animation: badgePulse 2s ease-in-out infinite;
+    }
+
+    .chatbot-toggle.active .chatbot-badge { display: none; }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .chatbot-window {
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      z-index: 1999;
+      width: 400px;
+      max-width: calc(100vw - 40px);
+      height: 520px;
+      max-height: calc(100vh - 140px);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      pointer-events: none;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .chatbot-window.open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: all;
+    }
+
+    .chatbot-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .chatbot-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      color: var(--bg);
+      font-weight: 700;
+    }
+
+    .chatbot-header-text h4 {
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .chatbot-header-text p {
+      font-size: 0.7rem;
+      color: var(--accent);
+      font-family: var(--mono);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .chatbot-header-text p::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: dotPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .chatbot-messages::-webkit-scrollbar { width: 4px; }
+    .chatbot-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .chat-msg {
+      max-width: 85%;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      animation: msgIn 0.3s ease;
+    }
+
+    @keyframes msgIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .chat-msg.bot {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      align-self: flex-start;
+      border-radius: 2px 14px 14px 14px;
+      color: var(--text);
+    }
+
+    .chat-msg.user {
+      background: var(--accent);
+      color: var(--bg);
+      align-self: flex-end;
+      border-radius: 14px 2px 14px 14px;
+      font-weight: 500;
+    }
+
+    .chat-msg.bot strong { color: var(--accent); }
+
+    .chat-typing {
+      display: flex;
+      gap: 5px;
+      padding: 12px 16px;
+      align-self: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px 14px 14px 14px;
+    }
+
+    .chat-typing span {
+      width: 7px;
+      height: 7px;
+      background: var(--text-dim);
+      border-radius: 50%;
+      animation: typing 1.4s ease-in-out infinite;
+    }
+
+    .chat-typing span:nth-child(2) { animation-delay: 0.15s; }
+    .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes typing {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-6px); opacity: 1; }
+    }
+
+    .chat-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .chat-suggestions button {
+      padding: 6px 12px;
+      background: rgba(200, 245, 66, 0.08);
+      border: 1px solid rgba(200, 245, 66, 0.2);
+      color: var(--accent);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border-radius: 20px;
+    }
+
+    .chat-suggestions button:hover {
+      background: rgba(200, 245, 66, 0.15);
+      transform: scale(1.04);
+    }
+
+    .chatbot-input {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .chatbot-input input {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      outline: none;
+      border-radius: 8px;
+      transition: border-color 0.3s;
+    }
+
+    .chatbot-input input::placeholder { color: var(--text-dim); }
+    .chatbot-input input:focus { border-color: var(--accent); }
+
+    .chatbot-input button {
+      width: 40px;
+      height: 40px;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .chatbot-input button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .chatbot-input button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .chatbot-input button svg { width: 18px; height: 18px; color: var(--bg); }
+
     /* --- Responsive --- */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
@@ -1005,12 +1519,16 @@
       .stat-row { grid-template-columns: 1fr 1fr; }
       .exp-card-content { padding: 28px 24px; }
       .exp-intro { padding: 28px 24px; }
+      .cw-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+      .hero-photo { width: 170px; height: 170px; }
     }
 
     @media (max-width: 700px) {
       .nav-links { display: none; }
       .nav-resume { display: none; }
       .mobile-toggle { display: block; }
+      .cw-grid { grid-template-columns: 1fr; }
+      .hero-photo { width: 150px; height: 150px; }
       .mobile-menu {
         display: none;
         position: fixed;
@@ -1046,14 +1564,26 @@
 </head>
 <body>
 
+  <!-- Floating Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Cursor Glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
   <!-- Navigation -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">Kaushil<span> </span>Nagrale</a>
+    <a href="#" class="nav-logo">K<span>.</span>N</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#stack">Stack</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#coursework">Coursework</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#contact" class="nav-resume">Resume ↗</a>
@@ -1067,6 +1597,7 @@
     <a href="#experience" onclick="document.getElementById('mobileMenu').classList.remove('open')">Experience</a>
     <a href="#stack" onclick="document.getElementById('mobileMenu').classList.remove('open')">Stack</a>
     <a href="#projects" onclick="document.getElementById('mobileMenu').classList.remove('open')">Projects</a>
+    <a href="#coursework" onclick="document.getElementById('mobileMenu').classList.remove('open')">Coursework</a>
     <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
   </div>
 
@@ -1081,7 +1612,7 @@
       <div class="hero-photo">
         <div class="hero-photo-ring"></div>
         <img src="images/avatar.JPEG" alt="Kaushil Nagrale" onerror="this.style.display='none'; this.parentElement.querySelector('.hero-photo-fallback').style.display='flex';" />
-        <div class="hero-photo-fallback" style="display:none;">Kaushil Nagrale</div>
+        <div class="hero-photo-fallback" style="display:none;">KN</div>
       </div>
       <div class="hero-label">Backend · Cloud · Data</div>
       <h1>Kaushil <em>Nagrale</em></h1>
@@ -1092,6 +1623,9 @@
         <a href="#projects" class="btn-primary">View Projects <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
         <a href="#contact" class="btn-secondary">Get In Touch</a>
       </div>
+    <br>
+    <br>
+    <br>
     </div>
     <div class="hero-scroll">
       <div class="scroll-line"></div>
@@ -1152,6 +1686,8 @@
     </div>
   </section>
 
+  <div class="glow-divider"></div>
+
   <!-- Experience -->
   <section class="experience-section" id="experience">
     <div class="section-header reveal">
@@ -1205,6 +1741,8 @@
       </div>
     </div>
   </section>
+
+  <div class="glow-divider"></div>
 
   <!-- Tech Stack -->
   <section class="stack-section" id="stack">
@@ -1318,6 +1856,8 @@
       </div>
     </div>
   </section>
+
+  <div class="glow-divider"></div>
 
   <!-- Projects -->
   <section class="projects-section" id="projects">
@@ -1544,6 +2084,124 @@
     </div>
   </section>
 
+  <!-- Marquee Divider -->
+  <div class="marquee-divider">
+    <div class="marquee-track">
+      <span>PYTHON</span><span class="marquee-dot">◆</span>
+      <span>NODE.JS</span><span class="marquee-dot">◆</span>
+      <span>AWS</span><span class="marquee-dot">◆</span>
+      <span>TENSORFLOW</span><span class="marquee-dot">◆</span>
+      <span>DOCKER</span><span class="marquee-dot">◆</span>
+      <span>POSTGRESQL</span><span class="marquee-dot">◆</span>
+      <span>REACT</span><span class="marquee-dot">◆</span>
+      <span>KAFKA</span><span class="marquee-dot">◆</span>
+      <span>DJANGO</span><span class="marquee-dot">◆</span>
+      <span>OPENCV</span><span class="marquee-dot">◆</span>
+      <span>AZURE</span><span class="marquee-dot">◆</span>
+      <span>SPARK</span><span class="marquee-dot">◆</span>
+      <span>PYTHON</span><span class="marquee-dot">◆</span>
+      <span>NODE.JS</span><span class="marquee-dot">◆</span>
+      <span>AWS</span><span class="marquee-dot">◆</span>
+      <span>TENSORFLOW</span><span class="marquee-dot">◆</span>
+      <span>DOCKER</span><span class="marquee-dot">◆</span>
+      <span>POSTGRESQL</span><span class="marquee-dot">◆</span>
+      <span>REACT</span><span class="marquee-dot">◆</span>
+      <span>KAFKA</span><span class="marquee-dot">◆</span>
+      <span>DJANGO</span><span class="marquee-dot">◆</span>
+      <span>OPENCV</span><span class="marquee-dot">◆</span>
+      <span>AZURE</span><span class="marquee-dot">◆</span>
+      <span>SPARK</span><span class="marquee-dot">◆</span>
+    </div>
+  </div>
+
+  <!-- Coursework -->
+  <section class="coursework-section" id="coursework">
+    <div class="section-header reveal">
+      <div class="section-tag">Academics</div>
+      <h2 class="section-title">Coursework</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="cw-container">
+      <div class="cw-grid">
+
+        <div class="cw-card reveal" data-color="var(--accent)">
+          <div class="cw-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Data Structures &amp; Algorithms</h3>
+          <p>Advanced algorithmic paradigms, complexity analysis, graph algorithms, dynamic programming, and problem-solving strategies.</p>
+          <div class="cw-tags"><span>Core CS</span></div>
+        </div>
+
+        <div class="cw-card reveal" data-color="var(--accent2)">
+          <div class="cw-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M20.7 11A8.7 8.7 0 0 0 13 3.3V11h7.7z"/></svg>
+          </div>
+          <h3>Database Management Systems</h3>
+          <p>Relational models, SQL optimization, normalization, transaction processing, indexing, and NoSQL database architectures.</p>
+          <div class="cw-tags"><span>Data</span></div>
+        </div>
+
+        <div class="cw-card reveal" data-color="var(--accent3)">
+          <div class="cw-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          </div>
+          <h3>Machine Learning</h3>
+          <p>Supervised and unsupervised learning, neural networks, model evaluation, feature engineering, and practical ML pipeline design.</p>
+          <div class="cw-tags"><span>AI / ML</span></div>
+        </div>
+
+        <div class="cw-card reveal" data-color="#e879f9">
+          <div class="cw-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+          </div>
+          <h3>Software Engineering</h3>
+          <p>Software development lifecycle, design patterns, agile methodologies, testing strategies, and system architecture principles.</p>
+          <div class="cw-tags"><span>Core CS</span></div>
+        </div>
+
+        <div class="cw-card reveal" data-color="#34d399">
+          <div class="cw-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 1 1-6.219-8.56"/><path d="M21 3v6h-6"/></svg>
+          </div>
+          <h3>Operating Systems</h3>
+          <p>Process scheduling, memory management, file systems, concurrency, synchronization, and system-level programming.</p>
+          <div class="cw-tags"><span>Systems</span></div>
+        </div>
+
+        <div class="cw-card reveal" data-color="#fb923c">
+          <div class="cw-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          </div>
+          <h3>Computer Networks</h3>
+          <p>Network protocols, TCP/IP stack, routing algorithms, socket programming, network security, and distributed systems fundamentals.</p>
+          <div class="cw-tags"><span>Networks</span></div>
+        </div>
+
+        <div class="cw-card reveal" data-color="#60a5fa">
+          <div class="cw-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3>Object-Oriented Design</h3>
+          <p>OOP principles, design patterns (Gang of Four), SOLID principles, UML modeling, and clean architecture practices.</p>
+          <div class="cw-tags"><span>Core CS</span></div>
+        </div>
+
+        <div class="cw-card reveal" data-color="#f472b6">
+          <div class="cw-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <h3>Cloud Computing</h3>
+          <p>Cloud service models, virtualization, serverless architectures, container orchestration, and cloud-native application design.</p>
+          <div class="cw-tags"><span>Cloud</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-divider"></div>
+
   <!-- Contact -->
   <section class="contact-section" id="contact">
     <div class="section-header reveal">
@@ -1585,8 +2243,43 @@
   <script>
     // --- Navbar scroll effect ---
     const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 50);
+      backToTop.classList.toggle('visible', window.scrollY > 600);
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// --- Floating Particles ---
+(function createParticles() {
+  const container = document.getElementById('particles');
+  
+  for (let i = 0; i < 80; i++) {   // Increased from 30 → 80
+    const p = document.createElement('div');
+    p.className = 'particle';
+
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (10 + Math.random() * 15) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+
+    // Increased size (was 2–5px, now 4–10px)
+    p.style.width = p.style.height = (4 + Math.random() * 6) + 'px';
+
+    // Slight visibility boost
+    p.style.opacity = 0.4 + Math.random() * 0.4;
+
+    if (Math.random() > 0.7) p.style.background = 'var(--accent2)';
+    if (Math.random() > 0.9) p.style.background = 'var(--accent3)';
+
+    container.appendChild(p);
+  }
+})();
+
+    // --- Cursor glow ---
+    const cursorGlow = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', (e) => {
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
     });
 
     // --- Scroll reveal ---
@@ -1641,5 +2334,217 @@
       });
     });
   </script>
+  <!-- Chatbot Toggle -->
+  <button class="chatbot-toggle" id="chatToggle" aria-label="Chat with AI">
+    <span class="chatbot-badge"></span>
+    <svg class="chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+
+  <!-- Chatbot Window -->
+  <div class="chatbot-window" id="chatWindow">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">K</div>
+      <div class="chatbot-header-text">
+        <h4>Ask About Kaushil</h4>
+        <p>AI-powered · Online</p>
+      </div>
+    </div>
+    <div class="chatbot-messages" id="chatMessages">
+      <div class="chat-msg bot">
+        Hey there! 👋 I'm Kaushil's AI assistant. Ask me anything about his skills, projects, experience, or tech stack!
+        <div class="chat-suggestions" id="chatSuggestions">
+          <button onclick="askSuggestion(this)">What are his skills?</button>
+          <button onclick="askSuggestion(this)">Tell me about his projects</button>
+          <button onclick="askSuggestion(this)">Work experience?</button>
+          <button onclick="askSuggestion(this)">Coursework?</button>
+        </div>
+      </div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatInput" placeholder="Ask me about Kaushil..." />
+      <button id="chatSend" aria-label="Send">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // --- Chatbot Logic ---
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
+
+    chatToggle.addEventListener('click', () => {
+      chatToggle.classList.toggle('active');
+      chatWindow.classList.toggle('open');
+      if (chatWindow.classList.contains('open')) chatInput.focus();
+    });
+
+    function askSuggestion(btn) {
+      const text = btn.textContent;
+      const suggestionsEl = document.getElementById('chatSuggestions');
+      if (suggestionsEl) suggestionsEl.remove();
+      sendMessage(text);
+    }
+
+    chatSend.addEventListener('click', () => sendMessage());
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+    });
+
+    const KAUSHIL_CONTEXT = `You are Kaushil Nagrale's AI portfolio assistant. Answer questions about him in a friendly, concise way (2-4 sentences max). Use the following information:
+
+ABOUT:
+- Backend-leaning software developer with 3+ years of hands-on experience
+- Designs and ships cloud applications on AWS and Azure
+- Cares about pragmatic design: clean interfaces, observable services, efficient queries, predictable deployments
+- Focuses on reliability, performance, and developer-friendly patterns
+
+EXPERIENCE:
+- 3 years professional software development
+- Built RESTful APIs with Node.js and Python backends
+- Automated data workflows and ETL pipelines for enterprise clients
+- Engineered storage layers using PostgreSQL, MySQL, and NoSQL stores
+- Delivered on AWS and Azure using native SDKs and services
+- Implemented observable services with predictable deployment patterns
+
+TECH STACK:
+- Languages: Python, JavaScript/Node.js, C++, SQL, HTML/CSS
+- Frameworks: Django, Flask, Express.js, React, TensorFlow, Apache Spark, Airflow
+- Databases: PostgreSQL, MySQL, MongoDB, Redis, Delta Lake
+- Cloud & DevOps: AWS, Azure, Docker, Apache Kafka, CI/CD, Kubernetes
+- Data & ML: TensorFlow, OpenCV, Pandas, NLP, Spark Streaming
+- Tools: Git, MATLAB, Arduino, SolidWorks, ANSYS, Jupyter
+
+PROJECTS:
+1. Real-Time Lakehouse Platform — Production-grade analytics using Medallion Architecture with Apache Spark, Delta Lake, Kafka, streaming pipelines
+2. Smart Parking Management & Analytics Platform — Computer vision parking system with OpenCV, TensorFlow, real-time occupancy detection
+3. Real-Time Chat & Notification System — Full-stack WebSocket chat app with Node.js, React, Redis, push notifications
+4. Airflow Google Reviews ETL Pipeline — Apache Airflow orchestrated ETL for Google API restaurant review data and NLP analysis
+5. SaaS Project Management Platform — Full-stack SaaS tool with React, Node.js, PostgreSQL, Docker, role-based access
+6. Online Recruitment & Exam Portal — Django-based recruitment system with online exams, automated scoring, admin dashboards
+7. NLP Restaurant Recommendation Engine — TensorFlow NLP model for review scoring and restaurant recommendations using Google API data, MongoDB, Django
+8. ODI Asia Cup Winner Predictor — TensorFlow linear regression model for cricket match predictions, Flask web app
+9. Embedded System Arduino Simulation — CFD analysis in ANSYS Fluent for vehicle cabin airflow, Arduino embedded system, MATLAB-ThingSpeak cloud
+10. Vacant Parking Counter — Real-time OpenCV/TensorFlow image processing for parking space detection
+11. Face & Eye Detection — OpenCV cascading classifiers with Flask web interface
+12. Excel to JSON Convertor Bot — Python/Pandas automation for Excel to JSON payload conversion
+
+CONTACT:
+- LinkedIn: linkedin.com/in/kaushilnagrale
+- GitHub: github.com/kaushilnagrale
+
+COURSEWORK:
+- Data Structures & Algorithms
+- Database Management Systems
+- Machine Learning
+- Software Engineering
+- Operating Systems
+- Computer Networks
+- Object-Oriented Design
+- Cloud Computing
+
+Only answer questions related to Kaushil. If asked unrelated things, politely redirect. Never invent information not listed above. IMPORTANT: Do NOT use markdown formatting like ** or * or \`. Use plain text only. Keep responses concise (2-4 sentences).`;
+
+    let conversationHistory = [];
+
+    async function sendMessage(text) {
+      const msg = text || chatInput.value.trim();
+      if (!msg) return;
+      chatInput.value = '';
+
+      // Add user message
+      appendMessage(msg, 'user');
+
+      // Show typing
+      const typingEl = document.createElement('div');
+      typingEl.className = 'chat-typing';
+      typingEl.innerHTML = '<span></span><span></span><span></span>';
+      chatMessages.appendChild(typingEl);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      chatSend.disabled = true;
+
+      // Add to history
+      conversationHistory.push({ role: 'user', content: msg });
+
+      try {
+        const response = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'claude-sonnet-4-20250514',
+            max_tokens: 1000,
+            system: KAUSHIL_CONTEXT,
+            messages: conversationHistory
+          })
+        });
+
+        const data = await response.json();
+        typingEl.remove();
+
+        if (data.content && data.content.length > 0) {
+          const reply = data.content.map(c => c.text || '').join('');
+          conversationHistory.push({ role: 'assistant', content: reply });
+          appendMessage(reply, 'bot');
+        } else {
+          appendMessage("Sorry, I couldn't process that. Try asking about Kaushil's skills, projects, or experience!", 'bot');
+        }
+      } catch (err) {
+        typingEl.remove();
+        // Fallback to local responses if API fails
+        const fallback = getLocalResponse(msg);
+        appendMessage(fallback, 'bot');
+      }
+
+      chatSend.disabled = false;
+    }
+
+    function formatMarkdown(text) {
+      // Convert **bold** to <strong>bold</strong>
+      text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      // Convert *italic* to <em>italic</em>
+      text = text.replace(/\*(.+?)\*/g, '<em>$1</em>');
+      // Convert `code` to <code>code</code>
+      text = text.replace(/`(.+?)`/g, '<code style="background:rgba(200,245,66,0.1);padding:1px 5px;border-radius:3px;font-family:var(--mono);font-size:0.8em;">$1</code>');
+      // Convert newlines to <br>
+      text = text.replace(/\n/g, '<br>');
+      return text;
+    }
+
+    function appendMessage(text, type) {
+      const div = document.createElement('div');
+      div.className = `chat-msg ${type}`;
+      div.innerHTML = type === 'bot' ? formatMarkdown(text) : text;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function getLocalResponse(q) {
+      const lower = q.toLowerCase();
+      if (lower.includes('skill') || lower.includes('tech') || lower.includes('stack') || lower.includes('language'))
+        return "Kaushil works with <strong>Python, Node.js, C++, JavaScript</strong> and frameworks like Django, Flask, React, and TensorFlow. On the cloud side, he's experienced with <strong>AWS, Azure, Docker, and Kafka</strong>. For databases, he uses PostgreSQL, MongoDB, and Redis.";
+      if (lower.includes('project'))
+        return "Kaushil has built 12+ projects spanning data engineering, full-stack, and ML. Highlights include a <strong>Real-Time Lakehouse Platform</strong> with Spark & Delta Lake, a <strong>Smart Parking System</strong> with computer vision, a <strong>Real-Time Chat App</strong>, and an <strong>NLP Restaurant Recommendation Engine</strong>. Check out the Projects section above!";
+      if (lower.includes('experience') || lower.includes('work') || lower.includes('job') || lower.includes('career'))
+        return "Kaushil has <strong>3+ years</strong> of professional experience as a software developer. He's built RESTful APIs, automated ETL pipelines, and engineered cloud applications on <strong>AWS & Azure</strong> using Node.js and Python backends.";
+      if (lower.includes('contact') || lower.includes('reach') || lower.includes('hire') || lower.includes('email'))
+        return "You can reach Kaushil on <strong>LinkedIn</strong> at linkedin.com/in/kaushilnagrale or check out his code on <strong>GitHub</strong> at github.com/kaushilnagrale. Head to the Contact section below to connect!";
+      if (lower.includes('database') || lower.includes('sql') || lower.includes('mongo'))
+        return "Kaushil works with both SQL and NoSQL databases — <strong>PostgreSQL, MySQL, MongoDB, Redis, and Delta Lake</strong>. He's experienced in designing efficient storage layers and optimizing queries.";
+      if (lower.includes('cloud') || lower.includes('aws') || lower.includes('azure') || lower.includes('devops'))
+        return "Kaushil deploys on <strong>AWS and Azure</strong> using native SDKs. His DevOps toolkit includes <strong>Docker, Kubernetes, Apache Kafka, and CI/CD pipelines</strong> for predictable, reliable deployments.";
+      if (lower.includes('machine learning') || lower.includes(' ml') || lower.includes('ai') || lower.includes('tensorflow'))
+        return "Kaushil works with <strong>TensorFlow, OpenCV, and NLP</strong> for ML projects. He's built a parking detection system with computer vision, an NLP recommendation engine, and a cricket match predictor using linear regression.";
+      if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey'))
+        return "Hey! 👋 I'm here to tell you all about Kaushil. Ask me about his <strong>skills, projects, experience, coursework</strong>, or anything else from his portfolio!";
+      if (lower.includes('course') || lower.includes('study') || lower.includes('academic') || lower.includes('education') || lower.includes('degree'))
+        return "Kaushil's coursework includes <strong>Data Structures & Algorithms, Database Management Systems, Machine Learning, Software Engineering, Operating Systems, Computer Networks, Object-Oriented Design</strong>, and <strong>Cloud Computing</strong>. A strong CS foundation across systems, data, and AI!";
+      return "Great question! Kaushil is a <strong>backend-focused developer</strong> with 3+ years of experience in cloud apps, data pipelines, and ML projects. Try asking about his specific skills, projects, or experience for more details!";
+    }
+  </script>
+
 </body>
 </html>
