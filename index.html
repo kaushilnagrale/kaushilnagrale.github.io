@@ -800,10 +800,11 @@
     .project-link:hover { color: var(--accent); }
 
     .project-link svg {
-      transition: transform 0.3s;
+      transition: transform 0.3s, opacity 0.3s;
+      opacity: 0.75;
     }
 
-    .project-link:hover svg { transform: translateX(4px); }
+    .project-link:hover svg { transform: scale(1.18); opacity: 1; }
 
     /* --- About / Experience --- */
     .about-section {
@@ -876,7 +877,7 @@
       top: 0;
       bottom: 0;
       width: 1px;
-      background: linear-gradient(to bottom, var(--accent), var(--border), transparent);
+      background: linear-gradient(to bottom, var(--accent), var(--border));
     }
 
     .timeline-item {
@@ -1649,7 +1650,7 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <p>I'm a software and data developer with <strong>3 years of hands-on experience</strong> designing and shipping intelligent, data-driven systems across <strong>NLP, LLM applications, IoT, and computer vision</strong>. My toolkit spans the full stack of modern data and backend engineering — Node.js and Python for application and pipeline development, and a data science stack covering NumPy, Pandas, scikit-learn, TensorFlow, and PyTorch for modeling and experimentation. I work across AWS and Azure using native SDKs, and reach for Jupyter, MLflow, and HuggingFace when the work calls for it.</p>
-        <p>I've built RESTful APIs, automated data workflows, and storage layers using <strong>PostgreSQL/MySQL</strong> and NoSQL — applied across domains from real-time sensor ingestion and edge inference to LLM integrations and vision-based processing. I also did part-time web development during university, which rounded out my full-stack instincts. Currently wrapping up my final semester at <strong>ASU</strong>, based in Tempe, AZ.</p>
+        <p>I've built RESTful APIs, automated data workflows, and storage layers using <strong>PostgreSQL/MySQL</strong> and NoSQL — applied across domains from real-time sensor ingestion and edge inference to LLM integrations and vision-based processing. I also did part-time web development during university, which rounded out my full-stack instincts. My undergraduate background in <strong>mechanical engineering</strong> gives me a useful systems-thinking lens. Currently wrapping up my final semester at <strong>ASU</strong>, based in Tempe, AZ.</p>
         <div class="stat-row">
           <div class="stat-box">
             <div class="num">3+</div>
@@ -1699,6 +1700,8 @@
     <div class="section-header reveal">
       <div class="section-tag">Career</div>
       <h2 class="section-title">Experience</h2>
+
+
       <div class="section-line"></div>
     </div>
     <div class="exp-container">
@@ -1737,6 +1740,10 @@
               <div class="exp-highlight-item">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                 <span>Leveraged <strong>MLflow, HuggingFace, Jupyter</strong> for experimentation and model lifecycle management</span>
+              </div>
+              <div class="exp-highlight-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Mechanical engineering bachelor's background — brings domain depth to IoT, sensor systems, CFD, and embedded applications</span>
               </div>
             </div>
             <div class="exp-tags">
@@ -1896,7 +1903,7 @@
           <div class="project-tags">
             <span>Spark</span><span>Delta Lake</span><span>Kafka</span><span>Python</span>
           </div>
-          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
         </div>
       </div>
 
@@ -1913,7 +1920,7 @@
           <div class="project-tags">
             <span>OpenCV</span><span>TensorFlow</span><span>Python</span><span>Analytics</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/Smart-Parking-Management-Analytics-Platform" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://github.com/kaushilnagrale/Smart-Parking-Management-Analytics-Platform" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
         </div>
       </div>
 
@@ -1930,7 +1937,7 @@
           <div class="project-tags">
             <span>Node.js</span><span>WebSockets</span><span>React</span><span>Redis</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/Real-Time-Chat-Notification-System" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://github.com/kaushilnagrale/Real-Time-Chat-Notification-System" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
         </div>
       </div>
 
@@ -1947,7 +1954,7 @@
           <div class="project-tags">
             <span>Airflow</span><span>Python</span><span>Google API</span><span>ETL</span>
           </div>
-          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
         </div>
       </div>
 
@@ -1964,7 +1971,7 @@
           <div class="project-tags">
             <span>React</span><span>Node.js</span><span>PostgreSQL</span><span>Docker</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/SaaS-project-management-platform" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://github.com/kaushilnagrale/SaaS-project-management-platform" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
         </div>
       </div>
 
@@ -1981,7 +1988,7 @@
           <div class="project-tags">
             <span>Django</span><span>PostgreSQL</span><span>JavaScript</span><span>REST API</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/Online-Recruitment-management-exam-portal-system" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://github.com/kaushilnagrale/Online-Recruitment-management-exam-portal-system" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
         </div>
       </div>
 
@@ -1998,7 +2005,7 @@
           <div class="project-tags">
             <span>Python</span><span>Flask</span><span>TensorFlow</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/Asia_Cup_ODI_Cricket_Winner_Predictor" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://github.com/kaushilnagrale/Asia_Cup_ODI_Cricket_Winner_Predictor" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
         </div>
       </div>
 
@@ -2015,7 +2022,7 @@
           <div class="project-tags">
             <span>Arduino</span><span>C++</span><span>MATLAB</span><span>ANSYS</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/CFD_EmbeddedSystem_Arduino_car_MQ3_sensor" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://github.com/kaushilnagrale/CFD_EmbeddedSystem_Arduino_car_MQ3_sensor" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
         </div>
       </div>
 
@@ -2032,7 +2039,7 @@
           <div class="project-tags">
             <span>OpenCV</span><span>Flask</span><span>Python</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/FaceNeye_detection" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://github.com/kaushilnagrale/FaceNeye_detection" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
         </div>
       </div>
 
@@ -2049,7 +2056,7 @@
           <div class="project-tags">
             <span>Python</span><span>Pandas</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/Excel_To_Single_Line_JSON_convertor" class="project-link" target="_blank">View on GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://github.com/kaushilnagrale/Excel_To_Single_Line_JSON_convertor" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
         </div>
       </div>
 
