@@ -241,7 +241,7 @@
     "title": "Hybrid RAG Intelligent Ticketing System",
     "tagline": "A 7-stage hybrid RAG pipeline over an 80K-ticket corpus.",
     "tier": "bay",
-    "status": "planned",
+    "status": "live",
     "tyre": "medium",
     "domains": [
       "ML",
@@ -284,7 +284,8 @@
       "React",
       "ChromaDB",
       "FAISS",
-      "Qwen3 4B (Ollama)"
+      "MiniLM embeddings",
+      "Qwen3-8B"
     ],
     "skills": [
       "python",
@@ -298,17 +299,17 @@
       "rest-api"
     ],
     "links": {
-      "live": null,
-      "embed": null,
-      "health": null,
+      "live": "https://its-team-michigan.vercel.app",
+      "embed": "https://its-team-michigan.vercel.app",
+      "health": "https://its-team-michigan.vercel.app",
       "repo": null,
       "video": null,
       "caseStudy": null
     },
     "media": {
-      "poster": null,
+      "poster": "/projects/intelligent-ticketing/screen.webp",
       "loop": null,
-      "xrayUi": null,
+      "xrayUi": "/projects/intelligent-ticketing/screen.webp",
       "xrayArch": null
     },
     "telemetry": {
@@ -316,7 +317,7 @@
       "embed": null,
       "url": null
     },
-    "demoScope": "Fixed synthetic tickets · retrieval trace visible",
+    "demoScope": "Demo over 500 historical tickets and 7 runbooks · each answer shows its retrieval steps and cited sources",
     "year": 2026,
     "architecture": {
       "nodes": [
@@ -379,14 +380,14 @@
         {
           "id": "llm",
           "label": "LLM",
-          "sub": "Qwen3 4B · Ollama",
+          "sub": "Qwen3-8B, cited fix",
           "kind": "model",
           "x": 615,
           "y": 420
         },
         {
           "id": "answer",
-          "label": "Answer",
+          "label": "Resolution Blueprint",
           "sub": "100% out-of-scope refusal",
           "kind": "client",
           "x": 30,
