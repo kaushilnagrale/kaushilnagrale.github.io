@@ -5,11 +5,11 @@
  */
 
 export const CAR_PARTS = [
-  { n: 1, name: 'Power unit', spec: 'Python · Java · SQL', href: '#setup-power-unit', part: [236, 150], balloon: [206, 52] },
-  { n: 2, name: 'Aero', spec: 'Azure (AZ-204) · AWS (Developer Associate)', href: '#setup-aero', part: [66, 98], balloon: [40, 40] },
-  { n: 3, name: 'Telemetry', spec: 'Kafka · Spark · Delta Lake', href: '#setup-fuel-system', part: [298, 66], balloon: [300, 22] },
-  { n: 4, name: 'Brakes', spec: "Tests: 100% branch coverage on PulseRoute's safety gate", href: '#setup-brakes', part: [500, 203], balloon: [590, 276] },
-  { n: 5, name: 'Cockpit', spec: 'Driver: Kaushil', href: '#photos', part: [376, 102], balloon: [440, 30] },
+  { n: 1, name: 'Languages', spec: 'Python · Java · SQL', href: '#skills-power-unit', part: [236, 150], balloon: [206, 52] },
+  { n: 2, name: 'Cloud', spec: 'Azure (AZ-204) · AWS (Developer Associate)', href: '#skills-aero', part: [66, 98], balloon: [40, 40] },
+  { n: 3, name: 'Data', spec: 'Kafka · Spark · Delta Lake', href: '#skills-fuel-system', part: [298, 66], balloon: [300, 22] },
+  { n: 4, name: 'Testing', spec: "100% branch coverage on PulseRoute's safety gate", href: '#skills-brakes', part: [500, 203], balloon: [590, 276] },
+  { n: 5, name: 'Driver', spec: 'Kaushil, say hello', href: '#contact', part: [376, 102], balloon: [440, 30] },
 ] as const
 
 const S = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, vectorEffect: 'non-scaling-stroke', strokeLinejoin: 'round', strokeLinecap: 'round' } as const
@@ -140,7 +140,7 @@ export function BlueprintCar() {
       </svg>
 
       <figcaption className="mt-4">
-        <p className="t-label mb-2 text-muted">Parts list</p>
+        <p className="t-label mb-2 text-muted">What the car is made of</p>
         <ol>
           {CAR_PARTS.map((p) => (
             <li key={p.n} className="border-t border-line last:border-b">

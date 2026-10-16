@@ -7,12 +7,12 @@ const STEP: Record<string, { height: string; order: string }> = {
   P3: { height: 'md:h-24', order: 'md:order-3' },
 }
 
-/** S-10 · Static podium (the champagne spray is phase 3). */
+/** Awards on a three-step podium, then certifications and other credentials. */
 export function Podium() {
   return (
-    <section id="podium" aria-labelledby="podium-title" className="blueprint py-20 md:py-28">
+    <section id="awards" aria-labelledby="awards-title" className="blueprint py-20 md:py-28">
       <div className="wrap">
-        <SectionHeader id="podium" />
+        <SectionHeader id="awards" kicker={`${awards.podium.length} awards · ${awards.standings.length} more`} />
 
         <ol className="grid grid-cols-1 gap-4 md:grid-cols-3 md:items-end md:gap-0">
           {awards.podium.map((a) => {
@@ -21,7 +21,7 @@ export function Podium() {
             return (
               <li key={a.pos} className={`reveal flex flex-row-reverse items-stretch gap-4 md:flex-col md:gap-0 ${step.order}`}>
                 <div className="flex-1 pb-0 md:px-5 md:pb-5">
-                  <p className={`t-label text-[11px] ${a.pos === 'P1' ? 'text-s-purple' : 'text-muted'}`}>{a.pos}</p>
+                  <p className={`t-label text-[11px] ${a.pos === 'P1' ? 'text-s-purple' : 'text-muted'}`}>{a.kind}</p>
                   <h3 className="mt-1 text-[19px] font-bold leading-snug">{a.title}</h3>
                   <p className="text-[15px] text-muted">{a.detail}</p>
                   {a.project ? (
@@ -42,11 +42,10 @@ export function Podium() {
         </ol>
         <div aria-hidden="true" className="hidden h-px bg-text md:block" />
 
-        <h3 className="t-label mb-3 mt-12 text-muted">Standings</h3>
-        <ol start={4} className="divide-y divide-line border-y border-line">
-          {awards.standings.map((s, i) => (
+        <h3 className="t-label mb-3 mt-12 text-muted">Certifications and more</h3>
+        <ul className="divide-y divide-line border-y border-line">
+          {awards.standings.map((s) => (
             <li key={s.title} className="flex flex-wrap items-baseline gap-x-4 gap-y-1 py-3.5">
-              <span className="t-metric w-10 text-[24px] text-muted">P{i + 4}</span>
               <span className="font-semibold">{s.title}</span>
               <span className="text-muted">{s.detail}</span>
               {s.href ? (
@@ -56,7 +55,7 @@ export function Podium() {
               ) : null}
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
     </section>
   )

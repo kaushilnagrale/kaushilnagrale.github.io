@@ -155,8 +155,8 @@ export function gridFor(lens: Lens): GridEntry[] {
 export function anchorFor(slugOrHash: string): string {
   if (slugOrHash.startsWith('#')) return slugOrHash
   const p = projects.find((x) => x.slug === slugOrHash)
-  if (!p) return '#bays'
-  return p.tier === 'bay' ? `#bay-${p.slug}` : `#grid-${p.slug}`
+  if (!p) return '#projects'
+  return p.tier === 'bay' ? `#project-${p.slug}` : `#more-${p.slug}`
 }
 
 export function projectTitle(slug: string): string {

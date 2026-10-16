@@ -34,7 +34,7 @@ export function Poster({ bay, index, variant = 'live' }: { bay: PosterData; inde
       </g>
 
       <text x="96" y="140" fill="var(--muted)" fontSize="28" letterSpacing="3" className="font-mono">
-        BAY {String(index).padStart(2, '0')} · {bay.domains.join(' · ')}
+        PROJECT {String(index).padStart(2, '0')} · {bay.domains.join(' · ')}
       </text>
       <text
         x="92"
@@ -56,7 +56,7 @@ export function Poster({ bay, index, variant = 'live' }: { bay: PosterData; inde
       <g>
         <line x1="96" y1="500" x2="760" y2="500" stroke="var(--line)" strokeWidth="2" />
         <text x="96" y="545" fill="var(--muted)" fontSize="24" letterSpacing="3" className="font-mono">
-          {best.id} · FASTEST
+          KEY RESULT
         </text>
         <text x="90" y="668" fill="var(--s-purple)" fontSize="128" fontWeight={700} className="font-narrow">
           {best.value}

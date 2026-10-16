@@ -2,15 +2,15 @@
   "sectors": [
     {
       "id": "S1",
-      "name": "Mechanical"
+      "name": "Mechanical engineering · RVCE"
     },
     {
       "id": "S2",
-      "name": "Industry"
+      "name": "Software engineering · Cognizant"
     },
     {
       "id": "S3",
-      "name": "ASU"
+      "name": "MS and software engineering · ASU"
     }
   ],
   "corners": [

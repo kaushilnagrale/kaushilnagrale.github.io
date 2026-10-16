@@ -16,14 +16,14 @@ Everything the site shows lives in `content/`. Components only render it.
 
 | File | What it holds |
 |---|---|
-| `profile.json` | Name, hero copy, current role, availability line, email, links, About (Steering Wheel) copy |
-| `projects.json` | The 8 Garage Bays (`"tier": "bay"`) and the Starting Grid (`"tier": "grid"`) |
+| `profile.json` | Name, hero copy, current role, availability line, email, links, contact intro, photos |
+| `projects.json` | Featured projects (`"tier": "bay"`) and More projects (`"tier": "grid"`) |
 | `experience.json` | Circuit corners T1 to T9 |
 | `awards.json` | Podium and standings |
 | `lenses.json` | Hero line, telemetry readouts, resume PDF and Setup Sheet emphasis per lens |
 | `skills.json` | Setup Sheet rows. A skill links to every project whose `skills` array contains its `id` |
 
-### Adding a live demo to a bay
+### Adding a live demo to a featured project
 
 In `content/projects.json`, find the project and fill its links, then set `status`:
 
@@ -40,18 +40,18 @@ In `content/projects.json`, find the project and fill its links, then set `statu
 ```
 
 - `live`: opens in a new tab. Required for a live demo.
-- `embed`: the URL to load inside the bay after **Launch demo**. Leave `null` if the host refuses framing; the button then opens a new tab.
-- `health`: pinged once when the bay scrolls into view. While a sleeping host wakes, the bay shows **Warming tyres**; if it never answers, the bay offers a new tab or the video.
-- `video`: a recording. With `"status": "video"` the bay plays it instead of a live demo.
+- `embed`: the URL to load inside the project card after **Launch demo**. Leave `null` if the host refuses framing; the button then opens a new tab.
+- `health`: checked in the background once the card scrolls into view; Launch demo stays available. If the host is slow (a free host waking up) the card shows **Waking the server**; if it never answers, it offers a new tab or the video.
+- `video`: a recording. With `"status": "video"` the card plays it instead of a live demo.
 
-Status values: `live`, `waking` (a host known to cold-start), `video`, `planned` (shows "In the garage"), `none` (grid only).
-The footer's demo count counts bays with `"status": "live"`.
+Status values: `live`, `waking` (a host known to cold-start), `video`, `planned` (shows "Demo soon"), `none` (More projects only).
+The footer's demo count counts featured projects with `"status": "live"`.
 
-A planned bay with a `video` shows **Play the run**, so a demo recording can go up before the live demo does.
+A planned project with a `video` shows **Watch demo video**, so a demo recording can go up before the live demo does.
 
 ### Adding a telemetry dashboard (Grafana and others)
 
-Each bay's `telemetry` points at a live dashboard for its backend. The **Telemetry** tab appears once `embed` or `url` is set:
+Each project's `telemetry` points at a live dashboard for its backend. The **Metrics** tab appears once `embed` or `url` is set:
 
 ```json
 "telemetry": {
@@ -61,20 +61,20 @@ Each bay's `telemetry` points at a live dashboard for its backend. The **Telemet
 }
 ```
 
-- `embed` loads inside the bay after **Load dashboard** (never on page load). For Grafana, use a public dashboard or snapshot
+- `embed` loads inside the card after **Load dashboard** (never on page load). For Grafana, use a public dashboard or snapshot
   link and set `allow_embedding = true` in `grafana.ini`, otherwise the browser refuses the frame; fill only `url` in that case.
 - `url` opens the dashboard in a new tab.
 - `provider` is the label shown (Grafana, Prometheus, MLflow, Kibana…).
 
-The Starting Grid takes the same `links.live` for projects like LAN Duel once they are deployed (for example on Vercel).
+More projects take the same `links.live` (for example LAN Duel once it is deployed).
 
 Screenshots: put a 1600 × 1000 poster at `public/projects/<slug>/poster.avif` and set `media.poster`; `media.xrayUi` is the app
-side of X-Ray. Until then the bay draws a blueprint poster. The X-Ray architecture is drawn from `architecture` (nodes and edges).
+side of the Architecture tab. Until then the card draws a blueprint poster. The architecture diagram is drawn from `architecture` (nodes and edges).
 
 ### Video thumbnail and demo video
 
 - `media.loop`: a short muted screen recording that plays in the Live viewport as a moving thumbnail, e.g.
-  `/projects/clinishield/loop.mp4`. It loads only when the bay scrolls into view, has a Pause preview button, and is
+  `/projects/clinishield/loop.mp4`. It loads only when the card scrolls into view, has a Pause preview button, and is
   skipped under reduced motion or Save-Data (the poster shows instead). Aim for 8 to 15 seconds, no audio, 16:10
   (1440 × 900), MP4 (H.264), under 2 MB, looping cleanly. Compress with HandBrake, or:
   `ffmpeg -i in.mov -t 12 -vf "scale=1440:-2,fps=24" -an -c:v libx264 -crf 28 -preset slow -movflags +faststart loop.mp4`
@@ -84,9 +84,9 @@ side of X-Ray. Until then the bay draws a blueprint poster. The X-Ray architectu
 
 ### Photos
 
-`profile.json` → `photos` holds up to three photos for the "Photo finish" block in About. Put the files in `public/photos/`
+`profile.json` → `photos` feeds the Photos carousel (slides horizontally, auto-advances, pausable). Put the files in `public/photos/`
 and give each `src`, `alt` (what the photo shows), and optionally `place`, `year` and `caption`. In `npm run dev` the empty
-slots show where the next photos go; production shows only real photos.
+slots show where the next photos go; production hides the Photos section until there is at least one photo.
 
 ### Tailored resumes (R-06)
 
@@ -98,7 +98,7 @@ Add `public/resume/kaushil_nagrale_data.pdf`, `..._ml.pdf` and `..._swe.pdf`. Un
 | Variable | Purpose |
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | Canonical origin. The Pages workflow sets `https://kaushilnagrale.github.io`. |
-| `NEXT_PUBLIC_WEB3FORMS_KEY` | Team Radio form key from web3forms.com. Without it, Push to talk is a mailto link. |
+| `NEXT_PUBLIC_WEB3FORMS_KEY` | Optional web3forms.com key. Without it, the Contact form opens a ready-to-send Gmail or email-app draft; with it, **Send** delivers directly. |
 
 ## How it is built
 
@@ -106,7 +106,7 @@ Add `public/resume/kaushil_nagrale_data.pdf`, `..._ml.pdf` and `..._swe.pdf`. Un
 - **No iframes on load:** a demo iframe exists only after a visitor clicks Launch demo.
 - **Fonts:** Archivo ships as three static Latin instances in `app/fonts` (SIL OFL, licence alongside). Only the H1 cut is preloaded.
 - **Payload:** posters and architecture diagrams render on the client from compact JSON, which keeps the RSC payload small.
-- **No JavaScript:** navigation, lens links, bays, grid, circuit and About deep links (`#about/music`) all work as plain HTML.
+- **No JavaScript:** navigation, lens links, projects, experience and the Contact form (it posts to Gmail's composer) work as plain HTML.
 
 ## Deploying (GitHub Pages)
 

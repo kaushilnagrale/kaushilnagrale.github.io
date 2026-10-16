@@ -25,17 +25,17 @@
       {
         "value": "510 ms",
         "caption": "p95 checkout, from 850 ms",
-        "target": "#circuit"
+        "target": "#experience"
       },
       {
         "value": "31%",
         "caption": "faster equipment processing",
-        "target": "#circuit"
+        "target": "#experience"
       },
       {
         "value": "3.9",
         "caption": "MS GPA",
-        "target": "#circuit"
+        "target": "#experience"
       }
     ]
   },
@@ -74,7 +74,7 @@
       {
         "value": "64%",
         "caption": "less manual event planning",
-        "target": "#circuit"
+        "target": "#experience"
       },
       {
         "value": "0.94",
@@ -141,23 +141,23 @@
       {
         "value": "510 ms",
         "caption": "p95 checkout, from 850 ms",
-        "target": "#circuit",
+        "target": "#experience",
         "best": true
       },
       {
         "value": "8.6M+",
         "caption": "active app users served",
-        "target": "#circuit"
+        "target": "#experience"
       },
       {
         "value": "30 min",
         "caption": "deploys, down from 5 hours",
-        "target": "#circuit"
+        "target": "#experience"
       },
       {
         "value": "31%",
         "caption": "faster equipment processing",
-        "target": "#circuit"
+        "target": "#experience"
       },
       {
         "value": "100%",

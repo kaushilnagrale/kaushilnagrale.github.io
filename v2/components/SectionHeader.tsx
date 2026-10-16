@@ -1,16 +1,18 @@
 import type { ReactNode } from 'react'
-import { SECTIONS, sheetNumber } from '@/lib/sections'
+import { SECTIONS, sectionNumber, sheetNumber } from '@/lib/sections'
 
-export function SectionHeader({ id, intro }: { id: string; intro?: ReactNode }) {
+/** Plain heading for each section: number and a one-line summary of what is inside, then the title. */
+export function SectionHeader({ id, kicker, intro }: { id: string; kicker?: string; intro?: ReactNode }) {
   const meta = SECTIONS.find((s) => s.id === id)!
   return (
     <header className="mb-10 flex flex-wrap items-end justify-between gap-x-6 gap-y-4 md:mb-12">
       <div className="min-w-0">
         <p className="t-label text-muted">
-          <span className="text-text">{meta.code}</span> · {meta.plain}
+          <span className="text-text">{sectionNumber(id)}</span>
+          {kicker ? ` · ${kicker}` : ''}
         </p>
         <h2 id={`${id}-title`} className="t-h2 mt-3">
-          {meta.name}
+          {meta.title}
         </h2>
         {intro ? <p className="mt-4 max-w-2xl text-muted">{intro}</p> : null}
       </div>

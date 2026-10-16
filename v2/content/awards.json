@@ -4,19 +4,22 @@
       "pos": "P1",
       "title": "Fan Favorite, Kiro Spark Challenge",
       "detail": "PulseRoute · team of 3",
-      "project": "pulseroute"
+      "project": "pulseroute",
+      "kind": "Hackathon"
     },
     {
       "pos": "P2",
       "title": "1st place, NIT Trichy 2021",
       "detail": "Floating Waste Collector Boat · team lead of 3",
-      "project": null
+      "project": null,
+      "kind": "Competition"
     },
     {
       "pos": "P3",
       "title": "$10,000 NAMU Scholarship",
       "detail": "Arizona State University",
-      "project": null
+      "project": null,
+      "kind": "Scholarship"
     }
   ],
   "standings": [

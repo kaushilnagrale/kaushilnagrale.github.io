@@ -6,16 +6,16 @@ import { MobileBar } from '@/components/nav/MobileBar'
 import { TimingTowerNav } from '@/components/nav/TimingTowerNav'
 import { TopCluster } from '@/components/nav/TopCluster'
 import type { PaletteData } from '@/components/palette/CommandPalette'
-import { PhotoFinish, type Photo } from '@/components/PhotoFinish'
+import { PhotoReel, type Photo } from '@/components/PhotoReel'
 import { Podium } from '@/components/Podium'
-import { TeamRadio } from '@/components/radio/TeamRadio'
+import { Contact } from '@/components/contact/Contact'
 import { SectionHeader } from '@/components/SectionHeader'
 import { SetupSheet, type ProjectLookup, type SetupRow } from '@/components/setup/SetupSheet'
 import { StatusBar } from '@/components/StatusBar'
 import { TelemetryStrip } from '@/components/TelemetryStrip'
 import { Toaster } from '@/components/Toaster'
 import { LENSES, anchorFor, baysFor, gridFor, lenses, liveCount, profile, projects, skills, skillUse, type Lens } from '@/lib/content'
-import { SECTIONS } from '@/lib/sections'
+import { SECTIONS, SHOW_PHOTOS } from '@/lib/sections'
 import { SITE_URL, lensHref, resumeFor } from '@/lib/site'
 
 export function HomePage({ lens }: { lens: Lens }) {
@@ -51,11 +51,15 @@ export function HomePage({ lens }: { lens: Lens }) {
   }))
   const projectLookup: ProjectLookup = Object.fromEntries(projects.map((p) => [p.slug, { title: p.title, href: anchorFor(p.slug) }]))
 
+  const photos = profile.photos as Photo[]
+  // Empty slots only in `npm run dev`, so the layout is visible before photos arrive.
+  const photoSlots = process.env.NODE_ENV === 'development' ? Math.max(0, 3 - photos.length) : 0
+
   const palette: PaletteData = {
     sections: SECTIONS,
     projects: [
-      ...bays.map((b) => ({ title: b.title, href: `#bay-${b.slug}`, tier: 'bay' as const })),
-      ...grid.map((g) => ({ title: g.title, href: `#grid-${g.slug}`, tier: 'grid' as const })),
+      ...bays.map((b) => ({ title: b.title, href: `#project-${b.slug}`, tier: 'bay' as const })),
+      ...grid.map((g) => ({ title: g.title, href: `#more-${g.slug}`, tier: 'grid' as const })),
     ],
     lenses: LENSES.map((l) => ({ label: lenses[l].label, href: lensHref(l) })),
     email: profile.email,
@@ -73,42 +77,56 @@ export function HomePage({ lens }: { lens: Lens }) {
           <TelemetryStrip readouts={config.telemetry} />
           <GarageBays bays={bays} />
 
-          <section id="grid" aria-labelledby="grid-title" className="py-20 md:py-28">
+          <section id="more" aria-labelledby="more-title" className="py-20 md:py-28">
             <div className="wrap">
-              <SectionHeader id="grid" intro="More builds, from a streaming lakehouse to a head to head coding arena." />
+              <SectionHeader
+                id="more"
+                kicker={`${grid.length} projects`}
+                intro="Smaller builds as cards or a sortable table. Search by name, stack or year."
+              />
               <StartingGrid items={gridItems} lensLabel={config.label} lensDomain={config.domain} />
             </div>
           </section>
 
           <Circuit />
 
-          <section id="setup" aria-labelledby="setup-title" className="py-20 md:py-28">
+          <section id="skills" aria-labelledby="skills-title" className="py-20 md:py-28">
             <div className="wrap">
-              <SectionHeader id="setup" intro="The car's setup, read as a skills list. Every setting links to the projects that use it." />
+              <SectionHeader
+                id="skills"
+                kicker={`${skills.length} areas`}
+                intro="Grouped by area. Hover or tap a skill to see the projects that use it; click it to filter the projects above."
+              />
               <SetupSheet rows={setupRows} projects={projectLookup} />
             </div>
           </section>
 
           <Podium />
 
-          <section id="photos" aria-labelledby="photos-title" className="py-20 md:py-28">
-            <div className="wrap">
-              <SectionHeader id="photos" intro="Frames from a finish-line camera: where I am when I am not shipping." />
-              <PhotoFinish photos={profile.photos as Photo[]} />
-            </div>
-          </section>
+          {SHOW_PHOTOS ? (
+            <section id="photos" aria-labelledby="photos-title" className="py-20 md:py-28">
+              <div className="wrap">
+                <SectionHeader
+                  id="photos"
+                  kicker={photos.length ? `${photos.length} photo${photos.length === 1 ? '' : 's'}` : 'coming soon'}
+                  intro="Life outside the editor."
+                />
+                <PhotoReel photos={photos} placeholders={photoSlots} />
+              </div>
+            </section>
+          ) : null}
 
-          <section id="radio" aria-labelledby="radio-title" className="blueprint py-20 md:py-28">
+          <section id="contact" aria-labelledby="contact-title" className="blueprint py-20 md:py-28">
             <div className="wrap">
-              <SectionHeader id="radio" />
-              <TeamRadio
+              <SectionHeader id="contact" kicker="Email, LinkedIn, GitHub" intro={profile.contactIntro} />
+              <Contact
                 email={profile.email}
                 linkedin={profile.links.linkedin}
                 github={profile.links.github}
                 booking={profile.links.booking}
                 resume={resume}
-                intro={profile.radio}
                 formKey={process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? null}
+                timeZone={profile.timeZone}
               />
             </div>
           </section>

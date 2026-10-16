@@ -3,7 +3,7 @@
 import { lazy, Suspense, useEffect, useState, useSyncExternalStore } from 'react'
 
 export interface PaletteData {
-  sections: { id: string; code: string; name: string; plain: string }[]
+  sections: { id: string; label: string; title: string }[]
   projects: { title: string; href: string; tier: 'bay' | 'grid' }[]
   lenses: { label: string; href: string }[]
   email: string

@@ -1,26 +1,33 @@
+import profile from '@/content/profile.json'
+
 export interface SectionMeta {
   id: string
-  code: string
-  name: string
-  plain: string
+  /** Short label for the side rail and mobile bar. */
+  label: string
+  /** The section heading: says plainly what is inside. */
+  title: string
 }
 
-// Phase 1 sections, in page order. CRU (The Crusher) and DEB (Debriefs) join in phases 3 and 4.
-export const SECTIONS: SectionMeta[] = [
-  { id: 'home', code: 'HOM', name: 'Pit wall', plain: 'Home' },
-  { id: 'bays', code: 'BAY', name: 'Garage Bays', plain: 'Flagship projects' },
-  { id: 'grid', code: 'GRD', name: 'Starting Grid', plain: 'More projects' },
-  { id: 'circuit', code: 'CIR', name: 'Circuit', plain: 'Experience' },
-  { id: 'setup', code: 'SET', name: 'Setup Sheet', plain: 'Skills' },
-  { id: 'podium', code: 'POD', name: 'Podium', plain: 'Awards and credentials' },
-  { id: 'photos', code: 'PHO', name: 'Photo finish', plain: 'Off the clock' },
-  { id: 'radio', code: 'RAD', name: 'Team Radio', plain: 'Contact' },
+// Photos appear once there is at least one photo; in `npm run dev` the empty slots show where they go.
+export const SHOW_PHOTOS = profile.photos.length > 0 || process.env.NODE_ENV === 'development'
+
+const ALL: SectionMeta[] = [
+  { id: 'home', label: 'Home', title: 'Home' },
+  { id: 'projects', label: 'Projects', title: 'Featured projects' },
+  { id: 'more', label: 'More', title: 'More projects' },
+  { id: 'experience', label: 'Experience', title: 'Experience and education' },
+  { id: 'skills', label: 'Skills', title: 'Skills' },
+  { id: 'awards', label: 'Awards', title: 'Awards and certifications' },
+  { id: 'photos', label: 'Photos', title: 'Photos' },
+  { id: 'contact', label: 'Contact', title: 'Contact' },
 ]
 
-export const MOBILE_CODES = ['HOM', 'BAY', 'GRD', 'CIR', 'RAD']
+export const SECTIONS = ALL.filter((s) => s.id !== 'photos' || SHOW_PHOTOS)
+
+export function sectionNumber(id: string): string {
+  return String(SECTIONS.findIndex((s) => s.id === id) + 1).padStart(2, '0')
+}
 
 export function sheetNumber(id: string): string {
-  const i = SECTIONS.findIndex((s) => s.id === id)
-  const pad = (n: number) => String(n).padStart(2, '0')
-  return `SHEET ${pad(i + 1)} / ${pad(SECTIONS.length)}`
+  return `SHEET ${sectionNumber(id)} / ${String(SECTIONS.length).padStart(2, '0')}`
 }

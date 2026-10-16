@@ -11,6 +11,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: pages
@@ -45,5 +46,17 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # While Pages is still set to "Deploy from a branch", GitHub also publishes the old root index.html on every
+      # push. Waiting for that run makes this deployment land last. Harmless once Source is "GitHub Actions".
+      - name: Let the branch build finish first
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 60); do
+            pending=$(gh run list --repo "$GITHUB_REPOSITORY" --commit "$GITHUB_SHA" --json name,status \
+              --jq '[.[] | select(.name == "pages build and deployment" and .status != "completed")] | length')
+            [ "$pending" = "0" ] && break
+            sleep 10
+          done
       - id: deployment
         uses: actions/deploy-pages@v4

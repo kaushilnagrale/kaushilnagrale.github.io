@@ -10,7 +10,7 @@ export default function NotFound() {
       <div className="wrap">
         <p className="t-label text-muted">404 · Off the track</p>
         <h1 className="t-h2 mt-3">Into the gravel.</h1>
-        <p className="mt-4 max-w-xl text-[18px] text-muted">That page is not on this circuit. The pit lane is this way.</p>
+        <p className="mt-4 max-w-xl text-[18px] text-muted">That page does not exist. The homepage is this way.</p>
         <svg viewBox="0 0 600 120" className="mt-8 w-full max-w-xl text-text" aria-hidden="true">
           <path d="M0 90 C 120 90, 200 30, 330 30 L 600 30" fill="none" stroke="currentColor" strokeWidth="1.5" />
           <path d="M0 110 C 140 110, 220 50, 340 50 L 600 50" fill="none" stroke="currentColor" strokeWidth="1.5" />
@@ -20,7 +20,7 @@ export default function NotFound() {
           <path d="M250 42 C 290 50, 330 62, 380 86" fill="none" stroke="var(--flow)" strokeWidth="1.5" strokeDasharray="4 6" />
         </svg>
         <Link href="/" className="btn btn-primary mt-8">
-          Return to pit lane
+          Back to the homepage
         </Link>
       </div>
     </main>

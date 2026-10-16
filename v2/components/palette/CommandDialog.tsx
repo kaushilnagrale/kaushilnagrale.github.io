@@ -40,16 +40,16 @@ export default function CommandDialog({
       else window.location.href = href
     })
 
-  const openRadio = () =>
+  const openContact = () =>
     run(() => {
-      window.location.hash = 'radio'
-      window.dispatchEvent(new Event('radio:open'))
+      window.location.hash = 'contact'
+      window.dispatchEvent(new Event('contact:compose'))
     })
 
-  // "box box" is the radio call to pit.
+  // Typing "box box" (the racing radio call to pit) also opens the message form.
   const onSearch = (value: string) => {
     setSearch(value)
-    if (value.trim().toLowerCase().replace(/\s+/g, ' ') === 'box box') openRadio()
+    if (value.trim().toLowerCase().replace(/\s+/g, ' ') === 'box box') openContact()
   }
 
   return (
@@ -102,8 +102,8 @@ export default function CommandDialog({
           >
             Switch to {resolvedTheme === 'light' ? 'Night' : 'Day'} theme
           </Command.Item>
-          <Command.Item className={item} keywords={['contact', 'message', 'radio', 'box box', 'hire']} onSelect={openRadio}>
-            Open team radio
+          <Command.Item className={item} keywords={['contact', 'message', 'email', 'box box', 'hire']} onSelect={openContact}>
+            Write a message
           </Command.Item>
           {data.lenses.map((l) => (
             <Command.Item key={l.href} className={item} keywords={['lens', 'role', 'view']} onSelect={() => jump(l.href)}>
@@ -114,10 +114,8 @@ export default function CommandDialog({
 
         <Command.Group heading="Sections" className={group}>
           {data.sections.map((s) => (
-            <Command.Item key={s.id} className={item} value={`${s.code} ${s.name} ${s.plain}`} onSelect={() => jump(`#${s.id}`)}>
-              <span className="w-10 font-mono text-[12px] tracking-[0.08em] text-muted">{s.code}</span>
-              {s.name}
-              <span className="text-muted">· {s.plain}</span>
+            <Command.Item key={s.id} className={item} value={`${s.label} ${s.title}`} onSelect={() => jump(`#${s.id}`)}>
+              {s.title}
             </Command.Item>
           ))}
         </Command.Group>
@@ -125,7 +123,7 @@ export default function CommandDialog({
         <Command.Group heading="Projects" className={group}>
           {data.projects.map((p) => (
             <Command.Item key={p.href} className={item} onSelect={() => jump(p.href)}>
-              <span className="w-10 font-mono text-[12px] tracking-[0.08em] text-muted">{p.tier === 'bay' ? 'BAY' : 'GRD'}</span>
+              <span className="w-16 font-mono text-[11px] uppercase tracking-[0.08em] text-muted">{p.tier === 'bay' ? 'Project' : 'More'}</span>
               {p.title}
             </Command.Item>
           ))}

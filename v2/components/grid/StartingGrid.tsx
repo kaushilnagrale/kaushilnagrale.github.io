@@ -110,7 +110,7 @@ export function StartingGrid({ items, lensLabel, lensDomain }: { items: GridItem
               onClick={() => setView('grid')}
               className={`inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-[14px] font-semibold ${view === 'grid' ? 'bg-text text-bg' : 'text-muted hover:text-text'}`}
             >
-              <LayoutGrid aria-hidden="true" size={15} strokeWidth={1.5} /> Grid
+              <LayoutGrid aria-hidden="true" size={15} strokeWidth={1.5} /> Cards
             </button>
             <button
               type="button"
@@ -118,7 +118,7 @@ export function StartingGrid({ items, lensLabel, lensDomain }: { items: GridItem
               onClick={() => setView('sheet')}
               className={`inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-[14px] font-semibold ${view === 'sheet' ? 'bg-text text-bg' : 'text-muted hover:text-text'}`}
             >
-              <Table2 aria-hidden="true" size={15} strokeWidth={1.5} /> Timing sheet
+              <Table2 aria-hidden="true" size={15} strokeWidth={1.5} /> Table
             </button>
           </div>
           {archiveCount ? (
@@ -154,7 +154,7 @@ export function StartingGrid({ items, lensLabel, lensDomain }: { items: GridItem
           {sorted.map((item, i) => (
             <li
               key={item.slug}
-              id={`grid-${item.slug}`}
+              id={`more-${item.slug}`}
               data-skills={item.skills.join(' ')}
               className={`reveal relative scroll-mt-6 rounded-2xl pt-7 ${i % 2 === 1 ? 'md:translate-y-16' : ''}`}
             >
@@ -164,7 +164,7 @@ export function StartingGrid({ items, lensLabel, lensDomain }: { items: GridItem
               />
               <div className="px-1">
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="t-metric text-[34px]">P{i + 1}</span>
+                  <span className="t-metric text-[34px]">{String(i + 1).padStart(2, '0')}</span>
                   <span className="font-mono text-[13px] text-muted">{item.year ?? '—'}</span>
                   {item.archive ? <span className="t-label text-[11px] text-muted">Archive</span> : null}
                   <span className="ml-auto">
@@ -190,12 +190,12 @@ export function StartingGrid({ items, lensLabel, lensDomain }: { items: GridItem
       ) : (
         <div className="overflow-x-auto rounded-2xl border border-line">
           <table className="w-full min-w-[760px] border-collapse text-left text-[15px]">
-            <caption className="sr-only">Timing sheet: every other project. Column headers sort the table.</caption>
+            <caption className="sr-only">More projects. Column headers sort the table.</caption>
             <thead className="bg-surface-2">
               <tr>
                 {(
                   [
-                    ['pos', 'Pos'],
+                    ['pos', '#'],
                     ['title', 'Project'],
                     ['domain', 'Domain'],
                     ['year', 'Year'],

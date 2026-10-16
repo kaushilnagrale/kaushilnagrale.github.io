@@ -5,14 +5,16 @@ import { StatusBadge } from '@/components/StatusBadge'
 import type { Bay } from '@/lib/content'
 import { BayViewport } from './BayViewport'
 
-/** S-05 · Eight flagship projects, ordered by the current lens. */
+/** Featured projects, ordered by the current lens. */
 export function GarageBays({ bays }: { bays: Bay[] }) {
+  const live = bays.filter((b) => b.status === 'live').length
   return (
-    <section id="bays" aria-labelledby="bays-title" className="blueprint py-20 md:py-28">
+    <section id="projects" aria-labelledby="projects-title" className="blueprint py-20 md:py-28">
       <div className="wrap">
         <SectionHeader
-          id="bays"
-          intro="Each bay has a spec sheet and a viewport. Live runs the demo once you launch it; X-Ray drags across to the architecture underneath."
+          id="projects"
+          kicker={`${bays.length} projects · ${live} live demos`}
+          intro="Each project has an overview and a demo panel. Live demo runs the real app once you press Launch; Architecture slides across to show how it is built."
         />
         <ol className="flex flex-col gap-10 md:gap-14">
           {bays.map((bay, i) => (
@@ -27,17 +29,17 @@ export function GarageBays({ bays }: { bays: Bay[] }) {
 }
 
 function GarageBay({ bay, index }: { bay: Bay; index: number }) {
-  const headingId = `bay-${bay.slug}-title`
+  const headingId = `project-${bay.slug}-title`
   // A team object without size 1 marks a team project; null means not confirmed yet.
   const isTeam = !!bay.team && bay.team.size !== 1
 
   return (
-    <article id={`bay-${bay.slug}`} aria-labelledby={headingId} data-skills={bay.skills.join(' ')} className="card reveal scroll-mt-6 p-4 sm:p-6 md:p-8">
+    <article id={`project-${bay.slug}`} aria-labelledby={headingId} data-skills={bay.skills.join(' ')} className="card reveal scroll-mt-6 p-4 sm:p-6 md:p-8">
       <header>
         <div className="flex items-center gap-3">
-          <span className="t-label text-muted">Bay {String(index).padStart(2, '0')}</span>
+          <span className="t-label text-muted">Project {String(index).padStart(2, '0')}</span>
           <span className="h-px flex-1 bg-line" aria-hidden="true" />
-          <StatusBadge status={bay.status} tyre={bay.tyre} />
+          <StatusBadge status={bay.status} />
         </div>
         <div className="mt-4 flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
           <div className="min-w-0">
@@ -59,7 +61,7 @@ function GarageBay({ bay, index }: { bay: Bay; index: number }) {
       <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
           <p className="t-label mb-3 text-muted" aria-hidden="true">
-            Spec sheet
+            Overview
           </p>
           <dl className="divide-y divide-line border-y border-line text-[15px]">
             <SpecRow term="Problem">{bay.problem}</SpecRow>
@@ -85,15 +87,14 @@ function GarageBay({ bay, index }: { bay: Bay; index: number }) {
             </SpecRow>
           </dl>
 
-          <p className="t-label mb-2 mt-5 text-muted">Sector times</p>
+          <p className="t-label mb-2 mt-5 text-muted">Key results</p>
           <ol className="grid gap-px overflow-hidden rounded-xl border border-line bg-line">
             {bay.sectors.map((s) => (
-              <li key={s.id} className="flex items-baseline gap-3 bg-surface px-3 py-2.5">
-                <span className="w-6 flex-none font-mono text-[12px] text-muted">{s.id}</span>
-                <span className="min-w-0">
+              <li key={s.id} className="bg-surface px-3 py-2.5">
+                <span className="block min-w-0">
                   <span className={`t-metric block text-[28px] ${s.best ? 'text-s-purple' : ''}`}>
                     {s.value}
-                    {s.best ? <span className="sr-only"> (best)</span> : null}
+                    {s.best ? <span className="sr-only"> (headline result)</span> : null}
                   </span>
                   <span className="mt-0.5 block text-[14px] leading-snug text-muted">{s.caption}</span>
                 </span>
@@ -117,7 +118,7 @@ function GarageBay({ bay, index }: { bay: Bay; index: number }) {
               </li>
             ) : (
               <li>
-                <a href="#radio" className="link inline-flex items-center gap-1.5">
+                <a href="#contact" className="link inline-flex items-center gap-1.5">
                   <MessageSquare aria-hidden="true" size={15} strokeWidth={1.5} /> Code walkthrough on request
                 </a>
               </li>

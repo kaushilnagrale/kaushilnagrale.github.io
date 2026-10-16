@@ -1118,7 +1118,7 @@
     "title": "Restaurant Intelligence Pipeline",
     "tagline": "Google reviews in, ranked restaurant recommendations out.",
     "tier": "bay",
-    "status": "planned",
+    "status": "live",
     "tyre": "medium",
     "domains": [
       "DATA",
@@ -1136,19 +1136,19 @@
     "sectors": [
       {
         "id": "S1",
-        "value": "3 DAGs",
-        "caption": "Airflow orchestrates ingestion, NLP scoring and recommendation refresh",
+        "value": "295 → 265",
+        "caption": "reviews cleaned and deduplicated in Spark",
         "best": true
       },
       {
         "id": "S2",
-        "value": "BERT",
-        "caption": "review score prediction from the text"
+        "value": "3 DAGs",
+        "caption": "Airflow orchestration: ingestion, BERT scoring, ranking"
       },
       {
         "id": "S3",
-        "value": "Star schema",
-        "caption": "PostgreSQL warehouse behind a hybrid recommender and Power BI"
+        "value": "52 / 54",
+        "caption": "restaurants ranked on what reviewers wrote"
       }
     ],
     "stack": [
@@ -1178,17 +1178,17 @@
       "rest-api"
     ],
     "links": {
-      "live": null,
-      "embed": null,
-      "health": null,
+      "live": "https://restaurant-review-intelligence.vercel.app",
+      "embed": "https://restaurant-review-intelligence.vercel.app",
+      "health": "https://restaurant-review-intelligence.vercel.app",
       "repo": "https://github.com/kaushilnagrale/Restaurant-review-Airflow-google-etl",
       "video": null,
       "caseStudy": null
     },
     "media": {
-      "poster": null,
+      "poster": "/projects/restaurant-intelligence/screen.webp",
       "loop": null,
-      "xrayUi": null,
+      "xrayUi": "/projects/restaurant-intelligence/screen.webp",
       "xrayArch": null
     },
     "telemetry": {
@@ -1196,7 +1196,7 @@
       "embed": null,
       "url": null
     },
-    "demoScope": "Flask recommender on a static data snapshot · Airflow and Spark shown in X-Ray",
+    "demoScope": "Replay of one recorded overnight run · tap a restaurant for its reviews",
     "year": 2026,
     "architecture": {
       "nodes": [
@@ -1525,7 +1525,7 @@
     "title": "GLOF Early Warning System",
     "tagline": "Glacial lake outburst flood monitoring from orbit.",
     "tier": "bay",
-    "status": "planned",
+    "status": "live",
     "tyre": "medium",
     "domains": [
       "ML",
@@ -1543,19 +1543,19 @@
     "sectors": [
       {
         "id": "S1",
-        "value": "3 tiers",
-        "caption": "alerts at 15%, 25% and 40% lake-area growth",
+        "value": "0.912",
+        "caption": "segmentation IoU, U-Net with a ResNet-34 encoder",
         "best": true
       },
       {
         "id": "S2",
-        "value": "3 sensors",
-        "caption": "Sentinel-2 optical, Sentinel-1 SAR and daily MODIS"
+        "value": "0.947",
+        "caption": "F1 on the water masks"
       },
       {
         "id": "S3",
-        "value": "U-Net",
-        "caption": "ResNet-34 encoder segments the water body"
+        "value": "9 lakes",
+        "caption": "Nepal, India and Bhutan, 4,044 to 5,200 m, with 3-tier growth alerts"
       }
     ],
     "stack": [
@@ -1576,17 +1576,17 @@
       "git"
     ],
     "links": {
-      "live": null,
-      "embed": null,
-      "health": null,
+      "live": "https://glofwatch.vercel.app",
+      "embed": "https://glofwatch.vercel.app",
+      "health": "https://glofwatch.vercel.app",
       "repo": "https://github.com/kaushilnagrale/Real-time-lake-flood-detection",
       "video": null,
       "caseStudy": null
     },
     "media": {
-      "poster": null,
+      "poster": "/projects/glof/screen.webp",
       "loop": null,
-      "xrayUi": null,
+      "xrayUi": "/projects/glof/screen.webp",
       "xrayArch": null
     },
     "telemetry": {
@@ -1594,7 +1594,7 @@
       "embed": null,
       "url": null
     },
-    "demoScope": "Monitors Imja Tsho and Tsho Rolpa (Nepal) and South Lhonak (Sikkim)",
+    "demoScope": "Live monitoring dashboard · 3D terrain map, alert feed and pipeline status",
     "year": 2026,
     "architecture": {
       "nodes": [

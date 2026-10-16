@@ -24,7 +24,7 @@ export interface SetupRow {
 const STYLE_ID = 'setup-sheet-style'
 
 /**
- * S-09 · Hover or focus a part to highlight every bay and grid slot that uses it; click to filter.
+ * Skills by area. Hover or focus a skill to highlight every project that uses it; click to filter.
  * Highlighting is a generated stylesheet keyed on data-skills, so nothing else re-renders.
  */
 export function SetupSheet({ rows, projects }: { rows: SetupRow[]; projects: ProjectLookup }) {
@@ -43,12 +43,12 @@ export function SetupSheet({ rows, projects }: { rows: SetupRow[]; projects: Pro
       document.head.appendChild(el)
     }
     const css: string[] = []
-    if (hover) css.push(`#bays [data-skills~="${hover}"], #grid li[data-skills~="${hover}"] { box-shadow: 0 0 0 2px var(--flow); }`)
+    if (hover) css.push(`#projects [data-skills~="${hover}"], #more li[data-skills~="${hover}"] { box-shadow: 0 0 0 2px var(--flow); }`)
     if (filter)
       css.push(
         // filter, not opacity: the scroll-reveal animation owns opacity on bays.
-        `#bays [data-skills]:not([data-skills~="${filter}"]) { filter: opacity(0.3) grayscale(0.5); }`,
-        `#grid [data-skills]:not([data-skills~="${filter}"]) { display: none; }`,
+        `#projects [data-skills]:not([data-skills~="${filter}"]) { filter: opacity(0.3) grayscale(0.5); }`,
+        `#more [data-skills]:not([data-skills~="${filter}"]) { display: none; }`,
       )
     el.textContent = css.join('\n')
   }, [hover, filter])
@@ -59,23 +59,20 @@ export function SetupSheet({ rows, projects }: { rows: SetupRow[]; projects: Pro
     <>
       <div className="overflow-hidden rounded-2xl border border-line">
         <div className="grid grid-cols-[1fr] border-b border-line bg-surface-2 px-4 py-2.5 md:grid-cols-[240px_1fr]">
-          <span className="t-label text-[11px] text-muted">Component · maps to</span>
-          <span className="t-label hidden text-[11px] text-muted md:block">Setting</span>
+          <span className="t-label text-[11px] text-muted">Area</span>
+          <span className="t-label hidden text-[11px] text-muted md:block">Skills</span>
         </div>
         {rows.map((row) => (
           <div
             key={row.id}
-            id={`setup-${row.id}`}
+            id={`skills-${row.id}`}
             className={`grid scroll-mt-6 grid-cols-1 gap-3 border-b border-line px-4 py-4 last:border-b-0 md:grid-cols-[240px_1fr] md:gap-6 ${
               row.emphasized ? 'bg-surface' : 'bg-bg'
             }`}
           >
             <div>
-              <h3 className="t-h3 text-[19px]">{row.component}</h3>
-              <p className="font-mono text-[12px] uppercase tracking-[0.08em] text-muted">
-                {row.mapsTo}
-                {row.emphasized ? <span className="ml-2 text-text">· lens focus</span> : null}
-              </p>
+              <h3 className="t-h3 text-[19px]">{row.mapsTo}</h3>
+              {row.emphasized ? <p className="font-mono text-[12px] uppercase tracking-[0.08em] text-s-purple">Focus for this role</p> : null}
             </div>
             <ul className="flex flex-wrap gap-2">
               {row.items.map((item) => {
@@ -136,7 +133,7 @@ export function SetupSheet({ rows, projects }: { rows: SetupRow[]; projects: Pro
             {shown.roles.length ? <span className="text-muted"> · at work: {shown.roles.join(', ')}</span> : null}
           </p>
         ) : (
-          <p className="text-muted">Hover or focus a setting to see where it is used. Click it to filter the bays and grid.</p>
+          <p className="text-muted">Hover or focus a skill to see where it is used. Click it to filter the projects.</p>
         )}
       </div>
 
@@ -147,7 +144,7 @@ export function SetupSheet({ rows, projects }: { rows: SetupRow[]; projects: Pro
               <span className="t-label mr-2 text-[11px] text-muted">Filter</span>
               {filtered.name} · {filtered.projects.length} project{filtered.projects.length === 1 ? '' : 's'}
             </span>
-            <a href="#bays" className="link">
+            <a href="#projects" className="link">
               View
             </a>
             <button type="button" onClick={() => setFilter(null)} className="inline-flex h-7 w-7 items-center justify-center rounded-full hover:bg-surface-2" aria-label="Clear filter">

@@ -24,14 +24,14 @@ export default function QuickLapCv() {
     <main id="main" className="min-h-svh py-8 md:py-14 print:py-0">
       <div className="wrap !max-w-[900px]">
         <Link href="/" className="no-print link inline-flex items-center gap-2 text-[15px]">
-          <ArrowLeft aria-hidden="true" size={16} strokeWidth={1.5} /> Back to the pit wall
+          <ArrowLeft aria-hidden="true" size={16} strokeWidth={1.5} /> Back to the portfolio
         </Link>
 
         <article className="card mt-6 p-6 md:p-10 print:mt-0 print:border-0 print:p-0 print:shadow-none">
           <header className="flex flex-col gap-6 sm:flex-row sm:items-center">
             <Image src={profile.photo} alt="Kaushil Nagrale" width={120} height={142} priority className="h-[120px] w-[120px] flex-none rounded-full border border-line object-cover object-top" />
             <div>
-              <p className="t-label text-muted">Quick lap · 30 second CV</p>
+              <p className="t-label text-muted">30 second CV</p>
               <h1 className="t-h2 mt-2">{profile.name}</h1>
               <p className="mt-2 text-[18px]">{profile.oneLine}</p>
               <p className="mt-2 inline-flex items-center gap-2 text-[15px]">

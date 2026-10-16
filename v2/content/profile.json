@@ -16,14 +16,6 @@
     "linkedin": "https://www.linkedin.com/in/kaushilnagrale/",
     "booking": null
   },
-  "radio": "Team radio is open. Tell me what you are building, what is breaking, or what role you are hiring for.",
-  "photos": [
-    {
-      "src": "/photos/kaushil.jpg",
-      "alt": "Kaushil in sunglasses and a white jacket, standing in front of a colourful carved stone mural",
-      "place": null,
-      "year": null,
-      "caption": null
-    }
-  ]
+  "photos": [],
+  "contactIntro": "Hiring, building something, or curious about a project? Write below and it opens as a ready-to-send email."
 }

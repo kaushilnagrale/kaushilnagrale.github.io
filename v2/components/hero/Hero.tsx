@@ -29,7 +29,7 @@ export function Hero({ lens, resume }: { lens: Lens; resume: string }) {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#bays" className="btn btn-primary">
+            <a href="#projects" className="btn btn-primary">
               See projects
               <ArrowDown aria-hidden="true" size={17} strokeWidth={1.5} />
             </a>

@@ -8,7 +8,7 @@ import { ArchDiagram } from './ArchDiagram'
 import { Poster, type PosterData } from './Poster'
 
 type Mode = 'live' | 'xray' | 'telemetry'
-type Phase = 'idle' | 'checking' | 'warming' | 'ready' | 'down' | 'running' | 'playing'
+type Phase = 'idle' | 'warming' | 'ready' | 'down' | 'running' | 'playing'
 
 /** Compact bay data: posters and diagrams render here from JSON instead of travelling as serialized SVG trees. */
 export interface ViewportBay extends PosterData {
@@ -58,9 +58,9 @@ export function BayViewport({ bay }: { bay: ViewportBay }) {
   const { slug, title } = props
   const hasTelemetry = !!(bay.telemetry.embed || bay.telemetry.url)
   const MODES: { id: Mode; label: string }[] = [
-    { id: 'live', label: 'Live' },
-    { id: 'xray', label: 'X-Ray' },
-    ...(hasTelemetry ? [{ id: 'telemetry' as const, label: 'Telemetry' }] : []),
+    { id: 'live', label: 'Live demo' },
+    { id: 'xray', label: 'Architecture' },
+    ...(hasTelemetry ? [{ id: 'telemetry' as const, label: 'Metrics' }] : []),
   ]
   const [mode, setMode] = useState<Mode>('live')
   const tabs = useRef<(HTMLButtonElement | null)[]>([])
@@ -82,9 +82,9 @@ export function BayViewport({ bay }: { bay: ViewportBay }) {
     <div>
       <div className="mb-3 flex items-center justify-between gap-3">
         <p className="t-label text-muted" aria-hidden="true">
-          Viewport
+          Demo
         </p>
-        <div role="tablist" aria-label={`${title} viewport mode`} onKeyDown={onTabKey} className="inline-flex rounded-full border border-line bg-surface-2 p-1">
+        <div role="tablist" aria-label={`${title} demo view`} onKeyDown={onTabKey} className="inline-flex rounded-full border border-line bg-surface-2 p-1">
           {MODES.map((m, i) => (
             <button
               key={m.id}
@@ -247,7 +247,7 @@ function Overlay({
 }) {
   const play = links.video ? (
     <button type="button" onClick={onPlay} className="btn btn-outline bg-bg/70 !min-h-10 !py-2">
-      <Play aria-hidden="true" size={16} strokeWidth={1.5} /> Play the run
+      <Play aria-hidden="true" size={16} strokeWidth={1.5} /> Watch demo video
     </button>
   ) : null
 
@@ -255,8 +255,8 @@ function Overlay({
     return (
       <div className="flex flex-wrap items-center gap-3">
         <p className="max-w-md text-[14px] leading-snug" role="status">
-          <span className="t-label mr-2 text-[11px] text-muted">In the garage</span>
-          Live demo is being set up. {links.video ? 'Watch the recorded run meanwhile.' : 'X-Ray shows the architecture now.'}
+          <span className="t-label mr-2 text-[11px] text-muted">Demo soon</span>
+          The live demo is being deployed. {links.video ? 'Watch the recorded run meanwhile.' : 'The Architecture tab shows how it is built.'}
         </p>
         {play}
       </div>
@@ -271,7 +271,7 @@ function Overlay({
     return (
       <div className="flex flex-wrap items-center gap-3" role="status">
         <p className="text-[14px]">
-          <span className="t-label mr-2 text-[11px] text-s-yellow">Pit stop</span>
+          <span className="t-label mr-2 text-[11px] text-s-yellow">Demo offline</span>
           The demo host is not answering.
         </p>
         {links.live ? (
@@ -284,10 +284,10 @@ function Overlay({
     )
   }
 
-  if (phase === 'warming' || phase === 'checking') {
+  if (phase === 'warming') {
     return (
       <div className="w-full max-w-sm" role="status" aria-live="polite">
-        <p className="t-label text-[11px] text-s-yellow">{phase === 'warming' ? 'Warming tyres' : 'Checking the garage'}</p>
+        <p className="t-label text-[11px] text-s-yellow">Waking the server</p>
         <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-line" aria-hidden="true">
           <div className="h-full rounded-full bg-s-yellow transition-[width] duration-250" style={{ width: `${progress}%` }} />
         </div>
@@ -374,7 +374,7 @@ function XRay({ title, ui, arch }: { title: string; ui: ReactNode; arch: ReactNo
       <div
         role="slider"
         tabIndex={0}
-        aria-label={`${title}: X-ray handle. Move left to reveal more architecture.`}
+        aria-label={`${title}: architecture slider. Move left to reveal more of the architecture.`}
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuenow={pos}
