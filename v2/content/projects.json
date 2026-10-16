@@ -677,7 +677,7 @@
     "title": "Smart Parking Analytics",
     "tagline": "Computer vision that knows which spots are free, zone by zone.",
     "tier": "bay",
-    "status": "planned",
+    "status": "live",
     "tyre": "soft",
     "domains": [
       "ML",
@@ -696,19 +696,19 @@
     "sectors": [
       {
         "id": "S1",
-        "value": "YOLOv8",
-        "caption": "vehicle detection for cars, trucks and motorcycles",
+        "value": "240 spots",
+        "caption": "across 8 zones, occupancy streamed live over WebSockets",
         "best": true
       },
       {
         "id": "S2",
-        "value": "Live",
-        "caption": "per-zone occupancy pushed over WebSockets"
+        "value": "YOLOv8",
+        "caption": "4 vehicle classes detected, plus plate OCR"
       },
       {
         "id": "S3",
-        "value": "Neo4j",
-        "caption": "zone graph for spatial relationships and routing"
+        "value": "95%",
+        "caption": "confidence band on demand forecasts"
       }
     ],
     "stack": [
@@ -737,20 +737,21 @@
       "rest-api",
       "git",
       "adf",
-      "rest-api"
+      "rest-api",
+      "jwt"
     ],
     "links": {
-      "live": null,
-      "embed": null,
-      "health": null,
+      "live": "https://smartpark-analytics.vercel.app",
+      "embed": "https://smartpark-analytics.vercel.app",
+      "health": "https://smartpark-analytics.vercel.app",
       "repo": "https://github.com/kaushilnagrale/Smart-Parking-Management-Analytics-Platform",
       "video": null,
       "caseStudy": null
     },
     "media": {
-      "poster": null,
+      "poster": "/projects/smart-parking/screen.webp",
       "loop": null,
-      "xrayUi": null,
+      "xrayUi": "/projects/smart-parking/screen.webp",
       "xrayArch": null
     },
     "telemetry": {
@@ -758,7 +759,7 @@
       "embed": null,
       "url": null
     },
-    "demoScope": "Upload a parking lot or plate photo · Azure and Neo4j parts shown in X-Ray",
+    "demoScope": "Operator console with live occupancy, vision, analytics and routing views",
     "year": 2026,
     "architecture": {
       "nodes": [
