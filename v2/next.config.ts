@@ -11,25 +11,13 @@ function buildSha(): string {
 }
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
-  partialPrefetching: true,
+  // GitHub Pages serves static files only, so the whole site is exported to v2/out at build time.
+  output: "export",
+  trailingSlash: true,
+  images: { unoptimized: true },
   env: {
     NEXT_PUBLIC_BUILD_SHA: buildSha(),
     NEXT_PUBLIC_BUILD_TIME: new Date().toISOString(),
-  },
-  // R-01 · `/?lens=ml` serves the statically generated `/lens/ml` page, so every lens is prerendered.
-  async rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: "/",
-          has: [{ type: "query", key: "lens", value: "(?<lens>data|ml|swe)" }],
-          destination: "/lens/:lens",
-        },
-      ],
-      afterFiles: [],
-      fallback: [],
-    };
   },
   turbopack: {
     rules: {

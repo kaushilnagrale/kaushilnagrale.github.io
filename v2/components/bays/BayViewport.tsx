@@ -136,17 +136,20 @@ function LivePanel({ title, status, links, poster, loop }: Props) {
       setPhase('ready')
       return
     }
-    setPhase(status === 'waking' ? 'warming' : 'checking')
+    // Launch stays available while the host is checked in the background; a slow answer shows the warm-up bar,
+    // and a finished check never interrupts a demo the visitor already opened.
+    const settle = (next: Phase) => setPhase((p) => (p === 'running' || p === 'playing' ? p : next))
+    if (status === 'waking') setPhase('warming')
     const started = performance.now()
-    const slow = setTimeout(() => setPhase((p) => (p === 'checking' ? 'warming' : p)), 1500)
+    const slow = setTimeout(() => setPhase((p) => (p === 'idle' ? 'warming' : p)), 1500)
     const tick = setInterval(() => setProgress(Math.min(95, ((performance.now() - started) / 30000) * 100)), 250)
     try {
       // A sleeping host answers once it is awake; no-cors is enough to know it is reachable.
       await fetch(links.health, { mode: 'no-cors', cache: 'no-store', signal: AbortSignal.timeout(45000) })
       setProgress(100)
-      setPhase('ready')
+      settle('ready')
     } catch {
-      setPhase('down')
+      settle('down')
     } finally {
       clearTimeout(slow)
       clearInterval(tick)

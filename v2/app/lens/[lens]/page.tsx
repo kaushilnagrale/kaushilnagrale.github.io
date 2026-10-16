@@ -3,7 +3,9 @@ import { notFound } from 'next/navigation'
 import { HomePage } from '@/components/HomePage'
 import { isLens, lenses } from '@/lib/content'
 
-// R-01 · Reached through the `/?lens=` rewrite in next.config.ts. Each lens is prerendered.
+// R-01 · Each lens is a prebuilt page at /lens/<lens>/; /?lens= links redirect here (see app/page.tsx).
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return [{ lens: 'data' }, { lens: 'ml' }, { lens: 'swe' }]
 }

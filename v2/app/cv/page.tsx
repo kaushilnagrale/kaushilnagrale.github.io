@@ -9,7 +9,9 @@ import { resumeFor } from '@/lib/site'
 export const metadata: Metadata = {
   title: '30 second CV',
   description: 'Kaushil Nagrale on one screen: current role, three numbers, three projects, resume and email.',
-  alternates: { canonical: '/cv' },
+  alternates: { canonical: '/cv/' },
+  openGraph: { images: [{ url: '/og/cv.png', width: 1200, height: 630, alt: 'Kaushil Nagrale, 30 second CV' }] },
+  twitter: { card: 'summary_large_image', images: ['/og/cv.png'] },
 }
 
 /** R-02 · Quick Lap CV: one screen, prints to one page. */

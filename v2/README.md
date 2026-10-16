@@ -1,7 +1,7 @@
 # Pit Wall · Portfolio v2
 
 Kaushil Nagrale's portfolio, rebuilt as a race engineer's pit wall. Next.js 16 (App Router, Cache Components),
-TypeScript, Tailwind CSS 4. This folder is Phase 1 of `Portfolio_v2_Changes.md`.
+TypeScript, Tailwind CSS 4, exported as a static site for GitHub Pages. This folder is Phase 1 of `Portfolio_v2_Changes.md`.
 
 ```bash
 npm install
@@ -97,18 +97,24 @@ Add `public/resume/kaushil_nagrale_data.pdf`, `..._ml.pdf` and `..._swe.pdf`. Un
 
 | Variable | Purpose |
 |---|---|
-| `NEXT_PUBLIC_SITE_URL` | Canonical origin, e.g. `https://kaushilnagrale.com` (Decision 3). On Vercel it falls back to the production URL. |
+| `NEXT_PUBLIC_SITE_URL` | Canonical origin. The Pages workflow sets `https://kaushilnagrale.github.io`. |
 | `NEXT_PUBLIC_WEB3FORMS_KEY` | Team Radio form key from web3forms.com. Without it, Push to talk is a mailto link. |
 
 ## How it is built
 
-- **Lenses:** `/?lens=data|ml|swe` is rewritten in `next.config.ts` to the prerendered `/lens/[lens]` page, so each lens is static HTML.
+- **Lenses:** each lens is a prebuilt page at `/lens/<lens>/`; `/?lens=` links redirect there from the home page.
 - **No iframes on load:** a demo iframe exists only after a visitor clicks Launch demo.
 - **Fonts:** Archivo ships as three static Latin instances in `app/fonts` (SIL OFL, licence alongside). Only the H1 cut is preloaded.
 - **Payload:** posters and architecture diagrams render on the client from compact JSON, which keeps the RSC payload small.
 - **No JavaScript:** navigation, lens links, bays, grid, circuit and About deep links (`#about/music`) all work as plain HTML.
 
-## Deploying
+## Deploying (GitHub Pages)
 
-Vercel, with the project's Root Directory set to `v2`. Once the custom domain is live, replace the GitHub Pages `index.html`
-with a redirect to it (T-08).
+The site is exported as static files (`output: "export"` in `next.config.ts`) and published by
+`.github/workflows/deploy-pages.yml` on every push to `main`, at https://kaushilnagrale.github.io.
+
+- One-time setup: repository **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+- Preview the exact output locally: `npm run build`, then serve `out/` (for example `python3 -m http.server 3100` inside `out/`).
+- Lenses are real pages (`/lens/data/`, `/lens/ml/`, `/lens/swe/`); old `/?lens=ml` links redirect to them.
+- Share images are generated at build time as `/og/home.png` and `/og/cv.png`.
+- `/resume/Kaushil_Resume.pdf` (the old site's resume link) keeps working.

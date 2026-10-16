@@ -16,6 +16,7 @@ export function resumeFor(lens: Lens): string {
   return existsSync(join(process.cwd(), 'public', path)) ? path : lenses.all.resume
 }
 
+/** Each lens is its own prerendered page (GitHub Pages cannot rewrite `?lens=`). */
 export function lensHref(lens: Lens): string {
-  return lens === 'all' ? '/' : `/?lens=${lens}`
+  return lens === 'all' ? '/' : `/lens/${lens}/`
 }
