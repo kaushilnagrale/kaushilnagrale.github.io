@@ -1,0 +1,2284 @@
+[
+  {
+    "slug": "clinishield",
+    "title": "CliniShield",
+    "tagline": "Medication safety for caregivers, with every answer cited.",
+    "tier": "bay",
+    "status": "live",
+    "tyre": "soft",
+    "domains": [
+      "SWE",
+      "ML",
+      "DATA"
+    ],
+    "team": {
+      "size": 1,
+      "myPart": null
+    },
+    "lenses": {
+      "all": 1,
+      "swe": 1,
+      "ml": 4,
+      "data": 2
+    },
+    "problem": "Caregivers need interaction checks they can trust, and NLM retired the RxNav interaction API, so the knowledge base had to be rebuilt from FDA sources.",
+    "role": "Solo, design to deployment",
+    "sectors": [
+      {
+        "id": "S1",
+        "value": "262K",
+        "caption": "FDA labels ingested via partitioned Spring Batch",
+        "best": true
+      },
+      {
+        "id": "S2",
+        "value": "2M",
+        "caption": "FAERS rows behind the disproportionality signals"
+      },
+      {
+        "id": "S3",
+        "value": "84 tests",
+        "caption": "CI guardrail suite gating the citation-enforced RAG assistant"
+      }
+    ],
+    "stack": [
+      "Java",
+      "Spring Boot",
+      "Spring Batch",
+      "Spring AI",
+      "pgvector",
+      "PostgreSQL",
+      "Kafka"
+    ],
+    "skills": [
+      "java",
+      "sql",
+      "spring-boot",
+      "spring-ai",
+      "kafka",
+      "postgresql",
+      "pgvector",
+      "rag",
+      "spring-batch",
+      "microservices",
+      "event-driven",
+      "multi-tenancy",
+      "rest-api",
+      "llms",
+      "git"
+    ],
+    "links": {
+      "live": "https://clinishield-interactions.vercel.app",
+      "embed": "https://clinishield-interactions.vercel.app",
+      "health": "https://clinishield-interactions.vercel.app",
+      "repo": "https://github.com/kaushilnagrale/clinishield-meds-interaction-assistant",
+      "video": null,
+      "caseStudy": null
+    },
+    "media": {
+      "poster": "/projects/clinishield/screen.webp",
+      "loop": null,
+      "xrayUi": "/projects/clinishield/screen.webp",
+      "xrayArch": null
+    },
+    "telemetry": {
+      "provider": null,
+      "embed": null,
+      "url": null
+    },
+    "demoScope": "Signed in as a demo care circle member · built from public FDA sources",
+    "year": null,
+    "architecture": {
+      "nodes": [
+        {
+          "id": "app",
+          "label": "Caregiver app",
+          "sub": "browser",
+          "kind": "client",
+          "x": 30,
+          "y": 50
+        },
+        {
+          "id": "gw",
+          "label": "API gateway",
+          "sub": "per-tenant routing",
+          "kind": "service",
+          "x": 225,
+          "y": 50
+        },
+        {
+          "id": "svc",
+          "label": "Microservices",
+          "sub": "4 services, 3-layer isolation",
+          "kind": "service",
+          "x": 420,
+          "y": 50
+        },
+        {
+          "id": "pg",
+          "label": "PostgreSQL",
+          "sub": "per-tenant data",
+          "kind": "store",
+          "x": 615,
+          "y": 50
+        },
+        {
+          "id": "cite",
+          "label": "Citation gate",
+          "sub": "84-test CI guardrails",
+          "kind": "gate",
+          "x": 30,
+          "y": 175
+        },
+        {
+          "id": "rag",
+          "label": "RAG assistant",
+          "sub": "Spring AI",
+          "kind": "model",
+          "x": 225,
+          "y": 175
+        },
+        {
+          "id": "kafka",
+          "label": "Kafka",
+          "sub": "domain events",
+          "kind": "stream",
+          "x": 615,
+          "y": 175
+        },
+        {
+          "id": "vec",
+          "label": "pgvector",
+          "sub": "FDA label chunks",
+          "kind": "store",
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "kb",
+          "label": "Interaction KB",
+          "sub": "FAERS signals",
+          "kind": "store",
+          "x": 420,
+          "y": 300
+        },
+        {
+          "id": "fda",
+          "label": "FDA labels",
+          "sub": "262K labels",
+          "kind": "ext",
+          "x": 225,
+          "y": 420
+        },
+        {
+          "id": "faers",
+          "label": "FAERS",
+          "sub": "2M rows",
+          "kind": "ext",
+          "x": 420,
+          "y": 420
+        }
+      ],
+      "edges": [
+        {
+          "from": "app",
+          "to": "gw",
+          "flow": true
+        },
+        {
+          "from": "gw",
+          "to": "svc",
+          "flow": true
+        },
+        {
+          "from": "svc",
+          "to": "pg"
+        },
+        {
+          "from": "svc",
+          "to": "kafka"
+        },
+        {
+          "from": "svc",
+          "to": "kb"
+        },
+        {
+          "from": "gw",
+          "to": "rag",
+          "flow": true
+        },
+        {
+          "from": "rag",
+          "to": "vec"
+        },
+        {
+          "from": "rag",
+          "to": "cite",
+          "flow": true
+        },
+        {
+          "from": "cite",
+          "to": "app",
+          "flow": true
+        },
+        {
+          "from": "fda",
+          "to": "vec"
+        },
+        {
+          "from": "fda",
+          "to": "kb"
+        },
+        {
+          "from": "faers",
+          "to": "kb"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "intelligent-ticketing",
+    "title": "Hybrid RAG Intelligent Ticketing System",
+    "tagline": "A 7-stage hybrid RAG pipeline over an 80K-ticket corpus.",
+    "tier": "bay",
+    "status": "planned",
+    "tyre": "medium",
+    "domains": [
+      "ML",
+      "DATA",
+      "SWE"
+    ],
+    "team": {
+      "size": 5,
+      "myPart": "team lead"
+    },
+    "lenses": {
+      "all": 2,
+      "swe": 6,
+      "ml": 1,
+      "data": 3
+    },
+    "problem": "LLM ticket assistants invent fixes; support teams need grounded answers.",
+    "role": "Capstone · FSE 570",
+    "sectors": [
+      {
+        "id": "S1",
+        "value": "2.8%",
+        "caption": "hallucination, down from 44%",
+        "best": true
+      },
+      {
+        "id": "S2",
+        "value": "97.6%",
+        "caption": "Recall@5 on 500 evaluation queries"
+      },
+      {
+        "id": "S3",
+        "value": "100%",
+        "caption": "out-of-scope refusal"
+      }
+    ],
+    "stack": [
+      "Python",
+      "FastAPI",
+      "React",
+      "ChromaDB",
+      "FAISS",
+      "Qwen3 4B (Ollama)"
+    ],
+    "skills": [
+      "python",
+      "js-ts",
+      "fastapi",
+      "react",
+      "rag",
+      "llms",
+      "chromadb",
+      "faiss",
+      "rest-api"
+    ],
+    "links": {
+      "live": null,
+      "embed": null,
+      "health": null,
+      "repo": null,
+      "video": null,
+      "caseStudy": null
+    },
+    "media": {
+      "poster": null,
+      "loop": null,
+      "xrayUi": null,
+      "xrayArch": null
+    },
+    "telemetry": {
+      "provider": null,
+      "embed": null,
+      "url": null
+    },
+    "demoScope": "Fixed synthetic tickets · retrieval trace visible",
+    "year": 2026,
+    "architecture": {
+      "nodes": [
+        {
+          "id": "ui",
+          "label": "React UI",
+          "sub": "agent console",
+          "kind": "client",
+          "x": 30,
+          "y": 175
+        },
+        {
+          "id": "api",
+          "label": "FastAPI",
+          "sub": "ticket intake",
+          "kind": "service",
+          "x": 225,
+          "y": 175
+        },
+        {
+          "id": "bm25",
+          "label": "BM25",
+          "sub": "keyword retrieval",
+          "kind": "model",
+          "x": 420,
+          "y": 50
+        },
+        {
+          "id": "chroma",
+          "label": "ChromaDB",
+          "sub": "dense retrieval",
+          "kind": "store",
+          "x": 420,
+          "y": 175
+        },
+        {
+          "id": "faiss",
+          "label": "FAISS",
+          "sub": "dense retrieval",
+          "kind": "store",
+          "x": 420,
+          "y": 300
+        },
+        {
+          "id": "rrf",
+          "label": "RRF fusion",
+          "sub": "rank merge",
+          "kind": "service",
+          "x": 615,
+          "y": 175
+        },
+        {
+          "id": "rerank",
+          "label": "Cross encoder",
+          "sub": "rerank top k",
+          "kind": "model",
+          "x": 615,
+          "y": 300
+        },
+        {
+          "id": "llm",
+          "label": "LLM",
+          "sub": "Qwen3 4B · Ollama",
+          "kind": "model",
+          "x": 615,
+          "y": 420
+        },
+        {
+          "id": "answer",
+          "label": "Answer",
+          "sub": "100% out-of-scope refusal",
+          "kind": "client",
+          "x": 30,
+          "y": 420
+        }
+      ],
+      "edges": [
+        {
+          "from": "ui",
+          "to": "api",
+          "flow": true
+        },
+        {
+          "from": "api",
+          "to": "bm25",
+          "flow": true
+        },
+        {
+          "from": "api",
+          "to": "chroma",
+          "flow": true
+        },
+        {
+          "from": "api",
+          "to": "faiss",
+          "flow": true
+        },
+        {
+          "from": "bm25",
+          "to": "rrf",
+          "flow": true
+        },
+        {
+          "from": "chroma",
+          "to": "rrf",
+          "flow": true
+        },
+        {
+          "from": "faiss",
+          "to": "rrf",
+          "flow": true
+        },
+        {
+          "from": "rrf",
+          "to": "rerank",
+          "flow": true
+        },
+        {
+          "from": "rerank",
+          "to": "llm",
+          "flow": true
+        },
+        {
+          "from": "llm",
+          "to": "answer",
+          "flow": true
+        },
+        {
+          "from": "answer",
+          "to": "ui",
+          "flow": true
+        }
+      ]
+    }
+  },
+  {
+    "slug": "verdant",
+    "title": "Verdant",
+    "tagline": "A multi-tenant marketplace for live plants.",
+    "tier": "bay",
+    "status": "live",
+    "tyre": "soft",
+    "domains": [
+      "SWE",
+      "DATA"
+    ],
+    "team": {
+      "size": 1,
+      "myPart": null
+    },
+    "lenses": {
+      "all": 3,
+      "swe": 2,
+      "ml": 7,
+      "data": 6
+    },
+    "problem": "Live plants do not wait; each order must go to the nursery that can deliver it healthy and fast.",
+    "role": "Solo",
+    "sectors": [
+      {
+        "id": "S1",
+        "value": "180 ms",
+        "caption": "p99 at 10x festival traffic",
+        "best": true
+      },
+      {
+        "id": "S2",
+        "value": "Saga",
+        "caption": "orchestrated fulfillment with outbox based event delivery"
+      },
+      {
+        "id": "S3",
+        "value": "Ledger",
+        "caption": "double entry settlement, verified by jqwik property tests against full journal replay"
+      }
+    ],
+    "stack": [
+      "Java",
+      "Spring Boot",
+      "React",
+      "Kafka",
+      "OpenSearch",
+      "PostgreSQL",
+      "jqwik"
+    ],
+    "skills": [
+      "java",
+      "sql",
+      "js-ts",
+      "spring-boot",
+      "react",
+      "kafka",
+      "opensearch",
+      "postgresql",
+      "microservices",
+      "event-driven",
+      "saga",
+      "outbox",
+      "multi-tenancy",
+      "jqwik",
+      "junit",
+      "rest-api",
+      "git"
+    ],
+    "links": {
+      "live": "https://verdant-marketplace.vercel.app",
+      "embed": "https://verdant-marketplace.vercel.app",
+      "health": "https://verdant-marketplace.vercel.app",
+      "repo": "https://github.com/kaushilnagrale/verdant-plant-marketplace",
+      "video": null,
+      "caseStudy": null
+    },
+    "media": {
+      "poster": "/projects/verdant/screen.webp",
+      "loop": null,
+      "xrayUi": "/projects/verdant/screen.webp",
+      "xrayArch": null
+    },
+    "telemetry": {
+      "provider": null,
+      "embed": null,
+      "url": null
+    },
+    "demoScope": "Signed in as a demo shopper · four demo nurseries · prices in ₹",
+    "year": null,
+    "architecture": {
+      "nodes": [
+        {
+          "id": "shop",
+          "label": "React storefront",
+          "sub": "shopper",
+          "kind": "client",
+          "x": 30,
+          "y": 50
+        },
+        {
+          "id": "api",
+          "label": "Spring Boot API",
+          "sub": "orders, catalog",
+          "kind": "service",
+          "x": 225,
+          "y": 50
+        },
+        {
+          "id": "search",
+          "label": "OpenSearch",
+          "sub": "plant catalog",
+          "kind": "store",
+          "x": 420,
+          "y": 50
+        },
+        {
+          "id": "saga",
+          "label": "Order saga",
+          "sub": "orchestrator",
+          "kind": "service",
+          "x": 225,
+          "y": 175
+        },
+        {
+          "id": "kafka",
+          "label": "Kafka",
+          "sub": "outbox events",
+          "kind": "stream",
+          "x": 420,
+          "y": 175
+        },
+        {
+          "id": "alloc",
+          "label": "Allocation",
+          "sub": "transit-time optimized",
+          "kind": "service",
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "pay",
+          "label": "Payments",
+          "sub": "test mode",
+          "kind": "ext",
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "ledger",
+          "label": "Settlement ledger",
+          "sub": "double entry, jqwik-tested",
+          "kind": "store",
+          "x": 420,
+          "y": 300
+        },
+        {
+          "id": "pg",
+          "label": "PostgreSQL",
+          "sub": "orders, ledger",
+          "kind": "store",
+          "x": 615,
+          "y": 300
+        },
+        {
+          "id": "nursery",
+          "label": "Nurseries",
+          "sub": "multi-seller",
+          "kind": "ext",
+          "x": 30,
+          "y": 420
+        }
+      ],
+      "edges": [
+        {
+          "from": "shop",
+          "to": "api",
+          "flow": true
+        },
+        {
+          "from": "api",
+          "to": "search"
+        },
+        {
+          "from": "api",
+          "to": "saga",
+          "flow": true
+        },
+        {
+          "from": "saga",
+          "to": "kafka",
+          "flow": true
+        },
+        {
+          "from": "saga",
+          "to": "alloc",
+          "flow": true
+        },
+        {
+          "from": "saga",
+          "to": "pay",
+          "flow": true
+        },
+        {
+          "from": "saga",
+          "to": "ledger",
+          "flow": true
+        },
+        {
+          "from": "ledger",
+          "to": "pg"
+        },
+        {
+          "from": "alloc",
+          "to": "nursery"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "smart-parking",
+    "title": "Smart Parking Analytics",
+    "tagline": "Computer vision that knows which spots are free, zone by zone.",
+    "tier": "bay",
+    "status": "planned",
+    "tyre": "soft",
+    "domains": [
+      "ML",
+      "SWE",
+      "DATA"
+    ],
+    "team": null,
+    "lenses": {
+      "all": 4,
+      "swe": 5,
+      "ml": 3,
+      "data": 4
+    },
+    "problem": "Drivers circle full lots and operators guess at demand; occupancy should be counted, not estimated.",
+    "role": null,
+    "sectors": [
+      {
+        "id": "S1",
+        "value": "YOLOv8",
+        "caption": "vehicle detection for cars, trucks and motorcycles",
+        "best": true
+      },
+      {
+        "id": "S2",
+        "value": "Live",
+        "caption": "per-zone occupancy pushed over WebSockets"
+      },
+      {
+        "id": "S3",
+        "value": "Neo4j",
+        "caption": "zone graph for spatial relationships and routing"
+      }
+    ],
+    "stack": [
+      "YOLOv8",
+      "TensorFlow",
+      "OpenCV",
+      "Tesseract OCR",
+      "FastAPI",
+      "React",
+      "PostgreSQL",
+      "Neo4j",
+      "Azure"
+    ],
+    "skills": [
+      "python",
+      "js-ts",
+      "fastapi",
+      "react",
+      "azure",
+      "synapse",
+      "docker",
+      "postgresql",
+      "neo4j",
+      "tensorflow",
+      "opencv",
+      "rest-api",
+      "git",
+      "adf",
+      "rest-api"
+    ],
+    "links": {
+      "live": null,
+      "embed": null,
+      "health": null,
+      "repo": "https://github.com/kaushilnagrale/Smart-Parking-Management-Analytics-Platform",
+      "video": null,
+      "caseStudy": null
+    },
+    "media": {
+      "poster": null,
+      "loop": null,
+      "xrayUi": null,
+      "xrayArch": null
+    },
+    "telemetry": {
+      "provider": null,
+      "embed": null,
+      "url": null
+    },
+    "demoScope": "Upload a parking lot or plate photo · Azure and Neo4j parts shown in X-Ray",
+    "year": 2026,
+    "architecture": {
+      "nodes": [
+        {
+          "id": "cams",
+          "label": "Cameras",
+          "sub": "lot images",
+          "kind": "ext",
+          "x": 30,
+          "y": 50
+        },
+        {
+          "id": "api",
+          "label": "FastAPI",
+          "sub": "REST + WebSockets",
+          "kind": "service",
+          "x": 225,
+          "y": 175
+        },
+        {
+          "id": "yolo",
+          "label": "YOLOv8",
+          "sub": "vehicle detection",
+          "kind": "model",
+          "x": 420,
+          "y": 50
+        },
+        {
+          "id": "ocr",
+          "label": "Tesseract OCR",
+          "sub": "plates, via OpenCV",
+          "kind": "model",
+          "x": 615,
+          "y": 50
+        },
+        {
+          "id": "occ",
+          "label": "Occupancy",
+          "sub": "per zone, live",
+          "kind": "service",
+          "x": 420,
+          "y": 175
+        },
+        {
+          "id": "ui",
+          "label": "React dashboard",
+          "sub": "live view, heatmaps",
+          "kind": "client",
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "neo",
+          "label": "Neo4j",
+          "sub": "zone graph",
+          "kind": "store",
+          "x": 420,
+          "y": 300
+        },
+        {
+          "id": "adf",
+          "label": "Azure Data Factory",
+          "sub": "historical ETL",
+          "kind": "service",
+          "x": 615,
+          "y": 300
+        },
+        {
+          "id": "pg",
+          "label": "PostgreSQL",
+          "sub": "events, zones",
+          "kind": "store",
+          "x": 225,
+          "y": 420
+        },
+        {
+          "id": "syn",
+          "label": "Azure Synapse",
+          "sub": "analytics",
+          "kind": "store",
+          "x": 615,
+          "y": 420
+        }
+      ],
+      "edges": [
+        {
+          "from": "cams",
+          "to": "api",
+          "flow": true
+        },
+        {
+          "from": "api",
+          "to": "yolo",
+          "flow": true
+        },
+        {
+          "from": "yolo",
+          "to": "ocr",
+          "flow": true
+        },
+        {
+          "from": "yolo",
+          "to": "occ",
+          "flow": true
+        },
+        {
+          "from": "occ",
+          "to": "api",
+          "flow": true
+        },
+        {
+          "from": "api",
+          "to": "ui",
+          "flow": true,
+          "both": true
+        },
+        {
+          "from": "api",
+          "to": "neo"
+        },
+        {
+          "from": "api",
+          "to": "pg"
+        },
+        {
+          "from": "pg",
+          "to": "adf"
+        },
+        {
+          "from": "adf",
+          "to": "syn",
+          "flow": true
+        }
+      ]
+    }
+  },
+  {
+    "slug": "pulseroute",
+    "title": "PulseRoute",
+    "tagline": "A heat safe cycling co-pilot.",
+    "tier": "bay",
+    "status": "planned",
+    "tyre": "soft",
+    "domains": [
+      "SWE",
+      "ML"
+    ],
+    "team": {
+      "size": 3,
+      "myPart": "system architecture and PRD, onboarding personalization layer"
+    },
+    "lenses": {
+      "all": 5,
+      "swe": 4,
+      "ml": 6,
+      "data": 8
+    },
+    "problem": "Navigation apps optimize for distance, not heat; a cyclist in Tempe at 3 PM in July can ride straight into a dangerous corridor.",
+    "role": "Kiro Spark Challenge, ASU · built in under 24 hours",
+    "sectors": [
+      {
+        "id": "S1",
+        "value": "Fan Favorite",
+        "caption": "Kiro Spark Challenge",
+        "best": true
+      },
+      {
+        "id": "S2",
+        "value": "100%",
+        "caption": "branch coverage on the safety logic gate (60+ unit tests)"
+      },
+      {
+        "id": "S3",
+        "value": "4 feeds",
+        "caption": "Open-Meteo, NWS, AirNow and Mapbox fused into real time heat risk routing"
+      }
+    ],
+    "stack": [
+      "React",
+      "Vite",
+      "TypeScript",
+      "Leaflet",
+      "Zustand",
+      "FastAPI"
+    ],
+    "skills": [
+      "python",
+      "js-ts",
+      "fastapi",
+      "react",
+      "redis",
+      "zustand",
+      "leaflet",
+      "rest-api",
+      "git"
+    ],
+    "links": {
+      "live": null,
+      "embed": null,
+      "health": null,
+      "repo": "https://github.com/kaushilnagrale/kiro_challenge_ZeroToKiro",
+      "video": null,
+      "caseStudy": null
+    },
+    "media": {
+      "poster": null,
+      "loop": null,
+      "xrayUi": null,
+      "xrayArch": null
+    },
+    "telemetry": {
+      "provider": null,
+      "embed": null,
+      "url": null
+    },
+    "demoScope": "Simulated biosignals · Tempe routes",
+    "year": 2026,
+    "architecture": {
+      "nodes": [
+        {
+          "id": "ui",
+          "label": "React PWA",
+          "sub": "Vite · Leaflet · Zustand",
+          "kind": "client",
+          "x": 30,
+          "y": 175
+        },
+        {
+          "id": "api",
+          "label": "FastAPI",
+          "sub": "route requests",
+          "kind": "service",
+          "x": 225,
+          "y": 175
+        },
+        {
+          "id": "plan",
+          "label": "Route planner",
+          "sub": "coolest, safest path",
+          "kind": "service",
+          "x": 420,
+          "y": 50
+        },
+        {
+          "id": "gate",
+          "label": "Safety logic gate",
+          "sub": "100% branch coverage",
+          "kind": "gate",
+          "x": 420,
+          "y": 175
+        },
+        {
+          "id": "risk",
+          "label": "Hydration risk",
+          "sub": "HR, HRV, skin temp",
+          "kind": "model",
+          "x": 420,
+          "y": 300
+        },
+        {
+          "id": "watch",
+          "label": "Smartwatch",
+          "sub": "real or simulated",
+          "kind": "ext",
+          "x": 420,
+          "y": 420
+        },
+        {
+          "id": "mapbox",
+          "label": "Mapbox",
+          "sub": "routing",
+          "kind": "ext",
+          "x": 615,
+          "y": 50
+        },
+        {
+          "id": "meteo",
+          "label": "Open-Meteo",
+          "sub": "heat",
+          "kind": "ext",
+          "x": 615,
+          "y": 175
+        },
+        {
+          "id": "nws",
+          "label": "NWS",
+          "sub": "heat advisories",
+          "kind": "ext",
+          "x": 615,
+          "y": 300
+        },
+        {
+          "id": "airnow",
+          "label": "AirNow",
+          "sub": "air quality",
+          "kind": "ext",
+          "x": 615,
+          "y": 420
+        }
+      ],
+      "edges": [
+        {
+          "from": "ui",
+          "to": "api",
+          "flow": true,
+          "both": true
+        },
+        {
+          "from": "api",
+          "to": "plan",
+          "flow": true
+        },
+        {
+          "from": "api",
+          "to": "gate",
+          "flow": true
+        },
+        {
+          "from": "api",
+          "to": "risk",
+          "flow": true
+        },
+        {
+          "from": "plan",
+          "to": "gate",
+          "flow": true
+        },
+        {
+          "from": "risk",
+          "to": "gate",
+          "flow": true
+        },
+        {
+          "from": "watch",
+          "to": "risk"
+        },
+        {
+          "from": "mapbox",
+          "to": "plan"
+        },
+        {
+          "from": "meteo",
+          "to": "gate"
+        },
+        {
+          "from": "nws",
+          "to": "gate"
+        },
+        {
+          "from": "airnow",
+          "to": "risk"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "restaurant-intelligence",
+    "title": "Restaurant Intelligence Pipeline",
+    "tagline": "Google reviews in, ranked restaurant recommendations out.",
+    "tier": "bay",
+    "status": "planned",
+    "tyre": "medium",
+    "domains": [
+      "DATA",
+      "ML"
+    ],
+    "team": null,
+    "lenses": {
+      "all": 6,
+      "swe": 7,
+      "ml": 5,
+      "data": 1
+    },
+    "problem": "Star ratings hide what reviewers actually say; recommendations should come from the review text itself.",
+    "role": null,
+    "sectors": [
+      {
+        "id": "S1",
+        "value": "3 DAGs",
+        "caption": "Airflow orchestrates ingestion, NLP scoring and recommendation refresh",
+        "best": true
+      },
+      {
+        "id": "S2",
+        "value": "BERT",
+        "caption": "review score prediction from the text"
+      },
+      {
+        "id": "S3",
+        "value": "Star schema",
+        "caption": "PostgreSQL warehouse behind a hybrid recommender and Power BI"
+      }
+    ],
+    "stack": [
+      "Python",
+      "Airflow",
+      "Spark",
+      "BERT",
+      "MongoDB",
+      "PostgreSQL",
+      "Flask",
+      "Power BI",
+      "Docker"
+    ],
+    "skills": [
+      "python",
+      "sql",
+      "flask",
+      "spark",
+      "pyspark",
+      "airflow",
+      "aws",
+      "docker",
+      "postgresql",
+      "mongodb",
+      "scikit-learn",
+      "git",
+      "rest-api"
+    ],
+    "links": {
+      "live": null,
+      "embed": null,
+      "health": null,
+      "repo": "https://github.com/kaushilnagrale/Restaurant-review-Airflow-google-etl",
+      "video": null,
+      "caseStudy": null
+    },
+    "media": {
+      "poster": null,
+      "loop": null,
+      "xrayUi": null,
+      "xrayArch": null
+    },
+    "telemetry": {
+      "provider": null,
+      "embed": null,
+      "url": null
+    },
+    "demoScope": "Flask recommender on a static data snapshot · Airflow and Spark shown in X-Ray",
+    "year": 2026,
+    "architecture": {
+      "nodes": [
+        {
+          "id": "google",
+          "label": "Google API",
+          "sub": "restaurant reviews",
+          "kind": "ext",
+          "x": 30,
+          "y": 50
+        },
+        {
+          "id": "raw",
+          "label": "Raw storage",
+          "sub": "AWS S3",
+          "kind": "store",
+          "x": 225,
+          "y": 50
+        },
+        {
+          "id": "spark",
+          "label": "Spark ETL",
+          "sub": "clean, dedupe",
+          "kind": "service",
+          "x": 420,
+          "y": 50
+        },
+        {
+          "id": "airflow",
+          "label": "Airflow",
+          "sub": "3 DAGs",
+          "kind": "service",
+          "x": 615,
+          "y": 50
+        },
+        {
+          "id": "mongo",
+          "label": "MongoDB",
+          "sub": "reviews",
+          "kind": "store",
+          "x": 420,
+          "y": 175
+        },
+        {
+          "id": "bert",
+          "label": "BERT",
+          "sub": "score prediction",
+          "kind": "model",
+          "x": 225,
+          "y": 175
+        },
+        {
+          "id": "pg",
+          "label": "PostgreSQL",
+          "sub": "star schema",
+          "kind": "store",
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "rec",
+          "label": "Recommender",
+          "sub": "hybrid + sentiment",
+          "kind": "model",
+          "x": 420,
+          "y": 300
+        },
+        {
+          "id": "api",
+          "label": "Flask API",
+          "sub": "REST",
+          "kind": "service",
+          "x": 615,
+          "y": 300
+        },
+        {
+          "id": "bi",
+          "label": "Power BI",
+          "sub": "dashboards",
+          "kind": "client",
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "ui",
+          "label": "Web UI",
+          "sub": "recommendations",
+          "kind": "client",
+          "x": 615,
+          "y": 420
+        }
+      ],
+      "edges": [
+        {
+          "from": "google",
+          "to": "raw",
+          "flow": true
+        },
+        {
+          "from": "raw",
+          "to": "spark",
+          "flow": true
+        },
+        {
+          "from": "airflow",
+          "to": "spark"
+        },
+        {
+          "from": "spark",
+          "to": "mongo",
+          "flow": true
+        },
+        {
+          "from": "mongo",
+          "to": "bert",
+          "flow": true
+        },
+        {
+          "from": "bert",
+          "to": "pg",
+          "flow": true
+        },
+        {
+          "from": "pg",
+          "to": "rec",
+          "flow": true
+        },
+        {
+          "from": "rec",
+          "to": "api",
+          "flow": true
+        },
+        {
+          "from": "api",
+          "to": "ui",
+          "flow": true
+        },
+        {
+          "from": "pg",
+          "to": "bi"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "projectflow",
+    "title": "ProjectFlow",
+    "tagline": "Project management with permissions that never leak.",
+    "tier": "bay",
+    "status": "planned",
+    "tyre": "soft",
+    "domains": [
+      "SWE"
+    ],
+    "team": {
+      "size": 1,
+      "myPart": null
+    },
+    "lenses": {
+      "all": 7,
+      "swe": 3,
+      "ml": 8,
+      "data": 7
+    },
+    "problem": "In shared workspaces, a 403 still tells an outsider that a project exists.",
+    "role": "Solo",
+    "sectors": [
+      {
+        "id": "S1",
+        "value": "2 tiers",
+        "caption": "RBAC, with a demo account for each"
+      },
+      {
+        "id": "S2",
+        "value": "404, not 403",
+        "caption": "resource existence is never revealed",
+        "best": true
+      },
+      {
+        "id": "S3",
+        "value": "Immutable",
+        "caption": "append only activity log"
+      }
+    ],
+    "stack": [
+      "Next.js 14",
+      "FastAPI",
+      "PostgreSQL",
+      "WebSockets",
+      "Docker Compose"
+    ],
+    "skills": [
+      "python",
+      "sql",
+      "js-ts",
+      "fastapi",
+      "nextjs",
+      "postgresql",
+      "docker",
+      "jwt",
+      "rest-api",
+      "git"
+    ],
+    "links": {
+      "live": null,
+      "embed": null,
+      "health": null,
+      "repo": "https://github.com/kaushilnagrale/SaaS-project-management-platform",
+      "video": null,
+      "caseStudy": null
+    },
+    "media": {
+      "poster": null,
+      "loop": null,
+      "xrayUi": null,
+      "xrayArch": null
+    },
+    "telemetry": {
+      "provider": null,
+      "embed": null,
+      "url": null
+    },
+    "demoScope": "Two demo accounts · switch user to feel the permission model",
+    "year": 2026,
+    "architecture": {
+      "nodes": [
+        {
+          "id": "ws",
+          "label": "WebSocket hub",
+          "sub": "live task updates",
+          "kind": "stream",
+          "x": 225,
+          "y": 50
+        },
+        {
+          "id": "ui",
+          "label": "Next.js 14",
+          "sub": "kanban board",
+          "kind": "client",
+          "x": 30,
+          "y": 175
+        },
+        {
+          "id": "api",
+          "label": "FastAPI",
+          "sub": "REST + WebSockets",
+          "kind": "service",
+          "x": 225,
+          "y": 175
+        },
+        {
+          "id": "rbac",
+          "label": "Authorization",
+          "sub": "two tier RBAC",
+          "kind": "gate",
+          "x": 420,
+          "y": 175
+        },
+        {
+          "id": "pg",
+          "label": "PostgreSQL",
+          "sub": "projects, tasks",
+          "kind": "store",
+          "x": 615,
+          "y": 175
+        },
+        {
+          "id": "nf",
+          "label": "404, not 403",
+          "sub": "existence never leaks",
+          "kind": "gate",
+          "x": 420,
+          "y": 300
+        },
+        {
+          "id": "log",
+          "label": "Activity log",
+          "sub": "append only",
+          "kind": "store",
+          "x": 615,
+          "y": 300
+        }
+      ],
+      "edges": [
+        {
+          "from": "ui",
+          "to": "api",
+          "flow": true,
+          "both": true
+        },
+        {
+          "from": "api",
+          "to": "rbac",
+          "flow": true
+        },
+        {
+          "from": "rbac",
+          "to": "pg",
+          "flow": true,
+          "label": "allowed"
+        },
+        {
+          "from": "rbac",
+          "to": "nf",
+          "label": "denied"
+        },
+        {
+          "from": "pg",
+          "to": "log",
+          "label": "on write"
+        },
+        {
+          "from": "api",
+          "to": "ws"
+        },
+        {
+          "from": "ws",
+          "to": "ui",
+          "flow": true
+        }
+      ]
+    }
+  },
+  {
+    "slug": "glof",
+    "title": "GLOF Early Warning System",
+    "tagline": "Glacial lake outburst flood monitoring from orbit.",
+    "tier": "bay",
+    "status": "planned",
+    "tyre": "medium",
+    "domains": [
+      "ML",
+      "DATA"
+    ],
+    "team": null,
+    "lenses": {
+      "all": 8,
+      "swe": 8,
+      "ml": 2,
+      "data": 5
+    },
+    "problem": "Moraine-dammed glacial lakes at 4,500 to 5,200 m can burst with little warning, and few are watched on the ground.",
+    "role": null,
+    "sectors": [
+      {
+        "id": "S1",
+        "value": "3 tiers",
+        "caption": "alerts at 15%, 25% and 40% lake-area growth",
+        "best": true
+      },
+      {
+        "id": "S2",
+        "value": "3 sensors",
+        "caption": "Sentinel-2 optical, Sentinel-1 SAR and daily MODIS"
+      },
+      {
+        "id": "S3",
+        "value": "U-Net",
+        "caption": "ResNet-34 encoder segments the water body"
+      }
+    ],
+    "stack": [
+      "Python",
+      "PyTorch",
+      "U-Net",
+      "Earth Engine",
+      "OpenCV",
+      "Plotly Dash",
+      "Docker"
+    ],
+    "skills": [
+      "python",
+      "pytorch",
+      "unet",
+      "opencv",
+      "docker",
+      "git"
+    ],
+    "links": {
+      "live": null,
+      "embed": null,
+      "health": null,
+      "repo": "https://github.com/kaushilnagrale/Real-time-lake-flood-detection",
+      "video": null,
+      "caseStudy": null
+    },
+    "media": {
+      "poster": null,
+      "loop": null,
+      "xrayUi": null,
+      "xrayArch": null
+    },
+    "telemetry": {
+      "provider": null,
+      "embed": null,
+      "url": null
+    },
+    "demoScope": "Monitors Imja Tsho and Tsho Rolpa (Nepal) and South Lhonak (Sikkim)",
+    "year": 2026,
+    "architecture": {
+      "nodes": [
+        {
+          "id": "s2",
+          "label": "Sentinel-2 / 1",
+          "sub": "optical + SAR",
+          "kind": "ext",
+          "x": 30,
+          "y": 50
+        },
+        {
+          "id": "modis",
+          "label": "MODIS",
+          "sub": "daily",
+          "kind": "ext",
+          "x": 30,
+          "y": 175
+        },
+        {
+          "id": "gee",
+          "label": "Earth Engine",
+          "sub": "scene download",
+          "kind": "service",
+          "x": 225,
+          "y": 50
+        },
+        {
+          "id": "pre",
+          "label": "Preprocess",
+          "sub": "reproject, clip, filter",
+          "kind": "service",
+          "x": 420,
+          "y": 50
+        },
+        {
+          "id": "unet",
+          "label": "U-Net",
+          "sub": "ResNet-34 encoder",
+          "kind": "model",
+          "x": 615,
+          "y": 50
+        },
+        {
+          "id": "edge",
+          "label": "Boundary",
+          "sub": "OpenCV contours",
+          "kind": "service",
+          "x": 615,
+          "y": 175
+        },
+        {
+          "id": "ts",
+          "label": "Area time series",
+          "sub": "rolling median",
+          "kind": "store",
+          "x": 420,
+          "y": 175
+        },
+        {
+          "id": "alert",
+          "label": "3-tier alerts",
+          "sub": "15 · 25 · 40% growth",
+          "kind": "gate",
+          "x": 225,
+          "y": 175
+        },
+        {
+          "id": "notify",
+          "label": "Email + webhooks",
+          "sub": "Slack, Teams",
+          "kind": "ext",
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "dash",
+          "label": "Plotly Dash",
+          "sub": "map, series, alert feed",
+          "kind": "client",
+          "x": 420,
+          "y": 300
+        }
+      ],
+      "edges": [
+        {
+          "from": "s2",
+          "to": "gee",
+          "flow": true
+        },
+        {
+          "from": "modis",
+          "to": "gee",
+          "flow": true
+        },
+        {
+          "from": "gee",
+          "to": "pre",
+          "flow": true
+        },
+        {
+          "from": "pre",
+          "to": "unet",
+          "flow": true
+        },
+        {
+          "from": "unet",
+          "to": "edge",
+          "flow": true
+        },
+        {
+          "from": "edge",
+          "to": "ts",
+          "flow": true
+        },
+        {
+          "from": "ts",
+          "to": "alert",
+          "flow": true
+        },
+        {
+          "from": "alert",
+          "to": "notify",
+          "flow": true
+        },
+        {
+          "from": "ts",
+          "to": "dash"
+        },
+        {
+          "from": "alert",
+          "to": "dash",
+          "flow": true
+        }
+      ]
+    }
+  },
+  {
+    "slug": "lakehouse",
+    "title": "Real-Time Analytics Lakehouse",
+    "tagline": "A streaming medallion lakehouse, bronze to gold in real time.",
+    "tier": "grid",
+    "status": "planned",
+    "tyre": "hard",
+    "domains": [
+      "DATA"
+    ],
+    "team": {
+      "size": 1,
+      "myPart": null
+    },
+    "lenses": {
+      "all": 6,
+      "swe": 7,
+      "ml": 5,
+      "data": 1
+    },
+    "problem": "Batch dashboards are a day late; analysts need fresh numbers they can still trust.",
+    "role": "Solo",
+    "sectors": [
+      {
+        "id": "S1",
+        "value": "Streaming",
+        "caption": "Kafka → Spark Structured Streaming → Delta Lake",
+        "best": true
+      },
+      {
+        "id": "S2",
+        "value": "Gated",
+        "caption": "Great Expectations quality checks between layers"
+      },
+      {
+        "id": "S3",
+        "value": "Observed",
+        "caption": "Prometheus + Grafana"
+      }
+    ],
+    "stack": [
+      "Spark",
+      "Delta Lake",
+      "Kafka",
+      "Airflow",
+      "FastAPI",
+      "Great Expectations",
+      "Prometheus",
+      "Grafana",
+      "Docker"
+    ],
+    "skills": [
+      "python",
+      "sql",
+      "fastapi",
+      "spark",
+      "structured-streaming",
+      "pyspark",
+      "kafka",
+      "airflow",
+      "delta-lake",
+      "great-expectations",
+      "docker",
+      "prometheus",
+      "grafana",
+      "event-driven",
+      "rest-api",
+      "git"
+    ],
+    "links": {
+      "live": null,
+      "embed": null,
+      "health": null,
+      "repo": "https://github.com/kaushilnagrale/realtime-lakehouse-plat",
+      "video": null,
+      "caseStudy": null
+    },
+    "media": {
+      "poster": null,
+      "loop": null,
+      "xrayUi": null,
+      "xrayArch": null
+    },
+    "telemetry": {
+      "provider": "Grafana",
+      "embed": null,
+      "url": null
+    },
+    "demoScope": "Recorded run · events flowing bronze to gold, a quality check quarantining bad rows",
+    "year": 2026,
+    "architecture": {
+      "nodes": [
+        {
+          "id": "prod",
+          "label": "Producers",
+          "sub": "event streams",
+          "kind": "ext",
+          "x": 20,
+          "y": 40,
+          "w": 140
+        },
+        {
+          "id": "kafka",
+          "label": "Kafka",
+          "sub": "ingest",
+          "kind": "stream",
+          "x": 175,
+          "y": 40,
+          "w": 140
+        },
+        {
+          "id": "spark",
+          "label": "Spark",
+          "sub": "Structured Streaming",
+          "kind": "service",
+          "x": 330,
+          "y": 40,
+          "w": 140
+        },
+        {
+          "id": "airflow",
+          "label": "Airflow",
+          "sub": "orchestration",
+          "kind": "service",
+          "x": 640,
+          "y": 40,
+          "w": 140
+        },
+        {
+          "id": "bronze",
+          "label": "Bronze",
+          "sub": "raw, Delta",
+          "kind": "store",
+          "x": 20,
+          "y": 190,
+          "w": 140
+        },
+        {
+          "id": "ge1",
+          "label": "Quality gate",
+          "sub": "Great Expectations",
+          "kind": "gate",
+          "x": 175,
+          "y": 190,
+          "w": 140
+        },
+        {
+          "id": "silver",
+          "label": "Silver",
+          "sub": "clean, deduped",
+          "kind": "store",
+          "x": 330,
+          "y": 190,
+          "w": 140
+        },
+        {
+          "id": "ge2",
+          "label": "Quality gate",
+          "sub": "Great Expectations",
+          "kind": "gate",
+          "x": 485,
+          "y": 190,
+          "w": 140
+        },
+        {
+          "id": "gold",
+          "label": "Gold",
+          "sub": "aggregates",
+          "kind": "store",
+          "x": 640,
+          "y": 190,
+          "w": 140
+        },
+        {
+          "id": "quar",
+          "label": "Quarantine",
+          "sub": "bad rows",
+          "kind": "store",
+          "x": 175,
+          "y": 320,
+          "w": 140
+        },
+        {
+          "id": "api",
+          "label": "FastAPI",
+          "sub": "serving layer",
+          "kind": "service",
+          "x": 640,
+          "y": 320,
+          "w": 140
+        },
+        {
+          "id": "prom",
+          "label": "Prometheus",
+          "sub": "pipeline metrics",
+          "kind": "service",
+          "x": 330,
+          "y": 430,
+          "w": 140
+        },
+        {
+          "id": "graf",
+          "label": "Grafana",
+          "sub": "dashboards",
+          "kind": "client",
+          "x": 485,
+          "y": 430,
+          "w": 140
+        }
+      ],
+      "edges": [
+        {
+          "from": "prod",
+          "to": "kafka",
+          "flow": true
+        },
+        {
+          "from": "kafka",
+          "to": "spark",
+          "flow": true
+        },
+        {
+          "from": "airflow",
+          "to": "spark"
+        },
+        {
+          "from": "spark",
+          "to": "bronze",
+          "flow": true
+        },
+        {
+          "from": "bronze",
+          "to": "ge1",
+          "flow": true
+        },
+        {
+          "from": "ge1",
+          "to": "silver",
+          "flow": true
+        },
+        {
+          "from": "silver",
+          "to": "ge2",
+          "flow": true
+        },
+        {
+          "from": "ge2",
+          "to": "gold",
+          "flow": true
+        },
+        {
+          "from": "ge1",
+          "to": "quar"
+        },
+        {
+          "from": "ge2",
+          "to": "quar"
+        },
+        {
+          "from": "gold",
+          "to": "api",
+          "flow": true
+        },
+        {
+          "from": "prom",
+          "to": "graf"
+        }
+      ]
+    },
+    "oneLine": "Streaming medallion lakehouse: Kafka into Spark Structured Streaming and Delta Lake, with Great Expectations gates and Prometheus + Grafana."
+  },
+  {
+    "slug": "ai-claims",
+    "title": "AI Health Insurance Claims",
+    "tagline": "Fraud scoring, triage and survival modeling for health claims.",
+    "tier": "grid",
+    "status": "planned",
+    "tyre": "soft",
+    "domains": [
+      "ML",
+      "DATA"
+    ],
+    "team": {
+      "size": 1,
+      "myPart": null
+    },
+    "lenses": {
+      "all": 4,
+      "swe": 6,
+      "ml": 2,
+      "data": 3
+    },
+    "problem": "Claims teams review by hand; they need fraud flags, triage and time-to-settle estimates they can explain.",
+    "role": "Solo",
+    "sectors": [
+      {
+        "id": "S1",
+        "value": "0.94",
+        "caption": "AUC, XGBoost fraud model",
+        "best": true
+      },
+      {
+        "id": "S2",
+        "value": "0.87",
+        "caption": "F1, LightGBM triage"
+      },
+      {
+        "id": "S3",
+        "value": "0.78",
+        "caption": "C-index, Cox PH survival model"
+      }
+    ],
+    "stack": [
+      "Python",
+      "XGBoost",
+      "LightGBM",
+      "Cox PH",
+      "LangChain",
+      "ChromaDB",
+      "Claude",
+      "MLflow",
+      "Streamlit"
+    ],
+    "skills": [
+      "python",
+      "fastapi",
+      "docker",
+      "redis",
+      "mlflow",
+      "pytorch",
+      "scikit-learn",
+      "xgboost",
+      "lightgbm",
+      "rag",
+      "llms",
+      "chromadb",
+      "rest-api",
+      "git"
+    ],
+    "links": {
+      "live": null,
+      "embed": null,
+      "health": null,
+      "repo": "https://github.com/kaushilnagrale/health-insurance-claim-AI",
+      "video": null,
+      "caseStudy": null
+    },
+    "media": {
+      "poster": null,
+      "loop": null,
+      "xrayUi": null,
+      "xrayArch": null
+    },
+    "telemetry": {
+      "provider": null,
+      "embed": null,
+      "url": null
+    },
+    "demoScope": "Synthetic claims · assistant limited to 5 questions per session",
+    "year": 2026,
+    "architecture": {
+      "nodes": [
+        {
+          "id": "ui",
+          "label": "Streamlit app",
+          "sub": "claims analyst",
+          "kind": "client",
+          "x": 30,
+          "y": 175
+        },
+        {
+          "id": "api",
+          "label": "FastAPI",
+          "sub": "scoring API",
+          "kind": "service",
+          "x": 225,
+          "y": 175
+        },
+        {
+          "id": "fraud",
+          "label": "Fraud scoring",
+          "sub": "XGBoost · AUC 0.94",
+          "kind": "model",
+          "x": 420,
+          "y": 50
+        },
+        {
+          "id": "triage",
+          "label": "Triage",
+          "sub": "LightGBM · F1 0.87",
+          "kind": "model",
+          "x": 420,
+          "y": 175
+        },
+        {
+          "id": "surv",
+          "label": "Survival",
+          "sub": "Cox PH · C-index 0.78",
+          "kind": "model",
+          "x": 420,
+          "y": 300
+        },
+        {
+          "id": "mlflow",
+          "label": "MLflow",
+          "sub": "tracking, registry",
+          "kind": "store",
+          "x": 615,
+          "y": 175
+        },
+        {
+          "id": "rag",
+          "label": "RAG assistant",
+          "sub": "LangChain",
+          "kind": "model",
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "chroma",
+          "label": "ChromaDB",
+          "sub": "vector store",
+          "kind": "store",
+          "x": 225,
+          "y": 420
+        },
+        {
+          "id": "llm",
+          "label": "Claude",
+          "sub": "capped per session",
+          "kind": "ext",
+          "x": 420,
+          "y": 420
+        }
+      ],
+      "edges": [
+        {
+          "from": "ui",
+          "to": "api",
+          "flow": true
+        },
+        {
+          "from": "api",
+          "to": "fraud",
+          "flow": true
+        },
+        {
+          "from": "api",
+          "to": "triage",
+          "flow": true
+        },
+        {
+          "from": "api",
+          "to": "surv",
+          "flow": true
+        },
+        {
+          "from": "fraud",
+          "to": "mlflow"
+        },
+        {
+          "from": "triage",
+          "to": "mlflow"
+        },
+        {
+          "from": "surv",
+          "to": "mlflow"
+        },
+        {
+          "from": "ui",
+          "to": "rag",
+          "flow": true
+        },
+        {
+          "from": "rag",
+          "to": "chroma"
+        },
+        {
+          "from": "rag",
+          "to": "llm",
+          "flow": true
+        }
+      ]
+    },
+    "oneLine": "Solo build: fraud scoring (XGBoost, AUC ~0.94), claims triage (LightGBM, F1 ~0.87), survival modeling (Cox PH, C-index ~0.78) and a RAG assistant."
+  },
+  {
+    "slug": "lan-duel",
+    "title": "LAN Duel",
+    "oneLine": "Real time head to head NeetCode 150 battles (race, timed and best of N) with a Docker sandboxed Python judge.",
+    "tier": "grid",
+    "status": "planned",
+    "domains": [
+      "SWE"
+    ],
+    "stack": [
+      "FastAPI",
+      "Docker",
+      "Python"
+    ],
+    "skills": [
+      "python",
+      "fastapi",
+      "docker",
+      "rest-api"
+    ],
+    "links": {
+      "live": null,
+      "repo": null,
+      "video": null
+    },
+    "year": null
+  },
+  {
+    "slug": "exam-portal",
+    "title": "Online Exam & Recruitment Portal",
+    "oneLine": "Spring Boot + React exam and recruitment system with JWT auth, an admin console for question banks and a student exam view.",
+    "tier": "grid",
+    "status": "none",
+    "domains": [
+      "SWE"
+    ],
+    "stack": [
+      "Java",
+      "Spring Boot",
+      "JWT",
+      "React",
+      "MySQL"
+    ],
+    "skills": [
+      "java",
+      "sql",
+      "js-ts",
+      "spring-boot",
+      "react",
+      "mysql",
+      "spring-security",
+      "spring-data-jpa",
+      "jwt",
+      "rest-api",
+      "git"
+    ],
+    "links": {
+      "live": null,
+      "repo": "https://github.com/kaushilnagrale/Online-Recruitment-management-exam-portal-system",
+      "video": null
+    },
+    "year": 2026
+  }
+]

@@ -1,0 +1,144 @@
+{
+  "sectors": [
+    {
+      "id": "S1",
+      "name": "Mechanical"
+    },
+    {
+      "id": "S2",
+      "name": "Industry"
+    },
+    {
+      "id": "S3",
+      "name": "ASU"
+    }
+  ],
+  "corners": [
+    {
+      "id": "T1",
+      "sector": "S1",
+      "date": "2017",
+      "title": "BE Mechanical Engineering begins",
+      "org": "RV College of Engineering, Bangalore",
+      "points": []
+    },
+    {
+      "id": "T2",
+      "sector": "S1",
+      "date": "2021",
+      "title": "CFD + Arduino MQ-3 alcohol sensor thesis",
+      "org": "RVCE",
+      "points": [
+        {
+          "text": "Used ANSYS Fluent to find where an alcohol sensor should sit inside a car cabin, then built it on an Arduino.",
+          "tag": "MECH"
+        }
+      ]
+    },
+    {
+      "id": "T3",
+      "sector": "S1",
+      "date": "2021",
+      "title": "1st place, NIT Trichy · graduates with GPA 8.54",
+      "org": "RVCE",
+      "points": [
+        {
+          "text": "Team lead of 3 on a floating waste collector boat.",
+          "tag": "MECH"
+        }
+      ]
+    },
+    {
+      "id": "T4",
+      "sector": "S2",
+      "date": "Sep 2021 – Jan 2024",
+      "title": "Software Engineer",
+      "org": "Cognizant Technology Solutions",
+      "points": [
+        {
+          "text": "Developed an e-commerce web application for a UK tyre distributor and major retailer, integrating third-party payments and loyalty rewards to process orders for 8.6M+ active app users.",
+          "tag": "SWE"
+        },
+        {
+          "text": "Played a key role in decomposing a monolithic billing service into Spring Boot microservices on Azure Kubernetes Service, using saga orchestration and Kafka events with the transactional outbox pattern.",
+          "tag": "SWE"
+        },
+        {
+          "text": "Cut p95 checkout latency from 850 ms to 510 ms by parallelising independent downstream calls, tightening timeouts with circuit breakers and caching hot pricing and catalog lookups in Redis.",
+          "tag": "SWE"
+        },
+        {
+          "text": "Automated delivery through Azure DevOps pipelines, Docker image builds and blue green rollouts across 6 services, cutting deployment time from 5 hours to 30 minutes.",
+          "tag": "SWE"
+        }
+      ],
+      "skills": [
+        "java",
+        "spring-boot",
+        "microservices",
+        "event-driven",
+        "saga",
+        "outbox",
+        "circuit-breakers",
+        "kafka",
+        "redis",
+        "azure",
+        "kubernetes",
+        "cicd",
+        "docker",
+        "git",
+        "sql",
+        "adf",
+        "synapse",
+        "pyspark"
+      ]
+    },
+    {
+      "id": "T5",
+      "sector": "S3",
+      "date": "Aug 2024 – May 2026",
+      "title": "Software Engineer (Part Time)",
+      "org": "Arizona State University · alongside the MS",
+      "points": [
+        {
+          "text": "Developed barcode-based equipment tracking into a Spring Boot and React inventory platform using Claude Code, reducing processing time by 31% across a 254,000 sq ft venue hosting 10,000+ events a year.",
+          "tag": "SWE"
+        },
+        {
+          "text": "Integrated booking and reservation data through REST APIs to generate room-setup diagrams and equipment-usage reporting, cutting event-planning manual effort by an estimated 64%.",
+          "tag": "DATA"
+        },
+        {
+          "text": "Implemented role based access control with Spring Security and JWT, securing check in, scheduling and reporting workflows.",
+          "tag": "SWE"
+        }
+      ],
+      "skills": [
+        "java",
+        "spring-boot",
+        "react",
+        "spring-security",
+        "jwt",
+        "rest-api",
+        "claude-code"
+      ]
+    },
+    {
+      "id": "T6",
+      "sector": "S3",
+      "date": "Apr 2026",
+      "title": "Fan Favorite, Kiro Spark Challenge",
+      "org": "PulseRoute · team of 3",
+      "points": [],
+      "project": "pulseroute"
+    },
+    {
+      "id": "T7",
+      "sector": "S3",
+      "date": "May 2026",
+      "title": "MS complete · GPA 3.9 · $10K NAMU Scholarship",
+      "org": "Arizona State University",
+      "points": []
+    }
+  ]
+}

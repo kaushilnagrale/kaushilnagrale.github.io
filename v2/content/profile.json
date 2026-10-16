@@ -1,0 +1,29 @@
+{
+  "name": "Kaushil Nagrale",
+  "initials": "K. NAGRALE",
+  "kicker": "Software engineer · Data · ML · Tempe, AZ",
+  "headline": "Mechanical engineer by training, software and data engineer by trade. I take raw, messy data and build the pipelines, backends and models that turn it into products people rely on.",
+  "oneLine": "Software engineer building Spring Boot microservices, data pipelines and LLM/RAG systems on Azure and AWS.",
+  "role": "Software Engineer",
+  "company": null,
+  "availability": "Open to software, data and ML roles",
+  "location": "Tempe, AZ",
+  "timeZone": "America/Phoenix",
+  "email": "kaushil.nagrale@gmail.com",
+  "photo": "/photos/kaushil.jpg",
+  "links": {
+    "github": "https://github.com/kaushilnagrale",
+    "linkedin": "https://www.linkedin.com/in/kaushilnagrale/",
+    "booking": null
+  },
+  "radio": "Team radio is open. Tell me what you are building, what is breaking, or what role you are hiring for.",
+  "photos": [
+    {
+      "src": "/photos/kaushil.jpg",
+      "alt": "Kaushil in sunglasses and a white jacket, standing in front of a colourful carved stone mural",
+      "place": null,
+      "year": null,
+      "caption": null
+    }
+  ]
+}

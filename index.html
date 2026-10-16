@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kaushil Nagrale </title>
+  <title>Kaushil Nagrale · Software Engineer</title>
+  <meta name="description" content="Kaushil Nagrale, Software Engineer in Tempe, AZ. Spring Boot microservices, data pipelines and LLM/RAG systems on Azure and AWS.">
+  <meta property="og:title" content="Kaushil Nagrale · Software Engineer">
+  <meta property="og:description" content="Spring Boot microservices, data pipelines and LLM/RAG systems. Projects, experience and resume.">
+  <meta property="og:image" content="https://kaushilnagrale.github.io/images/og.png">
+  <meta property="og:url" content="https://kaushilnagrale.github.io/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -601,6 +609,10 @@
       color: var(--accent);
     }
 
+    /* Dark logos are invisible on the dark background */
+    img[alt="Flask"], img[alt="Kafka"] { filter: invert(1) brightness(1.2); }
+    .icon-item:hover img[alt="Flask"], .icon-item:hover img[alt="Kafka"] { filter: invert(1) brightness(1.3); }
+
     .stack-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -933,7 +945,7 @@
     }
 
     .contact-desc {
-      color: var(--text-dim);
+      color: #B8BFCC;
       max-width: 500px;
       margin: 0 auto 40px;
       line-height: 1.8;
@@ -968,7 +980,7 @@
 
     .contact-card .c-label {
       font-size: 0.7rem;
-      color: var(--text-dim);
+      color: #B8BFCC;
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
@@ -1560,6 +1572,130 @@
 
     .chatbot-input button svg { width: 18px; height: 18px; color: var(--bg); }
 
+    /* --- Experience role cards --- */
+    .exp-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .exp-card-content p.exp-summary {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    .exp-card.current .exp-badge {
+      background: rgba(66, 212, 245, 0.08);
+      border-color: rgba(66, 212, 245, 0.3);
+      color: var(--accent2);
+    }
+
+    /* --- Project links row --- */
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: auto;
+    }
+
+    .project-links .project-link { margin-top: 0; }
+
+    .project-note {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-family: var(--mono);
+      margin-top: auto;
+    }
+
+    /* --- Awards strip --- */
+    .awards-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .award-item {
+      padding: 22px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+    }
+
+    .award-item .award-kind {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .award-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .award-item p {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    /* --- Education --- */
+    .edu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 32px 36px;
+      margin-bottom: 28px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .edu-row h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      letter-spacing: -0.01em;
+    }
+
+    .edu-row p {
+      color: var(--text-dim);
+      font-size: 0.92rem;
+      margin-top: 4px;
+    }
+
+    .cw-details summary {
+      cursor: pointer;
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 24px;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .cw-details summary::-webkit-details-marker { display: none; }
+    .cw-details summary::before { content: '+'; font-family: var(--mono); color: var(--accent); }
+    .cw-details[open] summary::before { content: '−'; }
+    .cw-details summary:hover { border-color: var(--accent); color: var(--accent); }
+
     /* --- Responsive --- */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
@@ -1570,6 +1706,7 @@
       .stat-row { grid-template-columns: 1fr 1fr; }
       .exp-card-content { padding: 28px 24px; }
       .exp-intro { padding: 28px 24px; }
+      .edu-card { padding: 28px 24px; }
       .cw-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
       .hero-photo { width: 170px; height: 170px; }
     }
@@ -1634,7 +1771,7 @@
       <li><a href="#experience">Experience</a></li>
       <li><a href="#stack">Stack</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#coursework">Coursework</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#contact" class="nav-resume">Connect</a>
@@ -1648,7 +1785,7 @@
     <a href="#experience" onclick="document.getElementById('mobileMenu').classList.remove('open')">Experience</a>
     <a href="#stack" onclick="document.getElementById('mobileMenu').classList.remove('open')">Stack</a>
     <a href="#projects" onclick="document.getElementById('mobileMenu').classList.remove('open')">Projects</a>
-    <a href="#coursework" onclick="document.getElementById('mobileMenu').classList.remove('open')">Coursework</a>
+    <a href="#education" onclick="document.getElementById('mobileMenu').classList.remove('open')">Education</a>
     <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
   </div>
 
@@ -1665,17 +1802,17 @@
         <img src="images/avatar.JPEG" alt="Kaushil Nagrale" onerror="this.style.display='none'; this.parentElement.querySelector('.hero-photo-fallback').style.display='flex';" />
         <div class="hero-photo-fallback" style="display:none;">KN</div>
       </div>
-      <div class="hero-label">Software · Data · ML</div>
+      <div class="hero-label">Software Engineer · Data · ML</div>
       <h1>Kaushil <em>Nagrale</em></h1>
       <p class="hero-desc">
-        Software and data developer with 3 years of hands-on experience designing and shipping intelligent, data-driven systems across NLP, LLMs, IoT, and computer vision — on AWS &amp; Azure.
+        Software Engineer. 3+ years building Spring Boot microservices, data pipelines and LLM/RAG systems on Azure and AWS. Open to software, data and ML roles.
       </p>
       <div class="hero-cta">
         <a href="#projects" class="btn-primary">View Projects <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
         <a href="#contact" class="btn-secondary">Get In Touch</a>
       </div>
       <div style="margin-top:1.2rem;">
-        <a href="resume/Kaushil_Nagrale_Resume.pdf" download class="btn-secondary" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.9rem;">
+        <a href="resume/Kaushil_Resume.pdf" download class="btn-secondary" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.9rem;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download Resume
         </a>
@@ -1699,24 +1836,24 @@
     </div>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>I'm a software and data developer with <strong>3 years of hands-on experience</strong> designing and shipping intelligent, data-driven systems across <strong>NLP, LLM applications, IoT, and computer vision</strong>. My toolkit spans the full stack of modern data and backend engineering — Spring Boot (Java) and Python for application and pipeline development, and a data science stack covering NumPy, Pandas, scikit-learn, TensorFlow, and PyTorch for modeling and experimentation. I work across AWS and Azure using native SDKs, and reach for Jupyter, MLflow, and HuggingFace when the work calls for it.</p>
-        <p>I've built RESTful APIs, automated data workflows, and storage layers using <strong>PostgreSQL/MySQL</strong> and NoSQL — applied across domains from real-time sensor ingestion and edge inference to LLM integrations and vision-based processing. I also did part-time web development during university, which rounded out my full-stack instincts. My undergraduate background in <strong>mechanical engineering</strong> gives me a useful systems-thinking lens. Currently wrapping up my final semester at <strong>ASU</strong>, based in Tempe, AZ.</p>
+        <p>I'm a software engineer with <strong>3 years of hands-on experience</strong> designing and shipping intelligent, data-driven systems across <strong>NLP, LLM applications, IoT, and computer vision</strong>. My toolkit spans the full stack of modern data and backend engineering — Spring Boot (Java) and Python for application and pipeline development, and a data science stack covering NumPy, Pandas, scikit-learn, TensorFlow, and PyTorch for modeling and experimentation. I work across AWS and Azure using native SDKs, and reach for Jupyter, MLflow, and HuggingFace when the work calls for it.</p>
+        <p>I've built RESTful APIs, automated data workflows, and storage layers using <strong>PostgreSQL/MySQL</strong> and NoSQL — applied across domains from real-time sensor ingestion and edge inference to LLM integrations and vision-based processing. I also did part-time web development during university, which rounded out my full-stack instincts. My undergraduate background in <strong>mechanical engineering</strong> gives me a useful systems-thinking lens. I hold an MS in Data Science, Analytics &amp; Engineering from <strong>ASU</strong> (GPA 3.9) and am based in Tempe, AZ.</p>
         <div class="stat-row">
           <div class="stat-box">
             <div class="num">3+</div>
-            <div class="label">Years Experience</div>
+            <div class="label">Years experience</div>
           </div>
           <div class="stat-box">
-            <div class="num">12+</div>
-            <div class="label">Projects Built</div>
+            <div class="num">97.6%</div>
+            <div class="label">Recall@5, RAG capstone</div>
           </div>
           <div class="stat-box">
-            <div class="num">5+</div>
-            <div class="label">Cloud Services</div>
+            <div class="num">31%</div>
+            <div class="label">Faster equipment processing at ASU</div>
           </div>
           <div class="stat-box">
-            <div class="num">∞</div>
-            <div class="label">Curiosity</div>
+            <div class="num">3.9</div>
+            <div class="label">MS GPA, ASU</div>
           </div>
         </div>
       </div>
@@ -1755,49 +1892,60 @@
       <div class="section-line"></div>
     </div>
     <div class="exp-container">
-      <div class="exp-intro reveal">
-        <p>I'm a software and data developer with <strong>3 years of hands-on experience</strong> designing and shipping intelligent, data-driven systems across <strong>NLP, LLM applications, IoT, and computer vision</strong>. My toolkit spans the full stack of modern data and backend engineering — <strong>Spring Boot (Java) and Python</strong> for application and pipeline development, and a data science stack covering <strong>NumPy, Pandas, scikit-learn, TensorFlow, and PyTorch</strong> for modeling and experimentation. I work across <strong>AWS and Azure</strong> using native SDKs and services, and reach for tools like Jupyter, MLflow, and HuggingFace when the work calls for it.</p>
-        <p>I've built RESTful APIs, automated data workflows, and storage layers using <strong>PostgreSQL/MySQL</strong> and NoSQL stores — applied across domains from real-time sensor ingestion and edge inference to language model integrations and vision-based processing. I care about pragmatic design — <strong>reliable systems, performance at scale, and developer-friendly patterns</strong> that hold up whether it's a greenfield build or hardening an existing one.</p>
-      </div>
       <div class="exp-timeline">
         <div class="exp-card reveal">
           <div class="exp-card-accent" style="background: var(--accent);"></div>
           <div class="exp-card-content">
             <div class="exp-card-header">
               <div>
-                <h3>Software Developer</h3>
-                <p class="exp-company">Professional Experience</p>
+                <h3>Software Engineer (Part Time)</h3>
+                <p class="exp-company">Arizona State University · Tempe, USA</p>
               </div>
-              <span class="exp-badge">3 Years</span>
+              <span class="exp-badge">Aug 2024 – May 2026</span>
             </div>
             <div class="exp-highlights">
               <div class="exp-highlight-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Designed and shipped intelligent systems across <strong>NLP, LLMs, IoT, and computer vision</strong></span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Developed barcode-based equipment tracking into a <strong>Spring Boot</strong> and <strong>React</strong> inventory platform using Claude Code, reducing processing time by <strong>31%</strong> across a 254,000 sq ft venue hosting 10,000+ annual events.</span>
               </div>
               <div class="exp-highlight-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Built RESTful APIs and data pipelines with <strong>Spring Boot (Java) &amp; Python</strong> on AWS &amp; Azure</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Integrated booking and reservation data through <strong>REST APIs</strong> to generate room-setup diagrams and equipment-usage reporting, reducing event-planning manual effort by an estimated <strong>64%</strong>.</span>
               </div>
               <div class="exp-highlight-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Worked the full model lifecycle — feature engineering, training, evaluation, and <strong>production deployment</strong></span>
-              </div>
-              <div class="exp-highlight-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Storage layers using <strong>PostgreSQL/MySQL</strong> &amp; NoSQL across real-time sensor, edge, and LLM workloads</span>
-              </div>
-              <div class="exp-highlight-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Leveraged <strong>MLflow, HuggingFace, Jupyter</strong> for experimentation and model lifecycle management</span>
-              </div>
-              <div class="exp-highlight-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Mechanical engineering bachelor's background — brings domain depth to IoT, sensor systems, CFD, and embedded applications</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Implemented role based access control with <strong>Spring Security</strong> and <strong>JWT</strong>, securing check in, scheduling and reporting workflows.</span>
               </div>
             </div>
-            <div class="exp-tags">
-              <span>Spring Boot</span><span>Java</span><span>Python</span><span>AWS</span><span>Azure</span><span>TensorFlow</span><span>PyTorch</span><span>PostgreSQL</span><span>NLP/LLMs</span><span>IoT</span>
+          </div>
+        </div>
+        <div class="exp-card reveal">
+          <div class="exp-card-accent" style="background: #60a5fa;"></div>
+          <div class="exp-card-content">
+            <div class="exp-card-header">
+              <div>
+                <h3>Software Engineer</h3>
+                <p class="exp-company">Cognizant Technology Solutions · India</p>
+              </div>
+              <span class="exp-badge">Sep 2021 – Jan 2024</span>
+            </div>
+            <div class="exp-highlights">
+              <div class="exp-highlight-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Developed an <strong>e-commerce web application</strong> for a UK tyre distributor and major retailer, integrating third-party payments and loyalty rewards to process orders for <strong>8.6M+</strong> active app users.</span>
+              </div>
+              <div class="exp-highlight-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Played a key role in decomposing a monolithic billing service into <strong>Spring Boot microservices</strong> on Azure Kubernetes Service, using saga orchestration and <strong>Kafka</strong> events with the transactional outbox pattern.</span>
+              </div>
+              <div class="exp-highlight-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Cut <strong>p95 checkout latency from 850 ms to 510 ms</strong> by parallelising independent downstream calls, tightening timeouts with circuit breakers and caching hot pricing and catalog lookups in <strong>Redis</strong>.</span>
+              </div>
+              <div class="exp-highlight-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Automated delivery through <strong>Azure DevOps</strong> pipelines, <strong>Docker</strong> image builds and blue green rollouts across 6 services, cutting deployment time from <strong>5 hours to 30 minutes</strong>.</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1944,45 +2092,106 @@
 
     <div class="projects-grid" id="projectsGrid">
 
-      <!-- CliniShield Caregiver Medication Platform -->
+      <!-- CliniShield -->
       <div class="project-card reveal" data-cat="fullstack">
         <div class="project-visual">
           <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a1f33, #1e40af, #16223e);"></div>
-          <div class="project-visual-icon">💊</div>
+          <div class="project-visual-icon" aria-hidden="true">💊</div>
         </div>
         <div class="project-body">
           <div class="project-category">Full-Stack</div>
           <h3>CliniShield Caregiver Medication Platform</h3>
-          <p>Caregiver medication safety platform built on tenant-isolated Spring Boot microservices, with a drug interaction knowledge base mined from FDA labels and 12M FAERS reports, and a citation-enforced RAG assistant powered by Spring AI and pgvector.</p>
+          <p>Caregiver medication safety platform. Rebuilt the drug interaction knowledge base from FDA sources after NLM retired the RxNav interaction API: 262K labels ingested via partitioned Spring Batch and FAERS disproportionality signals over 2M rows. A citation-enforced hybrid RAG assistant runs across four microservices with three-layer tenant isolation, gated in CI by an 84-test guardrail suite.</p>
           <div class="project-tags">
-            <span>Spring Boot</span><span>Spring AI</span><span>pgvector</span><span>Kafka</span>
+            <span>Spring Boot</span><span>Spring Batch</span><span>Spring AI</span><span>pgvector</span>
           </div>
-          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          <div class="project-links">
+            <a href="https://clinishield-interactions.vercel.app" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg> Live demo</a>
+            <a href="https://github.com/kaushilnagrale/clinishield-meds-interaction-assistant" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
         </div>
       </div>
 
-      <!-- Verdant Live Plant Marketplace -->
+      <!-- Intelligent Ticketing (RAG) -->
+      <div class="project-card reveal" data-cat="ml">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a2433, #3730a3, #1c1e3e);"></div>
+          <div class="project-visual-icon" aria-hidden="true">🎫</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">ML / AI</div>
+          <h3>Hybrid RAG Intelligent Ticketing System</h3>
+          <p>Capstone. Led a team of 5 to build a 7-stage hybrid RAG pipeline over an 80K-ticket corpus (BM25 + dense retrieval, reciprocal rank fusion, cross-encoder reranking), reaching 97.6% Recall@5 on 500 evaluation queries. An LLM evaluation framework cut hallucination from 44% to 2.8% with 100% out-of-scope refusal.</p>
+          <div class="project-tags">
+            <span>RAG</span><span>FAISS</span><span>FastAPI</span><span>React</span>
+          </div>
+          <p class="project-note">Code available on request</p>
+        </div>
+      </div>
+
+      <!-- Verdant -->
       <div class="project-card reveal" data-cat="fullstack">
         <div class="project-visual">
           <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a331d, #22c55e, #163e1a);"></div>
-          <div class="project-visual-icon">🪴</div>
+          <div class="project-visual-icon" aria-hidden="true">🪴</div>
         </div>
         <div class="project-body">
           <div class="project-category">Full-Stack</div>
           <h3>Verdant Live Plant Marketplace</h3>
-          <p>Multi-nursery live plant marketplace with saga-orchestrated order flows, transit-time-optimized allocation, and a double-entry settlement ledger — built on Spring Boot and React, tuned to 180ms p99 latency at 10x festival traffic.</p>
+          <p>Multi-tenant live plant marketplace with saga-orchestrated fulfillment, transit-time-optimized seller allocation and outbox-based event delivery, plus a double-entry settlement ledger verified by jqwik property testing against full journal replay. Tuned to 180 ms p99 at 10x festival traffic.</p>
           <div class="project-tags">
             <span>Spring Boot</span><span>React</span><span>Kafka</span><span>OpenSearch</span>
           </div>
-          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          <div class="project-links">
+            <a href="https://verdant-marketplace.vercel.app" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg> Live demo</a>
+            <a href="https://github.com/kaushilnagrale/verdant-plant-marketplace" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
         </div>
       </div>
 
-      <!-- Real-Time Lakehouse Platform -->
+      <!-- AI Health Insurance Claims -->
+      <div class="project-card reveal" data-cat="ml">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #331a1f, #9f1239, #3e1620);"></div>
+          <div class="project-visual-icon" aria-hidden="true">🏥</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">ML / AI</div>
+          <h3>AI Health Insurance Claims</h3>
+          <p>Solo build: fraud scoring (XGBoost, AUC ~0.94), triage (LightGBM, F1 ~0.87), survival modeling (Cox PH, C-index ~0.78) and a RAG assistant.</p>
+          <div class="project-tags">
+            <span>XGBoost</span><span>LightGBM</span><span>LangChain</span><span>Streamlit</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/kaushilnagrale/health-insurance-claim-AI" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PulseRoute -->
+      <div class="project-card reveal" data-cat="fullstack">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #33261a, #c2410c, #3e2416);"></div>
+          <div class="project-visual-icon" aria-hidden="true">🚴</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Full-Stack</div>
+          <h3>PulseRoute</h3>
+          <p>Heat safe cycling co-pilot built with a team of 3 in under 24 hours; Fan Favorite at the Kiro Spark Challenge. Fuses Open-Meteo, NWS, AirNow and Mapbox into real time heat risk routing. I designed the architecture and PRD and built the onboarding personalization layer feeding a safety gate with 60+ unit tests at 100% branch coverage.</p>
+          <div class="project-tags">
+            <span>React</span><span>FastAPI</span><span>Leaflet</span><span>PWA</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/kaushilnagrale/kiro_challenge_ZeroToKiro" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-Time Lakehouse -->
       <div class="project-card reveal" data-cat="data">
         <div class="project-visual">
           <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a2332, #0f3460, #16213e);"></div>
-          <div class="project-visual-icon">🏗️</div>
+          <div class="project-visual-icon" aria-hidden="true">🏗️</div>
         </div>
         <div class="project-body">
           <div class="project-category">Data Engineering</div>
@@ -1991,7 +2200,66 @@
           <div class="project-tags">
             <span>Spark</span><span>Delta Lake</span><span>Kafka</span><span>Python</span>
           </div>
-          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          <div class="project-links">
+            <a href="https://github.com/kaushilnagrale/realtime-lakehouse-plat" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ProjectFlow -->
+      <div class="project-card reveal" data-cat="fullstack">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a2a33, #104a60, #16323e);"></div>
+          <div class="project-visual-icon" aria-hidden="true">📋</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Full-Stack</div>
+          <h3>ProjectFlow</h3>
+          <p>Project management with two tier RBAC, 404 instead of 403 so resources never leak, and an immutable activity log.</p>
+          <div class="project-tags">
+            <span>Next.js</span><span>FastAPI</span><span>PostgreSQL</span><span>WebSockets</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/kaushilnagrale/SaaS-project-management-platform" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- GLOF Early Warning -->
+      <div class="project-card reveal" data-cat="ml">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a2e33, #0e7490, #16353e);"></div>
+          <div class="project-visual-icon" aria-hidden="true">🏔️</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">ML / AI</div>
+          <h3>GLOF Early Warning</h3>
+          <p>Glacial lake flood detection from Sentinel-1/2 imagery with U-Net + ResNet-34 and a three tier alert system.</p>
+          <div class="project-tags">
+            <span>U-Net</span><span>Earth Engine</span><span>Plotly Dash</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/kaushilnagrale/Real-time-lake-flood-detection" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restaurant Intelligence Pipeline -->
+      <div class="project-card reveal" data-cat="data">
+        <div class="project-visual">
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #332a1a, #604a10, #3e3216);"></div>
+          <div class="project-visual-icon" aria-hidden="true">🍽️</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Data Engineering</div>
+          <h3>Restaurant Intelligence Pipeline</h3>
+          <p>End-to-end pipeline that ingests Google restaurant reviews with Airflow, cleans them with Spark, scores them with a BERT sentiment model and serves personalized recommendations through a Flask API and Power BI.</p>
+          <div class="project-tags">
+            <span>Airflow</span><span>Spark</span><span>BERT</span><span>Flask</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/kaushilnagrale/Restaurant-review-Airflow-google-etl" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
         </div>
       </div>
 
@@ -1999,7 +2267,7 @@
       <div class="project-card reveal" data-cat="ml">
         <div class="project-visual">
           <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a3322, #0f6034, #163e28);"></div>
-          <div class="project-visual-icon">🅿️</div>
+          <div class="project-visual-icon" aria-hidden="true">🅿️</div>
         </div>
         <div class="project-body">
           <div class="project-category">ML / Computer Vision</div>
@@ -2008,58 +2276,26 @@
           <div class="project-tags">
             <span>OpenCV</span><span>TensorFlow</span><span>Python</span><span>Analytics</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/Smart-Parking-Management-Analytics-Platform" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          <div class="project-links">
+            <a href="https://github.com/kaushilnagrale/Smart-Parking-Management-Analytics-Platform" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
         </div>
       </div>
 
-      <!-- Real-Time Chat Notification System -->
+      <!-- LAN Duel -->
       <div class="project-card reveal" data-cat="fullstack">
         <div class="project-visual">
-          <div class="project-visual-bg" style="background: linear-gradient(135deg, #2a1a33, #4a1060, #2e163e);"></div>
-          <div class="project-visual-icon">💬</div>
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #2a1a33, #6d28d9, #2a163e);"></div>
+          <div class="project-visual-icon" aria-hidden="true">⚔️</div>
         </div>
         <div class="project-body">
           <div class="project-category">Full-Stack</div>
-          <h3>Real-Time Chat &amp; Notification System</h3>
-          <p>Full-stack real-time chat application with WebSocket-based messaging, push notifications, user presence tracking, and scalable backend architecture.</p>
+          <h3>LAN Duel</h3>
+          <p>Real time head to head NeetCode 150 battles (race, timed and best of N) with a Docker sandboxed Python judge.</p>
           <div class="project-tags">
-            <span>Spring Boot</span><span>WebSockets</span><span>React</span><span>Redis</span>
+            <span>FastAPI</span><span>Docker</span><span>Python</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/Real-Time-Chat-Notification-System" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
-        </div>
-      </div>
-
-      <!-- Airflow Google Reviews ETL -->
-      <div class="project-card reveal" data-cat="data">
-        <div class="project-visual">
-          <div class="project-visual-bg" style="background: linear-gradient(135deg, #332a1a, #604a10, #3e3216);"></div>
-          <div class="project-visual-icon">🔄</div>
-        </div>
-        <div class="project-body">
-          <div class="project-category">Data Engineering</div>
-          <h3>Airflow Google Reviews ETL Pipeline</h3>
-          <p>Automated ETL pipeline orchestrated with Apache Airflow to extract, transform, and load Google API restaurant review data for downstream NLP analysis and recommendations.</p>
-          <div class="project-tags">
-            <span>Airflow</span><span>Python</span><span>Google API</span><span>ETL</span>
-          </div>
-          <a href="https://github.com/kaushilnagrale" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
-        </div>
-      </div>
-
-      <!-- SaaS Project Management Platform -->
-      <div class="project-card reveal" data-cat="fullstack">
-        <div class="project-visual">
-          <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a2a33, #104a60, #16323e);"></div>
-          <div class="project-visual-icon">📋</div>
-        </div>
-        <div class="project-body">
-          <div class="project-category">Full-Stack</div>
-          <h3>SaaS Project Management Platform</h3>
-          <p>Full-stack SaaS project management tool with team collaboration, task tracking, role-based access control, and real-time dashboards for agile workflows.</p>
-          <div class="project-tags">
-            <span>React</span><span>Spring Boot</span><span>PostgreSQL</span><span>Docker</span>
-          </div>
-          <a href="https://github.com/kaushilnagrale/SaaS-project-management-platform" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          <p class="project-note">Code available on request</p>
         </div>
       </div>
 
@@ -2067,33 +2303,37 @@
       <div class="project-card reveal" data-cat="fullstack">
         <div class="project-visual">
           <div class="project-visual-bg" style="background: linear-gradient(135deg, #331a2a, #601048, #3e162e);"></div>
-          <div class="project-visual-icon">🎓</div>
+          <div class="project-visual-icon" aria-hidden="true">🎓</div>
         </div>
         <div class="project-body">
           <div class="project-category">Full-Stack</div>
           <h3>Online Recruitment &amp; Exam Portal</h3>
-          <p>Comprehensive recruitment management system with online exam functionality, candidate tracking, automated scoring, and admin dashboards for streamlined hiring.</p>
+          <p>Recruitment and exam management system with a Spring Boot backend and React front end: an admin console for users, roles, question banks and exams, JWT auth, and a student view to take exams and see results.</p>
           <div class="project-tags">
-            <span>Django</span><span>PostgreSQL</span><span>JavaScript</span><span>REST API</span>
+            <span>Java</span><span>Spring Boot</span><span>JWT</span><span>React</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/Online-Recruitment-management-exam-portal-system" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          <div class="project-links">
+            <a href="https://github.com/kaushilnagrale/Online-Recruitment-management-exam-portal-system" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
         </div>
       </div>
 
-      <!-- ODI Asia Cup Predictor -->
-      <div class="project-card reveal" data-cat="ml">
+      <!-- Real-Time Chat Notification System -->
+      <div class="project-card reveal" data-cat="fullstack">
         <div class="project-visual">
-          <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a3333, #106060, #163e3e);"></div>
-          <div class="project-visual-icon">🏏</div>
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #2a1a33, #4a1060, #2e163e);"></div>
+          <div class="project-visual-icon" aria-hidden="true">💬</div>
         </div>
         <div class="project-body">
-          <div class="project-category">Machine Learning</div>
-          <h3>ODI Asia Cup Winner Predictor</h3>
-          <p>Match winner predictor powered by a TensorFlow linear regression model trained over ten epochs. Predicts 1v1 ODI Asia Cup outcomes from given match parameters.</p>
+          <div class="project-category">Full-Stack</div>
+          <h3>Real-Time Chat &amp; Notification System</h3>
+          <p>Real-time chat with 1-to-1 and group rooms over WebSockets, online presence, typing indicators, read receipts and persistent history, backed by MongoDB and Redis.</p>
           <div class="project-tags">
-            <span>Python</span><span>Flask</span><span>TensorFlow</span>
+            <span>FastAPI</span><span>WebSockets</span><span>React</span><span>Redis</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/Asia_Cup_ODI_Cricket_Winner_Predictor" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          <div class="project-links">
+            <a href="https://github.com/kaushilnagrale/Real-Time-Chat-Notification-System" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
         </div>
       </div>
 
@@ -2101,7 +2341,7 @@
       <div class="project-card reveal" data-cat="iot">
         <div class="project-visual">
           <div class="project-visual-bg" style="background: linear-gradient(135deg, #2a2a1a, #505010, #3e3e16);"></div>
-          <div class="project-visual-icon">🔌</div>
+          <div class="project-visual-icon" aria-hidden="true">🔌</div>
         </div>
         <div class="project-body">
           <div class="project-category">IoT / Embedded</div>
@@ -2110,24 +2350,28 @@
           <div class="project-tags">
             <span>Arduino</span><span>C++</span><span>MATLAB</span><span>ANSYS</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/CFD_EmbeddedSystem_Arduino_car_MQ3_sensor" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          <div class="project-links">
+            <a href="https://github.com/kaushilnagrale/CFD_EmbeddedSystem_Arduino_car_MQ3_sensor" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
         </div>
       </div>
 
-      <!-- Face and Eye Detection -->
+      <!-- ODI Asia Cup Predictor -->
       <div class="project-card reveal" data-cat="ml">
         <div class="project-visual">
-          <div class="project-visual-bg" style="background: linear-gradient(135deg, #331a25, #601040, #3e162e);"></div>
-          <div class="project-visual-icon">👁️</div>
+          <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a3333, #106060, #163e3e);"></div>
+          <div class="project-visual-icon" aria-hidden="true">🏏</div>
         </div>
         <div class="project-body">
-          <div class="project-category">Computer Vision</div>
-          <h3>Face &amp; Eye Detection</h3>
-          <p>Real-time face and eye detection application built with OpenCV cascading classifiers, served through a Flask web interface for live webcam processing.</p>
+          <div class="project-category">Machine Learning</div>
+          <h3>ODI Asia Cup Winner Predictor</h3>
+          <p>Match winner predictor powered by a TensorFlow linear regression model trained over ten epochs. Predicts 1v1 ODI Asia Cup outcomes from given match parameters.</p>
           <div class="project-tags">
-            <span>OpenCV</span><span>Flask</span><span>Python</span>
+            <span>Python</span><span>Flask</span><span>TensorFlow</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/FaceNeye_detection" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          <div class="project-links">
+            <a href="https://github.com/kaushilnagrale/Asia_Cup_ODI_Cricket_Winner_Predictor" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
         </div>
       </div>
 
@@ -2135,7 +2379,7 @@
       <div class="project-card reveal" data-cat="iot">
         <div class="project-visual">
           <div class="project-visual-bg" style="background: linear-gradient(135deg, #1a3328, #106045, #163e32);"></div>
-          <div class="project-visual-icon">⚡</div>
+          <div class="project-visual-icon" aria-hidden="true">⚡</div>
         </div>
         <div class="project-body">
           <div class="project-category">Automation</div>
@@ -2144,7 +2388,9 @@
           <div class="project-tags">
             <span>Python</span><span>Pandas</span>
           </div>
-          <a href="https://github.com/kaushilnagrale/Excel_To_Single_Line_JSON_convertor" class="project-link" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          <div class="project-links">
+            <a href="https://github.com/kaushilnagrale/Excel_To_Single_Line_JSON_convertor" class="project-link" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> View on GitHub</a>
+          </div>
         </div>
       </div>
 
@@ -2181,15 +2427,34 @@
     </div>
   </div>
 
-  <!-- Coursework -->
-  <section class="coursework-section" id="coursework">
+  <!-- Education -->
+  <section class="coursework-section" id="education">
     <div class="section-header reveal">
       <div class="section-tag">Academics</div>
-      <h2 class="section-title">Coursework</h2>
+      <h2 class="section-title">Education</h2>
       <div class="section-line"></div>
     </div>
 
     <div class="cw-container">
+      <div class="edu-card reveal">
+        <div class="edu-row">
+          <div>
+            <h3>MS, Data Science, Analytics &amp; Engineering</h3>
+            <p>Arizona State University · GPA 3.9 · $10,000 NAMU Scholarship</p>
+          </div>
+          <span class="exp-badge">2024 – 2026</span>
+        </div>
+        <div class="edu-row">
+          <div>
+            <h3>BE, Mechanical Engineering</h3>
+            <p>RV College of Engineering, Bangalore · CGPA 8.54</p>
+          </div>
+          <span class="exp-badge">2017 – 2021</span>
+        </div>
+      </div>
+
+      <details class="cw-details">
+      <summary>Relevant coursework</summary>
       <div class="cw-grid">
 
         <div class="cw-card reveal">
@@ -2249,6 +2514,45 @@
         </div>
 
       </div>
+      </details>
+    </div>
+  </section>
+
+  <div class="glow-divider"></div>
+
+  <!-- Awards & Certifications -->
+  <section class="awards-section" id="awards">
+    <div class="section-header reveal">
+      <div class="section-tag">Recognition</div>
+      <h2 class="section-title">Awards &amp; Certifications</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="awards-strip reveal">
+      <div class="award-item">
+        <div class="award-kind">Hackathon</div>
+        <h3>Fan Favorite, Kiro Spark Challenge</h3>
+        <p>PulseRoute · team of 3</p>
+      </div>
+      <div class="award-item">
+        <div class="award-kind">Competition</div>
+        <h3>1st place, NIT Trichy 2021</h3>
+        <p>Floating Waste Collector Boat · team lead</p>
+      </div>
+      <div class="award-item">
+        <div class="award-kind">Scholarship</div>
+        <h3>$10,000 NAMU Scholarship, ASU</h3>
+        <p>MS Data Science, Analytics &amp; Engineering</p>
+      </div>
+      <div class="award-item">
+        <div class="award-kind">Certification</div>
+        <h3>Microsoft Certified: Azure Developer Associate</h3>
+        <p>AZ-204</p>
+      </div>
+      <div class="award-item">
+        <div class="award-kind">Certification</div>
+        <h3>AWS Certified Developer Associate</h3>
+        <p>AWS</p>
+      </div>
     </div>
   </section>
 
@@ -2286,7 +2590,7 @@
       </a>
     </div>
     <div style="text-align:center;margin-top:2.5rem;" class="reveal">
-      <a href="resume/Kaushil_Nagrale_Resume.pdf" download class="btn-secondary" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.9rem;">
+      <a href="resume/Kaushil_Resume.pdf" download class="btn-secondary" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.9rem;">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download Resume
       </a>
@@ -2295,10 +2599,12 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <p>&copy; 2025 Kaushil Nagrale.</p>
+    <p>&copy; <span id="yr"></span> Kaushil Nagrale.</p>
   </footer>
 
   <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
     // --- Navbar scroll effect ---
     const navbar = document.getElementById('navbar');
     const backToTop = document.getElementById('backToTop');
@@ -2364,7 +2670,7 @@
         const filter = btn.dataset.filter;
 
         projectCards.forEach((card, i) => {
-          const match = filter === 'all' || card.dataset.cat === filter;
+          const match = filter === 'all' || card.dataset.cat.split(' ').includes(filter);
           card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
           if (match) {
             card.style.display = 'flex';
@@ -2405,17 +2711,17 @@
       <div class="chatbot-avatar">K</div>
       <div class="chatbot-header-text">
         <h4>Ask About Kaushil</h4>
-        <p>AI-powered · Online</p>
+        <p>Quick answers · Online</p>
       </div>
     </div>
     <div class="chatbot-messages" id="chatMessages">
       <div class="chat-msg bot">
-        Hey there! 👋 I'm Kaushil's AI assistant. Ask me anything about his skills, projects, experience, or tech stack!
+        Hey there! 👋 Ask me about Kaushil's work, projects, awards or education.
         <div class="chat-suggestions" id="chatSuggestions">
+          <button onclick="askSuggestion(this)">Has he won any hackathons?</button>
+          <button onclick="askSuggestion(this)">Where does he work?</button>
+          <button onclick="askSuggestion(this)">Is he Azure certified?</button>
           <button onclick="askSuggestion(this)">What are his skills?</button>
-          <button onclick="askSuggestion(this)">Tell me about his projects</button>
-          <button onclick="askSuggestion(this)">Work experience?</button>
-          <button onclick="askSuggestion(this)">Coursework?</button>
         </div>
       </div>
     </div>
@@ -2453,84 +2759,44 @@
       if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
     });
 
-    const KAUSHIL_CONTEXT = `You are Kaushil Nagrale's AI portfolio assistant. Answer questions about him in a friendly, concise way (2-4 sentences max). Use the following information:
+    const EMAIL = 'kaushil.nagrale@gmail.com';
 
-ABOUT:
-- Software and data developer with 3 years of hands-on experience designing and shipping intelligent, data-driven systems
-- Works across NLP, LLM applications, IoT, and computer vision
-- Toolkit: Spring Boot (Java) and Python for application/pipeline development; NumPy, Pandas, scikit-learn, TensorFlow, PyTorch for modeling
-- Works across AWS and Azure using native SDKs; reaches for Jupyter, MLflow, and HuggingFace when the work calls for it
-- Did part-time web development during university, which rounded out his full-stack instincts
-- Cares about clean interfaces, efficient queries, observable services, and developer-friendly patterns
-- Currently in his final semester at Arizona State University (ASU), based in Tempe, AZ
+    // Answered locally from a keyword list; nothing leaves the browser.
+    const REPLIES = [
+      { re: /hackathon|award|\bwin|\bwon\b|prize/,
+        a: "Kaushil's team won <strong>Fan Favorite at the Kiro Spark Challenge</strong> for PulseRoute, a heat safe cycling co-pilot. He also led a 3 person team to <strong>1st place at NIT Trichy in 2021</strong> with a floating waste collector boat." },
+      { re: /cert|azure|az-?204|aws/,
+        a: "He is a <strong>Microsoft Certified: Azure Developer Associate (AZ-204)</strong> and an <strong>AWS Certified Developer Associate</strong>." },
+      { re: /\bjob|work|current|\brole|company|experience|career/,
+        a: "Kaushil is a <strong>Software Engineer</strong>. He was a part-time Software Engineer at <strong>Arizona State University</strong> (Aug 2024 to May 2026) and a Software Engineer at <strong>Cognizant Technology Solutions</strong> (Sep 2021 to Jan 2024). He is open to software, data and ML roles." },
+      { re: /education|degree|gpa|\basu\b|university|course|study/,
+        a: "<strong>MS in Data Science, Analytics &amp; Engineering</strong> from ASU (May 2026, GPA 3.9, $10,000 NAMU Scholarship) and a <strong>BE in Mechanical Engineering</strong> from RV College of Engineering, Bangalore." },
+      { re: /skill|tech|stack|language/,
+        a: "Kaushil works with <strong>Python, Java and SQL</strong>, Spring Boot, FastAPI and React on the application side, and <strong>Spark, Kafka, Airflow and Delta Lake</strong> for data. He deploys on <strong>Azure and AWS</strong> with Docker." },
+      { re: /project/,
+        a: "Highlights include <strong>CliniShield</strong> (Spring Boot + RAG medication safety), an <strong>Intelligent Ticketing</strong> RAG pipeline with 97.6% Recall@5, <strong>Verdant</strong> (Spring Boot marketplace, 180 ms p99) and a <strong>Real-Time Lakehouse</strong> on Spark and Delta Lake. See the Projects section above." },
+      { re: /contact|reach|hire|email|linkedin/,
+        a: "Email Kaushil at <strong>" + EMAIL + "</strong>, or find him on LinkedIn at linkedin.com/in/kaushilnagrale." },
+      { re: /hobby|hobbies|interest|free time|outside|personal|fun|guitar|music|sport|football|driv/,
+        a: "Outside of work Kaushil plays <strong>guitar</strong> and <strong>football</strong>, follows F1, and loves long drives." },
+      { re: /where|location|live|tempe|city/,
+        a: "Kaushil is based in <strong>Tempe, Arizona</strong>." },
+      { re: /^(hello|hi|hey)\b/,
+        a: "Hey! 👋 Ask me about Kaushil's work, projects, awards or education." },
+    ];
 
-EXPERIENCE:
-- 3 years professional software and data development
-- Built RESTful APIs and data pipelines deployed on AWS and Azure using native SDKs
-- Applied across domains: real-time sensor ingestion, edge inference, LLM integrations, and vision-based processing
-- Worked the full model lifecycle: feature engineering, training, evaluation, and production deployment
-- Storage layers using PostgreSQL/MySQL and NoSQL across diverse workloads
-- Uses Jupyter, MLflow, and HuggingFace for experimentation and model lifecycle management
+    function getLocalResponse(q) {
+      const lower = q.toLowerCase();
+      const hit = REPLIES.find(r => r.re.test(lower));
+      return hit ? hit.a : "Not sure about that one. Email Kaushil at " + EMAIL + ".";
+    }
 
-TECH STACK:
-- Languages: Python, Java, JavaScript, C++, SQL, HTML/CSS
-- Frameworks: Django, Flask, Spring Boot, React, TensorFlow, PyTorch, Apache Spark, Airflow
-- Databases: PostgreSQL, MySQL, MongoDB, Redis, Delta Lake
-- Cloud & DevOps: AWS, Azure, Docker, Apache Kafka, CI/CD, Kubernetes
-- Data & ML: NumPy, Pandas, scikit-learn, TensorFlow, PyTorch, OpenCV, HuggingFace, MLflow
-- Tools: Git, Jupyter, MATLAB, Arduino, ANSYS
-
-PROJECTS:
-1. CliniShield Caregiver Medication Platform — Spring Boot microservices platform with an FDA/FAERS-derived drug interaction knowledge base and a citation-enforced RAG assistant using Spring AI and pgvector
-2. Verdant Live Plant Marketplace — Multi-nursery marketplace built with Spring Boot and React, featuring saga-orchestrated orders, Kafka/OpenSearch, and a double-entry settlement ledger
-3. Real-Time Lakehouse Platform — Production-grade analytics using Medallion Architecture with Apache Spark, Delta Lake, Kafka, streaming pipelines
-4. Smart Parking Management & Analytics Platform — Computer vision parking system with OpenCV, TensorFlow, real-time occupancy detection
-5. Real-Time Chat & Notification System — Full-stack WebSocket chat app with Spring Boot, React, Redis, push notifications
-6. Airflow Google Reviews ETL Pipeline — Apache Airflow orchestrated ETL for Google API restaurant review data and NLP analysis
-7. SaaS Project Management Platform — Full-stack SaaS tool with React, Spring Boot, PostgreSQL, Docker, role-based access
-8. Online Recruitment & Exam Portal — Django-based recruitment system with online exams, automated scoring, admin dashboards
-9. ODI Asia Cup Winner Predictor — TensorFlow linear regression model for cricket match predictions, Flask web app
-10. Embedded System Arduino Simulation — CFD analysis in ANSYS Fluent for vehicle cabin airflow, Arduino embedded system, MATLAB-ThingSpeak cloud
-11. Face & Eye Detection — OpenCV cascading classifiers with Flask web interface
-12. Excel to JSON Convertor Bot — Python/Pandas automation for Excel to JSON payload conversion
-
-PERSONAL & HOBBIES:
-- Currently living in Tempe, Arizona
-- Final semester student at Arizona State University (ASU)
-- Plays guitar — a creative outlet outside of tech
-- Sports: loves playing football and cricket; has a growing interest in golf
-- Enjoys hiking and being outdoors
-- Passionate about coding even outside of work
-- Loves driving — genuinely never gets tired of it, it's almost meditative for him
-- Enjoys cooking and experimenting in the kitchen
-
-CONTACT:
-- LinkedIn: linkedin.com/in/kaushilnagrale
-- GitHub: github.com/kaushilnagrale
-
-COURSEWORK:
-- Data Structures & Algorithms
-- Database Management Systems
-- Machine Learning
-- Software Engineering
-- Operating Systems
-- Computer Networks
-- Object-Oriented Design
-- Cloud Computing
-
-Only answer questions related to Kaushil. If asked unrelated things, politely redirect. Never invent information not listed above. IMPORTANT: Do NOT use markdown formatting like ** or * or \`. Use plain text only. Keep responses concise (2-4 sentences).`;
-
-    let conversationHistory = [];
-
-    async function sendMessage(text) {
+    function sendMessage(text) {
       const msg = text || chatInput.value.trim();
       if (!msg) return;
       chatInput.value = '';
-
-      // Add user message
       appendMessage(msg, 'user');
 
-      // Show typing
       const typingEl = document.createElement('div');
       typingEl.className = 'chat-typing';
       typingEl.innerHTML = '<span></span><span></span><span></span>';
@@ -2538,96 +2804,20 @@ Only answer questions related to Kaushil. If asked unrelated things, politely re
       chatMessages.scrollTop = chatMessages.scrollHeight;
       chatSend.disabled = true;
 
-      // Add to history
-      conversationHistory.push({ role: 'user', content: msg });
-
-      try {
-        const response = await fetch('https://api.anthropic.com/v1/messages', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model: 'claude-sonnet-4-20250514',
-            max_tokens: 1000,
-            system: KAUSHIL_CONTEXT,
-            messages: conversationHistory
-          })
-        });
-
-        const data = await response.json();
+      setTimeout(() => {
         typingEl.remove();
-
-        if (data.content && data.content.length > 0) {
-          const reply = data.content.map(c => c.text || '').join('');
-          conversationHistory.push({ role: 'assistant', content: reply });
-          appendMessage(reply, 'bot');
-        } else {
-          appendMessage("Sorry, I couldn't process that. Try asking about Kaushil's skills, projects, or experience!", 'bot');
-        }
-      } catch (err) {
-        typingEl.remove();
-        // Fallback to local responses if API fails
-        const fallback = getLocalResponse(msg);
-        appendMessage(fallback, 'bot');
-      }
-
-      chatSend.disabled = false;
-    }
-
-    function formatMarkdown(text) {
-      // Convert **bold** to <strong>bold</strong>
-      text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-      // Convert *italic* to <em>italic</em>
-      text = text.replace(/\*(.+?)\*/g, '<em>$1</em>');
-      // Convert `code` to <code>code</code>
-      text = text.replace(/`(.+?)`/g, '<code style="background:rgba(200,245,66,0.1);padding:1px 5px;border-radius:3px;font-family:var(--mono);font-size:0.8em;">$1</code>');
-      // Convert newlines to <br>
-      text = text.replace(/\n/g, '<br>');
-      return text;
+        appendMessage(getLocalResponse(msg), 'bot');
+        chatSend.disabled = false;
+      }, 350);
     }
 
     function appendMessage(text, type) {
       const div = document.createElement('div');
       div.className = `chat-msg ${type}`;
-      div.innerHTML = type === 'bot' ? formatMarkdown(text) : text;
+      // Bot replies are trusted markup from REPLIES; visitor text is never parsed as HTML.
+      if (type === 'bot') div.innerHTML = text; else div.textContent = text;
       chatMessages.appendChild(div);
       chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function getLocalResponse(q) {
-      const lower = q.toLowerCase();
-      if (lower.includes('skill') || lower.includes('tech') || lower.includes('stack') || lower.includes('language'))
-        return "Kaushil works with <strong>Python, Java, C++, JavaScript</strong> and frameworks like Django, Flask, Spring Boot, React, and TensorFlow. On the cloud side, he's experienced with <strong>AWS, Azure, Docker, and Kafka</strong>. For databases, he uses PostgreSQL, MongoDB, and Redis.";
-      if (lower.includes('project'))
-        return "Kaushil has built 12+ projects spanning full-stack, data engineering, and ML. Highlights include <strong>CliniShield</strong>, a Spring Boot/RAG medication safety platform, <strong>Verdant</strong>, a Spring Boot & React plant marketplace, a <strong>Real-Time Lakehouse Platform</strong> with Spark & Delta Lake, and a <strong>Smart Parking System</strong> with computer vision. Check out the Projects section above!";
-      if (lower.includes('experience') || lower.includes('work') || lower.includes('job') || lower.includes('career'))
-        return "Kaushil has <strong>3+ years</strong> of experience as a software and data developer, shipping intelligent systems across NLP, LLMs, IoT, and computer vision. He's built RESTful APIs, automated data pipelines, and worked the full model lifecycle from feature engineering to production — on <strong>AWS & Azure</strong> using Spring Boot (Java) and Python.";
-      if (lower.includes('contact') || lower.includes('reach') || lower.includes('hire') || lower.includes('email'))
-        return "You can reach Kaushil on <strong>LinkedIn</strong> at linkedin.com/in/kaushilnagrale or check out his code on <strong>GitHub</strong> at github.com/kaushilnagrale. Head to the Contact section below to connect!";
-      if (lower.includes('database') || lower.includes('sql') || lower.includes('mongo'))
-        return "Kaushil works with both SQL and NoSQL databases — <strong>PostgreSQL, MySQL, MongoDB, Redis, and Delta Lake</strong>. He's experienced in designing efficient storage layers and optimizing queries.";
-      if (lower.includes('cloud') || lower.includes('aws') || lower.includes('azure') || lower.includes('devops'))
-        return "Kaushil deploys on <strong>AWS and Azure</strong> using native SDKs. His DevOps toolkit includes <strong>Docker, Kubernetes, Apache Kafka, and CI/CD pipelines</strong> for predictable, reliable deployments.";
-      if (lower.includes('machine learning') || lower.includes(' ml') || lower.includes('ai') || lower.includes('tensorflow'))
-        return "Kaushil works with <strong>TensorFlow, PyTorch, NumPy, Pandas, scikit-learn, and HuggingFace</strong> across NLP, LLMs, and computer vision. He's built LLM pipelines, fine-tuned transformers, computer vision systems, and deployed models into maintainable production pipelines using MLflow.";
-      if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey'))
-        return "Hey! 👋 I'm here to tell you all about Kaushil. Ask me about his <strong>skills, projects, experience, hobbies</strong>, or anything else from his portfolio!";
-      if (lower.includes('course') || lower.includes('study') || lower.includes('academic') || lower.includes('education') || lower.includes('degree') || lower.includes('asu') || lower.includes('university') || lower.includes('arizona'))
-        return "Kaushil is in his <strong>final semester at Arizona State University (ASU)</strong>, currently based in Tempe, AZ. His coursework spans Data Structures & Algorithms, Machine Learning, Database Management, Software Engineering, Cloud Computing, and more.";
-      if (lower.includes('hobby') || lower.includes('hobbies') || lower.includes('interest') || lower.includes('free time') || lower.includes('outside') || lower.includes('personal') || lower.includes('fun'))
-        return "Outside of work, Kaushil plays <strong>guitar</strong>, loves <strong>football and cricket</strong>, and has a growing interest in golf. He's into hiking, cooking, and is genuinely passionate about coding even off the clock. Ask him about driving and he'll talk your ear off — he absolutely loves it!";
-      if (lower.includes('guitar') || lower.includes('music'))
-        return "Yes, Kaushil plays <strong>guitar</strong>! It's his creative escape from screens and code.";
-      if (lower.includes('sport') || lower.includes('football') || lower.includes('cricket') || lower.includes('golf'))
-        return "Kaushil plays <strong>football and cricket</strong> and has a growing interest in golf. Sports are a big part of how he unwinds outside of work.";
-      if (lower.includes('driv') || lower.includes('car') || lower.includes('road'))
-        return "Kaushil <strong>loves driving</strong> — genuinely never gets tired of it. Long drives are practically meditative for him.";
-      if (lower.includes('cook') || lower.includes('food') || lower.includes('kitchen'))
-        return "Kaushil enjoys <strong>cooking</strong> and experimenting in the kitchen. Always up for trying something new, whether it's code or a recipe.";
-      if (lower.includes('hike') || lower.includes('hiking') || lower.includes('outdoor'))
-        return "Kaushil enjoys <strong>hiking</strong> and getting outdoors — a good way to reset after long stretches of building things.";
-      if (lower.includes('where') || lower.includes('location') || lower.includes('live') || lower.includes('tempe') || lower.includes('city'))
-        return "Kaushil is currently based in <strong>Tempe, Arizona</strong>, wrapping up his final semester at ASU.";
-      return "Great question! Kaushil is a <strong>software and data developer</strong> with 3+ years of experience across NLP, LLMs, IoT, computer vision, data pipelines, and cloud apps. Try asking about his specific skills, projects, hobbies, or experience!";
     }
   </script>
 

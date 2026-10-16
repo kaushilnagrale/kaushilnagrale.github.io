@@ -1,0 +1,357 @@
+[
+  {
+    "id": "power-unit",
+    "component": "Power unit",
+    "mapsTo": "Languages",
+    "items": [
+      {
+        "id": "python",
+        "name": "Python"
+      },
+      {
+        "id": "java",
+        "name": "Java"
+      },
+      {
+        "id": "sql",
+        "name": "SQL"
+      },
+      {
+        "id": "js-ts",
+        "name": "JavaScript / TypeScript"
+      },
+      {
+        "id": "c-cpp",
+        "name": "C / C++"
+      },
+      {
+        "id": "r",
+        "name": "R"
+      }
+    ]
+  },
+  {
+    "id": "chassis",
+    "component": "Chassis",
+    "mapsTo": "Backend + frontend",
+    "items": [
+      {
+        "id": "spring-boot",
+        "name": "Spring Boot"
+      },
+      {
+        "id": "spring-ai",
+        "name": "Spring AI"
+      },
+      {
+        "id": "fastapi",
+        "name": "FastAPI"
+      },
+      {
+        "id": "flask",
+        "name": "Flask"
+      },
+      {
+        "id": "django",
+        "name": "Django"
+      },
+      {
+        "id": "react",
+        "name": "React"
+      },
+      {
+        "id": "nextjs",
+        "name": "Next.js"
+      },
+      {
+        "id": "angular",
+        "name": "Angular"
+      },
+      {
+        "id": "spring-security",
+        "name": "Spring Security"
+      },
+      {
+        "id": "spring-data-jpa",
+        "name": "Spring Data JPA"
+      },
+      {
+        "id": "spring-batch",
+        "name": "Spring Batch"
+      },
+      {
+        "id": "zustand",
+        "name": "Zustand"
+      },
+      {
+        "id": "leaflet",
+        "name": "Leaflet"
+      }
+    ]
+  },
+  {
+    "id": "fuel-system",
+    "component": "Fuel system",
+    "mapsTo": "Data engineering",
+    "items": [
+      {
+        "id": "spark",
+        "name": "Spark"
+      },
+      {
+        "id": "structured-streaming",
+        "name": "Structured Streaming"
+      },
+      {
+        "id": "pyspark",
+        "name": "PySpark"
+      },
+      {
+        "id": "kafka",
+        "name": "Kafka"
+      },
+      {
+        "id": "airflow",
+        "name": "Airflow"
+      },
+      {
+        "id": "delta-lake",
+        "name": "Delta Lake"
+      },
+      {
+        "id": "adf",
+        "name": "ADF"
+      },
+      {
+        "id": "synapse",
+        "name": "Synapse"
+      },
+      {
+        "id": "great-expectations",
+        "name": "Great Expectations"
+      },
+      {
+        "id": "ssas-tabular",
+        "name": "SSAS Tabular"
+      }
+    ]
+  },
+  {
+    "id": "aero",
+    "component": "Aero",
+    "mapsTo": "Cloud + DevOps",
+    "items": [
+      {
+        "id": "azure",
+        "name": "Azure (AZ-204 certified)"
+      },
+      {
+        "id": "aws",
+        "name": "AWS"
+      },
+      {
+        "id": "docker",
+        "name": "Docker"
+      },
+      {
+        "id": "kubernetes",
+        "name": "Kubernetes"
+      },
+      {
+        "id": "cicd",
+        "name": "CI/CD (Azure DevOps)"
+      },
+      {
+        "id": "git",
+        "name": "Git"
+      }
+    ]
+  },
+  {
+    "id": "telemetry",
+    "component": "Telemetry",
+    "mapsTo": "Stores + observability",
+    "items": [
+      {
+        "id": "postgresql",
+        "name": "PostgreSQL"
+      },
+      {
+        "id": "pgvector",
+        "name": "pgvector"
+      },
+      {
+        "id": "mysql",
+        "name": "MySQL"
+      },
+      {
+        "id": "mongodb",
+        "name": "MongoDB"
+      },
+      {
+        "id": "redis",
+        "name": "Redis"
+      },
+      {
+        "id": "neo4j",
+        "name": "Neo4j"
+      },
+      {
+        "id": "opensearch",
+        "name": "OpenSearch"
+      },
+      {
+        "id": "prometheus",
+        "name": "Prometheus"
+      },
+      {
+        "id": "grafana",
+        "name": "Grafana"
+      },
+      {
+        "id": "mlflow",
+        "name": "MLflow"
+      },
+      {
+        "id": "chromadb",
+        "name": "ChromaDB"
+      },
+      {
+        "id": "faiss",
+        "name": "FAISS"
+      }
+    ]
+  },
+  {
+    "id": "gearbox",
+    "component": "Gearbox",
+    "mapsTo": "Architecture",
+    "items": [
+      {
+        "id": "microservices",
+        "name": "Microservices"
+      },
+      {
+        "id": "event-driven",
+        "name": "Event-driven architecture"
+      },
+      {
+        "id": "saga",
+        "name": "Saga orchestration"
+      },
+      {
+        "id": "outbox",
+        "name": "Transactional outbox"
+      },
+      {
+        "id": "circuit-breakers",
+        "name": "Circuit breakers"
+      },
+      {
+        "id": "multi-tenancy",
+        "name": "Multi-tenancy"
+      }
+    ]
+  },
+  {
+    "id": "brakes",
+    "component": "Brakes",
+    "mapsTo": "Security + testing",
+    "items": [
+      {
+        "id": "oauth2",
+        "name": "OAuth 2.0"
+      },
+      {
+        "id": "jwt",
+        "name": "JWT"
+      },
+      {
+        "id": "rest-api",
+        "name": "RESTful API design"
+      },
+      {
+        "id": "junit",
+        "name": "JUnit"
+      },
+      {
+        "id": "jqwik",
+        "name": "jqwik property testing"
+      }
+    ]
+  },
+  {
+    "id": "strategy",
+    "component": "Strategy",
+    "mapsTo": "ML / AI",
+    "items": [
+      {
+        "id": "pytorch",
+        "name": "PyTorch"
+      },
+      {
+        "id": "tensorflow",
+        "name": "TensorFlow"
+      },
+      {
+        "id": "scikit-learn",
+        "name": "scikit-learn"
+      },
+      {
+        "id": "xgboost",
+        "name": "XGBoost"
+      },
+      {
+        "id": "lightgbm",
+        "name": "LightGBM"
+      },
+      {
+        "id": "rag",
+        "name": "RAG (LangChain, BM25 hybrid search, cross-encoder reranking)"
+      },
+      {
+        "id": "opencv",
+        "name": "OpenCV"
+      },
+      {
+        "id": "unet",
+        "name": "U-Net"
+      },
+      {
+        "id": "llms",
+        "name": "LLMs (GPT, Claude, Llama, Qwen)"
+      },
+      {
+        "id": "claude-code",
+        "name": "Claude Code"
+      }
+    ]
+  },
+  {
+    "id": "roots",
+    "component": "Engineering roots",
+    "mapsTo": "Mechanical",
+    "items": [
+      {
+        "id": "solidworks",
+        "name": "SolidWorks"
+      },
+      {
+        "id": "ansys-fluent",
+        "name": "ANSYS Fluent"
+      },
+      {
+        "id": "matlab",
+        "name": "MATLAB"
+      },
+      {
+        "id": "arduino",
+        "name": "Arduino"
+      },
+      {
+        "id": "six-sigma",
+        "name": "Six Sigma coursework"
+      }
+    ]
+  }
+]

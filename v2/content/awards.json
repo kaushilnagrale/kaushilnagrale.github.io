@@ -1,0 +1,44 @@
+{
+  "podium": [
+    {
+      "pos": "P1",
+      "title": "Fan Favorite, Kiro Spark Challenge",
+      "detail": "PulseRoute · team of 3",
+      "project": "pulseroute"
+    },
+    {
+      "pos": "P2",
+      "title": "1st place, NIT Trichy 2021",
+      "detail": "Floating Waste Collector Boat · team lead of 3",
+      "project": null
+    },
+    {
+      "pos": "P3",
+      "title": "$10,000 NAMU Scholarship",
+      "detail": "Arizona State University",
+      "project": null
+    }
+  ],
+  "standings": [
+    {
+      "title": "Microsoft Certified: Azure Developer Associate",
+      "detail": "AZ-204",
+      "href": null
+    },
+    {
+      "title": "AWS Certified Developer Associate",
+      "detail": "AWS",
+      "href": null
+    },
+    {
+      "title": "MS GPA 3.9",
+      "detail": "Data Science, Analytics & Engineering · ASU",
+      "href": null
+    },
+    {
+      "title": "Arizona Opportunity Hack, Fall 2025",
+      "detail": "NMTSA site",
+      "href": null
+    }
+  ]
+}

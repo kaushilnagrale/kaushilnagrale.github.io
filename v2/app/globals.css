@@ -1,0 +1,550 @@
+@import "tailwindcss";
+
+/* D-02 · Night is the default; Day comes from the theme switch or the OS. */
+:root,
+[data-theme="dark"] {
+  --bg: #070b14;
+  --surface: #0e1424;
+  --surface-2: #151d33;
+  --line: #22304f;
+  --text: #eef1f6;
+  --muted: #8b97b0;
+  --accent: #ff6a13;
+  --flow: #22d3ee;
+  --s-purple: #a78bfa;
+  --s-green: #22c55e;
+  --s-yellow: #facc15;
+  --lights: #ef4444;
+  --shadow: none;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f2f5fa;
+  --surface: #ffffff;
+  --surface-2: #e8edf5;
+  --line: #d3dbe8;
+  --text: #0a1428;
+  --muted: #55617a;
+  --accent: #c2410c;
+  --flow: #0e7490;
+  --s-purple: #7c3aed;
+  --s-green: #15803d;
+  --s-yellow: #975c06; /* D-02 lists #A16207; darkened 6% so it passes AA on surface-2 too */
+  --lights: #dc2626;
+  --shadow: 0 1px 2px rgb(10 20 40 / 0.06), 0 8px 24px rgb(10 20 40 / 0.06);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-flow: var(--flow);
+  --color-s-purple: var(--s-purple);
+  --color-s-green: var(--s-green);
+  --color-s-yellow: var(--s-yellow);
+  --color-lights: var(--lights);
+  --font-heavy: var(--font-archivo-heavy), "Arial Black", system-ui, sans-serif;
+  --font-wide: var(--font-archivo-wide), "Arial Black", system-ui, sans-serif;
+  --font-narrow: var(--font-archivo-narrow), "Arial Narrow", system-ui, sans-serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --ease-pit: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* The timing tower rail appears at 1200px (S-01). */
+@theme {
+  --breakpoint-xl: 75rem;
+}
+
+/* ---------- Base ---------- */
+
+@layer base {
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--flow) 35%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--flow);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+}
+
+@layer components {
+/* D-03 · Typography roles */
+.t-h1 {
+  font-family: var(--font-heavy);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(56px, 9vw, 120px);
+  line-height: 0.92;
+}
+
+.t-h2 {
+  font-family: var(--font-wide);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1;
+}
+
+.t-h3 {
+  font-family: var(--font-wide);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.t-metric {
+  font-family: var(--font-narrow);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.t-label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* D-04 · Layout */
+.wrap {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .with-rail {
+    padding-left: 72px;
+  }
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--surface-2);
+  white-space: nowrap;
+}
+
+/* Buttons: text on Oranje uses --bg so it passes contrast in both themes. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  transition:
+    background-color 150ms var(--ease-pit),
+    border-color 150ms var(--ease-pit),
+    color 150ms var(--ease-pit),
+    transform 150ms var(--ease-pit);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  border: 1px solid var(--accent);
+}
+
+.btn-primary:hover {
+  background: color-mix(in srgb, var(--accent) 88%, var(--text));
+}
+
+.btn-outline {
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  border-color: var(--muted);
+  background: var(--surface-2);
+}
+
+.btn-text {
+  color: var(--text);
+  padding-inline: 6px;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 5px;
+}
+
+.btn-text:hover {
+  text-decoration-color: var(--flow);
+}
+
+.link {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--flow) 60%, transparent);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.link:hover {
+  text-decoration-color: var(--flow);
+  text-decoration-thickness: 2px;
+}
+}
+
+.theme-day {
+  display: none;
+}
+
+[data-theme="light"] .theme-night {
+  display: none;
+}
+
+[data-theme="light"] .theme-day {
+  display: inline-flex;
+}
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: -64px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+  transition: top 150ms var(--ease-pit);
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* ---------- D-05 · Blueprint texture ---------- */
+
+.blueprint {
+  position: relative;
+  isolation: isolate;
+}
+
+.blueprint::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  --minor: color-mix(in srgb, var(--text) 4%, transparent);
+  --major: color-mix(in srgb, var(--text) 8%, transparent);
+  background-image:
+    linear-gradient(to right, var(--major) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--major) 1px, transparent 1px),
+    linear-gradient(to right, var(--minor) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--minor) 1px, transparent 1px);
+  background-size:
+    120px 120px,
+    120px 120px,
+    24px 24px,
+    24px 24px;
+  background-position: center top;
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, #000 35%, transparent 100%);
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 140px;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--flow) 7%, transparent), transparent);
+  animation: scan 9s linear infinite;
+}
+
+@keyframes scan {
+  from {
+    transform: translateY(-140px);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* D-08 · Engineering title block in a section corner */
+.title-block {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 8px;
+  white-space: nowrap;
+}
+
+/* ---------- D-06 · Motion ---------- */
+
+.draw [pathLength] {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 1.6s var(--ease-pit) 0.15s forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.flow-dash {
+  stroke-dasharray: 5 7;
+  animation: flow 1.2s linear infinite;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .scanline::after,
+  .flow-dash {
+    animation: none !important;
+  }
+}
+
+/* ---------- Status dots and tyres (plain circles with our own labels) ---------- */
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--muted);
+  flex: none;
+}
+
+.dot[data-status="live"] {
+  background: var(--s-green);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--s-green) 25%, transparent);
+}
+
+.dot[data-status="waking"] {
+  background: var(--s-yellow);
+}
+
+.dot[data-status="video"] {
+  background: var(--flow);
+}
+
+.tyre {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 3px solid var(--muted);
+  background: var(--bg);
+  flex: none;
+}
+
+.tyre[data-tyre="soft"] {
+  border-color: var(--lights);
+}
+
+.tyre[data-tyre="medium"] {
+  border-color: var(--s-yellow);
+}
+
+.tyre[data-tyre="hard"] {
+  border-color: var(--text);
+}
+
+/* ---------- Skill highlight / filter (S-09): rules are generated by SetupSheet ---------- */
+
+[data-skills] {
+  transition:
+    opacity 250ms var(--ease-pit),
+    box-shadow 250ms var(--ease-pit);
+}
+
+/* ---------- Print ---------- */
+
+@media print {
+  :root,
+  [data-theme] {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #f3f5f9;
+    --line: #d3dbe8;
+    --text: #0a1428;
+    --muted: #4a556c;
+    --accent: #c2410c;
+    --flow: #0e7490;
+    --s-purple: #6d28d9;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .blueprint::before,
+  .scanline::after {
+    display: none;
+  }
+}
+
+/* ---------- S-13 · Team radio waveform ---------- */
+
+.radio-wave span {
+  height: 3px;
+  opacity: 0.45;
+  transition: height 150ms var(--ease-pit);
+}
+
+.radio-wave.is-on span {
+  opacity: 1;
+  animation: wave 560ms ease-in-out infinite alternate;
+}
+
+@keyframes wave {
+  from {
+    height: 4px;
+  }
+  to {
+    height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radio-wave.is-on span {
+    animation: none !important;
+    height: 18px;
+  }
+}
+
+/* ---------- S-14 · Finish line ---------- */
+
+.checkered {
+  height: 16px;
+  background-color: var(--bg);
+  background-image: conic-gradient(var(--text) 25%, transparent 0 50%, var(--text) 0 75%, transparent 0);
+  background-size: 16px 16px;
+  opacity: 0.85;
+}
+
+/* ---------- Photo finish (About) ---------- */
+
+.photo-frame .finish-line {
+  left: var(--finish, 64%);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .photo-frame:hover .finish-line,
+  .photo-frame:focus-within .finish-line {
+    animation: finish-sweep 1.2s var(--ease-pit) both;
+  }
+}
+
+@keyframes finish-sweep {
+  from {
+    left: 0%;
+  }
+  to {
+    left: var(--finish, 64%);
+  }
+}

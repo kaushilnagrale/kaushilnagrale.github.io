@@ -1,0 +1,174 @@
+{
+  "all": {
+    "label": "All",
+    "hero": null,
+    "resume": "/resume/kaushil_nagrale.pdf",
+    "domain": null,
+    "emphasis": [],
+    "telemetry": [
+      {
+        "value": "2.8%",
+        "caption": "hallucination, down from 44%",
+        "target": "intelligent-ticketing",
+        "best": true
+      },
+      {
+        "value": "97.6%",
+        "caption": "Recall@5 on 500 queries",
+        "target": "intelligent-ticketing"
+      },
+      {
+        "value": "262K",
+        "caption": "FDA labels ingested",
+        "target": "clinishield"
+      },
+      {
+        "value": "510 ms",
+        "caption": "p95 checkout, from 850 ms",
+        "target": "#circuit"
+      },
+      {
+        "value": "31%",
+        "caption": "faster equipment processing",
+        "target": "#circuit"
+      },
+      {
+        "value": "3.9",
+        "caption": "MS GPA",
+        "target": "#circuit"
+      }
+    ]
+  },
+  "data": {
+    "label": "Data Eng",
+    "hero": "I build pipelines that turn raw data into trusted tables, in batch and in real time.",
+    "resume": "/resume/kaushil_nagrale_data.pdf",
+    "domain": "DATA",
+    "emphasis": [
+      "fuel-system",
+      "telemetry",
+      "aero"
+    ],
+    "telemetry": [
+      {
+        "value": "262K",
+        "caption": "FDA labels via Spring Batch",
+        "target": "clinishield",
+        "best": true
+      },
+      {
+        "value": "2M",
+        "caption": "FAERS rows for drug signals",
+        "target": "clinishield"
+      },
+      {
+        "value": "80K",
+        "caption": "tickets indexed for RAG",
+        "target": "intelligent-ticketing"
+      },
+      {
+        "value": "97.6%",
+        "caption": "Recall@5, hybrid retrieval",
+        "target": "intelligent-ticketing"
+      },
+      {
+        "value": "64%",
+        "caption": "less manual event planning",
+        "target": "#circuit"
+      },
+      {
+        "value": "0.94",
+        "caption": "AUC, fraud scoring",
+        "target": "ai-claims"
+      }
+    ]
+  },
+  "ml": {
+    "label": "ML/AI",
+    "hero": "I build ML and RAG systems that are measured, grounded and shipped.",
+    "resume": "/resume/kaushil_nagrale_ml.pdf",
+    "domain": "ML",
+    "emphasis": [
+      "strategy",
+      "power-unit"
+    ],
+    "telemetry": [
+      {
+        "value": "2.8%",
+        "caption": "hallucination, down from 44%",
+        "target": "intelligent-ticketing",
+        "best": true
+      },
+      {
+        "value": "97.6%",
+        "caption": "Recall@5 on 500 queries",
+        "target": "intelligent-ticketing"
+      },
+      {
+        "value": "100%",
+        "caption": "out-of-scope refusal",
+        "target": "intelligent-ticketing"
+      },
+      {
+        "value": "0.94",
+        "caption": "AUC, fraud scoring",
+        "target": "ai-claims"
+      },
+      {
+        "value": "0.87",
+        "caption": "F1, claims triage",
+        "target": "ai-claims"
+      },
+      {
+        "value": "0.78",
+        "caption": "C-index, survival model",
+        "target": "ai-claims"
+      }
+    ]
+  },
+  "swe": {
+    "label": "Software",
+    "hero": "I build Spring Boot and FastAPI backends that hold up under load.",
+    "resume": "/resume/kaushil_nagrale_swe.pdf",
+    "domain": "SWE",
+    "emphasis": [
+      "chassis",
+      "gearbox",
+      "brakes",
+      "aero"
+    ],
+    "telemetry": [
+      {
+        "value": "510 ms",
+        "caption": "p95 checkout, from 850 ms",
+        "target": "#circuit",
+        "best": true
+      },
+      {
+        "value": "8.6M+",
+        "caption": "active app users served",
+        "target": "#circuit"
+      },
+      {
+        "value": "30 min",
+        "caption": "deploys, down from 5 hours",
+        "target": "#circuit"
+      },
+      {
+        "value": "31%",
+        "caption": "faster equipment processing",
+        "target": "#circuit"
+      },
+      {
+        "value": "100%",
+        "caption": "branch coverage, safety gate",
+        "target": "pulseroute"
+      },
+      {
+        "value": "180 ms",
+        "caption": "p99 at 10x traffic",
+        "target": "verdant"
+      }
+    ]
+  }
+}

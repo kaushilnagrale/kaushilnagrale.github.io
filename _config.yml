@@ -1,0 +1,4 @@
+# GitHub Pages serves the v1 site (index.html) from this folder.
+# The v2 Next.js app lives in v2/ and deploys separately, so Jekyll skips it.
+exclude:
+  - v2
