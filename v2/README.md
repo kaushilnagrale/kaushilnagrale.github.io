@@ -108,6 +108,16 @@ Add `public/resume/kaushil_nagrale_data.pdf`, `..._ml.pdf` and `..._swe.pdf`. Un
 - **Payload:** posters and architecture diagrams render on the client from compact JSON, which keeps the RSC payload small.
 - **No JavaScript:** navigation, lens links, projects, experience and the Contact form (it posts to Gmail's composer) work as plain HTML.
 
+## Signature pieces
+
+- **Road rail** (`components/nav/TimingTowerNav.tsx`, `lib/race.ts`): on wide screens the section list is a winding road and a
+  car drives down it with the scroll, reaching each checkpoint as that section arrives. On phones a small car runs along a
+  progress lane above the bottom bar. Reduced motion turns off the smoothing and speed lines.
+- **Quality Gate** (`components/play/`): a 45-second game where rows stream in and you pass clean ones to Silver or quarantine
+  broken ones (null, malformed email, negative amount, text in a number field, future date, bad country code, duplicate id).
+  Keyboard (← → or A D), buttons or tap; Relaxed mode has no timers. The game code loads only when a visitor presses Start;
+  the best score is kept in that visitor's browser.
+
 ## Deploying (GitHub Pages)
 
 The site is exported as static files (`output: "export"` in `next.config.ts`) and published by

@@ -901,7 +901,7 @@
     "title": "PulseRoute",
     "tagline": "A heat safe cycling co-pilot.",
     "tier": "bay",
-    "status": "planned",
+    "status": "live",
     "tyre": "soft",
     "domains": [
       "SWE",
@@ -957,17 +957,17 @@
       "git"
     ],
     "links": {
-      "live": null,
-      "embed": null,
-      "health": null,
+      "live": "https://pulseroute-beta.vercel.app",
+      "embed": "https://pulseroute-beta.vercel.app",
+      "health": "https://pulseroute-beta.vercel.app",
       "repo": "https://github.com/kaushilnagrale/kiro_challenge_ZeroToKiro",
       "video": null,
       "caseStudy": null
     },
     "media": {
-      "poster": null,
+      "poster": "/projects/pulseroute/screen.webp",
       "loop": null,
-      "xrayUi": null,
+      "xrayUi": "/projects/pulseroute/screen.webp",
       "xrayArch": null
     },
     "telemetry": {
@@ -975,7 +975,7 @@
       "embed": null,
       "url": null
     },
-    "demoScope": "Simulated biosignals · Tempe routes",
+    "demoScope": "Product site and walkthrough · shaded routes across Tempe, watch biosignals and next-water stops",
     "year": 2026,
     "architecture": {
       "nodes": [
@@ -1348,7 +1348,7 @@
     "title": "ProjectFlow",
     "tagline": "Project management with permissions that never leak.",
     "tier": "bay",
-    "status": "planned",
+    "status": "live",
     "tyre": "soft",
     "domains": [
       "SWE"
@@ -1403,17 +1403,17 @@
       "git"
     ],
     "links": {
-      "live": null,
-      "embed": null,
-      "health": null,
+      "live": "https://getprojectflow.vercel.app",
+      "embed": "https://getprojectflow.vercel.app",
+      "health": "https://getprojectflow.vercel.app",
       "repo": "https://github.com/kaushilnagrale/SaaS-project-management-platform",
       "video": null,
       "caseStudy": null
     },
     "media": {
-      "poster": null,
+      "poster": "/projects/projectflow/screen.webp",
       "loop": null,
-      "xrayUi": null,
+      "xrayUi": "/projects/projectflow/screen.webp",
       "xrayArch": null
     },
     "telemetry": {
@@ -1421,7 +1421,7 @@
       "embed": null,
       "url": null
     },
-    "demoScope": "Two demo accounts · switch user to feel the permission model",
+    "demoScope": "Product site with a live board, roles and activity trail · log in to try the workspace",
     "year": 2026,
     "architecture": {
       "nodes": [

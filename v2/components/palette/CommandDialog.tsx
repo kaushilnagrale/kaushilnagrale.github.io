@@ -102,6 +102,9 @@ export default function CommandDialog({
           >
             Switch to {resolvedTheme === 'light' ? 'Night' : 'Day'} theme
           </Command.Item>
+          <Command.Item className={item} keywords={['game', 'play', 'quality', 'data']} onSelect={() => jump('#play')}>
+            Play Quality Gate
+          </Command.Item>
           <Command.Item className={item} keywords={['contact', 'message', 'email', 'box box', 'hire']} onSelect={openContact}>
             Write a message
           </Command.Item>

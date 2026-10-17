@@ -7,6 +7,7 @@ import { TimingTowerNav } from '@/components/nav/TimingTowerNav'
 import { TopCluster } from '@/components/nav/TopCluster'
 import type { PaletteData } from '@/components/palette/CommandPalette'
 import { PhotoReel, type Photo } from '@/components/PhotoReel'
+import { PlaySection } from '@/components/play/PlaySection'
 import { Podium } from '@/components/Podium'
 import { Contact } from '@/components/contact/Contact'
 import { SectionHeader } from '@/components/SectionHeader'
@@ -102,6 +103,17 @@ export function HomePage({ lens }: { lens: Lens }) {
           </section>
 
           <Podium />
+
+          <section id="play" aria-labelledby="play-title" className="blueprint py-20 md:py-28">
+            <div className="wrap">
+              <SectionHeader
+                id="play"
+                kicker="Data quality, as a game"
+                intro="Rows stream in from a pipeline. Pass the clean ones to Silver and quarantine the broken ones: the same call a data quality gate makes on every batch."
+              />
+              <PlaySection />
+            </div>
+          </section>
 
           {SHOW_PHOTOS ? (
             <section id="photos" aria-labelledby="photos-title" className="py-20 md:py-28">

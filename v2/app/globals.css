@@ -151,7 +151,7 @@ body {
 
 @media (min-width: 1200px) {
   .with-rail {
-    padding-left: 72px;
+    padding-left: 148px;
   }
 }
 
@@ -474,4 +474,21 @@ body {
   background-image: conic-gradient(var(--text) 25%, transparent 0 50%, var(--text) 0 75%, transparent 0);
   background-size: 16px 16px;
   opacity: 0.85;
+}
+
+/* ---------- Quality Gate: rows slide in from the pipeline ---------- */
+
+.qg-row {
+  animation: qg-in 220ms var(--ease-pit);
+}
+
+@keyframes qg-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

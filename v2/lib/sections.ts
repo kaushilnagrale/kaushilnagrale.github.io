@@ -18,6 +18,7 @@ const ALL: SectionMeta[] = [
   { id: 'experience', label: 'Experience', title: 'Experience and education' },
   { id: 'skills', label: 'Skills', title: 'Skills' },
   { id: 'awards', label: 'Awards', title: 'Awards and certifications' },
+  { id: 'play', label: 'Play', title: 'Quality Gate: a 45-second game' },
   { id: 'photos', label: 'Photos', title: 'Photos' },
   { id: 'contact', label: 'Contact', title: 'Contact' },
 ]
