@@ -5,11 +5,54 @@ const H = 54
 
 type Box = { cx: number; cy: number; hw: number; hh: number }
 
-const box = (n: ArchNode): Box => {
-  const w = n.w ?? W
-  const h = n.h ?? H
-  return { cx: n.x + w / 2, cy: n.y + h / 2, hw: w / 2, hh: h / 2 }
+// Approximate glyph widths: 14px bold sans and 10.5px mono (measured against the rendered fonts).
+const LABEL_CHAR = 8
+const SUB_CHAR = 6.4
+const PAD = 8
+const LABEL_LINE = 17
+const SUB_LINE = 13
+
+interface Layout {
+  w: number
+  h: number
+  label: string[]
+  labelSize: number
+  sub: string[]
 }
+
+/** Lines of at most `max` characters, broken at spaces. */
+function wrapText(text: string, max: number): string[] {
+  const lines: string[] = []
+  let line = ''
+  for (const word of text.split(' ')) {
+    if (line && (line + ' ' + word).length > max) {
+      lines.push(line)
+      line = word
+    } else line = line ? `${line} ${word}` : word
+  }
+  if (line) lines.push(line)
+  return lines
+}
+
+/** Fits a node's text inside its box: long subtitles wrap, long titles shrink (to 12px) and then wrap, and the box grows taller. */
+function layout(n: ArchNode): Layout {
+  const w = n.w ?? W
+  const room = w - PAD * 2
+  let labelSize = 14
+  let label = [n.label]
+  if (n.label.length * LABEL_CHAR > room) {
+    labelSize = Math.max(12, Math.floor((room / (n.label.length * LABEL_CHAR)) * 14 * 2) / 2)
+    if (n.label.length * LABEL_CHAR * (labelSize / 14) > room) {
+      labelSize = 14
+      label = wrapText(n.label, Math.floor(room / LABEL_CHAR))
+    }
+  }
+  const sub = n.sub ? wrapText(n.sub, Math.floor(room / SUB_CHAR)) : []
+  const content = label.length * LABEL_LINE + sub.length * SUB_LINE
+  return { w, h: Math.max(n.h ?? H, content + 18), label, labelSize, sub }
+}
+
+const boxOf = (n: ArchNode, l: Layout): Box => ({ cx: n.x + l.w / 2, cy: n.y + l.h / 2, hw: l.w / 2, hh: l.h / 2 })
 
 /** Point where the ray from the box centre toward (dx, dy) leaves the box, pushed out by `pad`. */
 function exit(b: Box, dx: number, dy: number, pad: number) {
@@ -18,9 +61,8 @@ function exit(b: Box, dx: number, dy: number, pad: number) {
   return { x: b.cx + dx * t + (dx / len) * pad, y: b.cy + dy * t + (dy / len) * pad }
 }
 
-function NodeShape({ n }: { n: ArchNode }) {
-  const w = n.w ?? W
-  const h = n.h ?? H
+function NodeShape({ n, l }: { n: ArchNode; l: Layout }) {
+  const { w, h } = l
   const common = { x: n.x, y: n.y, width: w, height: h, fill: 'var(--surface)', stroke: 'var(--text)', strokeWidth: 1.5 }
   switch (n.kind) {
     case 'client':
@@ -58,6 +100,7 @@ function NodeShape({ n }: { n: ArchNode }) {
 /** X-RAY architecture drawing, rendered from content so it follows the theme. */
 export function ArchDiagram({ slug, title, arch }: { slug: string; title: string; arch: Architecture }) {
   const byId = new Map(arch.nodes.map((n) => [n.id, n]))
+  const fit = new Map(arch.nodes.map((n) => [n.id, layout(n)]))
   const mk = (k: string) => `arch-${slug}-${k}`
 
   return (
@@ -80,8 +123,8 @@ export function ArchDiagram({ slug, title, arch }: { slug: string; title: string
         const a = byId.get(e.from)
         const b = byId.get(e.to)
         if (!a || !b) return null
-        const A = box(a)
-        const B = box(b)
+        const A = boxOf(a, fit.get(a.id)!)
+        const B = boxOf(b, fit.get(b.id)!)
         const dx = B.cx - A.cx
         const dy = B.cy - A.cy
         const p1 = exit(A, dx, dy, e.both ? 6 : 2)
@@ -118,19 +161,40 @@ export function ArchDiagram({ slug, title, arch }: { slug: string; title: string
       })}
 
       {arch.nodes.map((n) => {
-        const w = n.w ?? W
-        const h = n.h ?? H
+        const l = fit.get(n.id)!
+        const block = l.label.length * LABEL_LINE + l.sub.length * SUB_LINE
+        const top = n.y + (l.h - block) / 2
+        const cx = n.x + l.w / 2
         return (
           <g key={n.id}>
-            <NodeShape n={n} />
-            <text x={n.x + w / 2} y={n.y + (n.sub ? h / 2 - 3 : h / 2 + 5)} textAnchor="middle" fontSize="14" fontWeight={700} fill={n.kind === 'ext' ? 'var(--muted)' : 'var(--text)'} className="font-sans">
-              {n.label}
-            </text>
-            {n.sub ? (
-              <text x={n.x + w / 2} y={n.y + h / 2 + 15} textAnchor="middle" fontSize="10.5" fill="var(--muted)" className="font-mono">
-                {n.sub}
+            <NodeShape n={n} l={l} />
+            {l.label.map((line, i) => (
+              <text
+                key={`l${i}`}
+                x={cx}
+                y={top + (i + 1) * LABEL_LINE - 4}
+                textAnchor="middle"
+                fontSize={l.labelSize}
+                fontWeight={700}
+                fill={n.kind === 'ext' ? 'var(--muted)' : 'var(--text)'}
+                className="font-sans"
+              >
+                {line}
               </text>
-            ) : null}
+            ))}
+            {l.sub.map((line, i) => (
+              <text
+                key={`s${i}`}
+                x={cx}
+                y={top + l.label.length * LABEL_LINE + (i + 1) * SUB_LINE - 2}
+                textAnchor="middle"
+                fontSize="10.5"
+                fill="var(--muted)"
+                className="font-mono"
+              >
+                {line}
+              </text>
+            ))}
           </g>
         )
       })}
